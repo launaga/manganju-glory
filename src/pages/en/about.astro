@@ -1,0 +1,146 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const breadcrumb = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mglportfolio.vercel.app/en' },
+    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://mglportfolio.vercel.app/en/about' },
+  ],
+};
+const waAbout = "https://wa.me/6285927277560?text=Hi!%20I%20read%20your%20about%20page%20and%20I'd%20like%20to%20discuss%20a%20project...";
+---
+
+<Base
+  lang="en"
+  title="About — Independent Website Consultant | MGL"
+  description="Building websites is what I do; understanding the problem is why. How an independent website consultant with 6+ years of international work operates."
+  idPath="/tentang"
+  enPath="/en/about"
+  extraSchema={[breadcrumb]}
+>
+  <main id="page-about-en" class="page">
+    <section class="hero wrap" style="padding-top:clamp(120px,16vh,180px)">
+      <div class="shead reveal"><div class="label"><span class="eyebrow">// 01 — About</span><span class="folio">01</span></div></div>
+      <div class="hero-grid">
+        <div class="hero-meta">
+          <h1 class="h1 reveal d1">Building websites is my job. Understanding the problem is<br><span class="u-accent">the reason.</span></h1>
+          <p class="lead reveal d2">A website is rarely just a website. It is usually a reflection of business goals, communication challenges, and growth opportunities. My role is to connect those pieces — so your digital presence genuinely represents what you have already built.</p>
+        </div>
+        <div class="hero-photo reveal d2">
+          <img src="/img/portrait-mgl.webp" alt="Manganju Glory Laurencius" width="1000" height="1500" fetchpriority="high" decoding="async" />
+          <span class="cap">Fig. 01 — M.G. Laurencius</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="pad-sm wrap">
+      <div class="stats">
+        <div class="stat reveal"><div class="num">06<b>+</b></div><span class="k">Years of international work</span><p>Navigating global markets, from fast-growing startups to established non-profits.</p></div>
+        <div class="stat reveal d1"><div class="num">200</div><span class="k">Websites managed</span><p>A real track record of delivering scalable, high-performing web solutions.</p></div>
+        <div class="stat reveal d2"><div class="num">15<b>+</b></div><span class="k">Global industries</span><p>Across education, commerce, technology, and the creative arts.</p></div>
+      </div>
+    </section>
+
+    <!-- THE STORY -->
+    <section class="pad wrap">
+      <div class="shead reveal">
+        <div class="label">
+          <div><span class="eyebrow">// 02 — The Story Behind This Work</span></div>
+          <span class="folio">02</span>
+        </div>
+      </div>
+      <div class="story">
+        <div class="reveal">
+          <h2 class="h2" style="position:sticky;top:120px">The story behind this work.</h2>
+        </div>
+        <div class="body reveal d1">
+          <p>I started by building a website for myself — a simple WordPress record of my hobby, photography. Then Covid hit. At that point I was holding down two things at once: a full-time job at a travel and logistics company, while spending years on design courses and training, before I finally landed my first client.</p>
+          <p>That client was Jakarta Feminist, a local NGO in Jakarta. I was contracted to build three of their websites, and it turned into nearly five years of ongoing support. One thing I learned: the client knew what they wanted, and refused any feature they doubted. They wanted it simple, they wanted it to work, and they wanted input from the people using it. That is what I delivered, and it became the foundation of my design journey. <a href="/en/work/jakarta-feminist" style="text-decoration:underline;text-underline-offset:4px">Read the full case study ↗</a></p>
+          <p class="pull">The site looked successful. But it did not work.</p>
+          <p>I also noticed most people optimise for what looks good — clean layouts, current animations, pixel-perfect mockups. Clients are delighted at the presentation. Then three months after launch you open the analytics: high bounce rate, low conversion, visitors lost.</p>
+          <p>The turning point came with a project for a well-known NGO in London. They had already burned budget at two agencies. Both produced beautiful sites. Neither had asked who was actually visiting, why they left, or what the organisation needed from them. I rebuilt it differently — starting from the visitor's anxiety rather than the founder's pride. Adding friction where it was needed, removing it where it was not. Conversion doubled within six weeks. <a href="/en/work/redesign-website-ngo-london" style="text-decoration:underline;text-underline-offset:4px">Read the full case study ↗</a></p>
+          <p>That is when it clicked: most web projects fail before the first line of code is written. They fail in the brief. In the assumptions. In the gap between what a business thinks it needs and what the customer actually experiences.</p>
+          <p>Today I work at the intersection of strategy, design, and development — not as three separate stages, but as one continuous decision. I ask the questions that slow a project down, so the launch does not. Every site I build is designed so the right person feels understood in the first thirty seconds, then takes the next step without thinking twice.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee ink" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Clarity Before Complexity</span><span>Systems Over Features</span><span>Business Before Technology</span><span>Long-Term Thinking</span>
+        <span>Clarity Before Complexity</span><span>Systems Over Features</span><span>Business Before Technology</span><span>Long-Term Thinking</span>
+      </div>
+    </div>
+
+    <!-- PRINCIPLES -->
+    <section class="pad wrap">
+      <div class="shead reveal">
+        <div class="label">
+          <div><span class="eyebrow">// 03 — How I Think</span><h2 class="h2" style="margin-top:20px">How I look at digital work.</h2></div>
+          <span class="folio">03</span>
+        </div>
+      </div>
+      <div class="prin">
+        <div class="prin-item reveal"><span class="pn">/01</span><h3>Clarity Before Complexity</h3><p>Most sites are confusion in nice clothing. I start with the message. If you cannot explain your value in one sentence, no colour palette will save it.</p></div>
+        <div class="prin-item reveal d1"><span class="pn">/02</span><h3>Systems Over Features</h3><p>A site that does 3 things perfectly beats one that does 12 things badly. Every feature is a maintenance burden. I build systems that scale, not lists that impress.</p></div>
+        <div class="prin-item reveal"><span class="pn">/03</span><h3>Business Before Technology</h3><p>The best tool is the one your team can still manage 2 years from now. I don't chase frameworks. I pick what serves the business, not what sounds clever in a pitch.</p></div>
+        <div class="prin-item reveal d1"><span class="pn">/04</span><h3>Long-Term Thinking</h3><p>Most agencies are judged on launch day. I'm judged on day 365. A site that has to be rebuilt within 18 months is a failure, however good it looked on day one.</p></div>
+      </div>
+    </section>
+    <hr class="hair">
+
+    <!-- AREAS OF EXPERTISE -->
+    <section class="pad wrap">
+      <div class="shead reveal">
+        <div class="label">
+          <div><span class="eyebrow">// 04 — Areas of Expertise</span><h2 class="h2" style="margin-top:20px">Specific skills, not jargon.</h2></div>
+          <span class="folio">04</span>
+        </div>
+      </div>
+      <div class="chips reveal">
+        <div class="chip"><h4>Consulting</h4><p>Honest advice that sometimes costs me a project, but builds trust.</p></div>
+        <div class="chip"><h4>Communication</h4><p>Making expertise visible to the right people.</p></div>
+        <div class="chip"><h4>User Experience</h4><p>Designing to be understood, not just to drive engagement.</p></div>
+        <div class="chip"><h4>Information Architecture</h4><p>Ordering complexity until it feels simple.</p></div>
+        <div class="chip"><h4>Website Strategy</h4><p>Turning business goals into digital structure.</p></div>
+        <div class="chip"><h4>Web Development</h4><p>Custom builds that don't break when you update them.</p></div>
+      </div>
+    </section>
+    <hr class="hair">
+
+    <!-- BOUNDARIES -->
+    <section class="pad wrap">
+      <div class="shead reveal">
+        <div class="label">
+          <div><span class="eyebrow">// 05 — What I Don't Do</span></div>
+          <span class="folio">05</span>
+        </div>
+      </div>
+      <div class="persp">
+        <div class="reveal"><h2 class="h2" style="position:sticky;top:120px">What I don't<br>do.</h2></div>
+        <div class="reveal d1">
+          <div class="bound">
+            <div class="bound-item"><span class="x">×</span><div><h4>I don't chase trends.</h4><p>If your goal is to look like everyone else in 2026, I'm not your person.</p></div></div>
+            <div class="bound-item"><span class="x">×</span><div><h4>I don't build without purpose.</h4><p>Every page has to earn its reason to exist.</p></div></div>
+            <div class="bound-item"><span class="x">×</span><div><h4>I don't put aesthetics above clarity.</h4><p>A beautiful site that confuses visitors is a failure.</p></div></div>
+            <div class="bound-item"><span class="x">×</span><div><h4>I don't take projects that don't value strategy.</h4><p>If you're looking for a vendor who just executes, there are cheaper options.</p></div></div>
+          </div>
+          <p class="lead" style="margin-top:30px;font-family:var(--disp);font-weight:700;font-size:clamp(18px,2vw,24px);line-height:1.25;color:var(--ink)">If that sounds limiting, it is. But the clients who work with me appreciate that I'm willing to turn down projects that don't fit. It means when I say yes, I'm <span class="mark">fully committed.</span></p>
+        </div>
+      </div>
+    </section>
+    <hr class="hair">
+
+    <section class="cta-ink pad">
+      <img class="bgimg" src="/img/cta-bg.webp" width="1440" height="1024" loading="lazy" decoding="async" alt="" aria-hidden="true" />
+      <div class="wrap" style="position:relative">
+        <span class="eyebrow reveal">// Let's talk</span>
+        <h2 class="h2 reveal d1" style="margin:24px 0 36px">Let's find the real problem first.</h2>
+        <div class="reveal d2"><a href={waAbout} class="btn on-ink" target="_blank" rel="noopener" data-wa="cta" data-page="/en/about">
+          Free Consultation<span class="arr">↗</span>
+        </a></div>
+      </div>
+    </section>
+  </main>
+</Base>

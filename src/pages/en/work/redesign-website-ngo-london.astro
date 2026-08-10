@@ -1,0 +1,102 @@
+---
+import Base from '../../../layouts/Base.astro';
+
+const breadcrumb = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mglportfolio.vercel.app/en' },
+    { '@type': 'ListItem', position: 2, name: 'Work', item: 'https://mglportfolio.vercel.app/en/work' },
+    { '@type': 'ListItem', position: 3, name: 'NGO Website Redesign in London', item: 'https://mglportfolio.vercel.app/en/work/redesign-website-ngo-london' },
+  ],
+};
+const waCta = "https://wa.me/6285927277560?text=Hi!%20I%20read%20the%20London%20NGO%20case%20study%20and%20my%20situation%20is%20similar...";
+---
+
+<Base
+  lang="en"
+  title="Case Study: NGO Website Redesign in London | MGL"
+  description="Two agencies delivered beautiful sites and still failed. What changed wasn't the design, but the question asked at the start."
+  idPath="/portofolio/redesign-website-ngo-london"
+  enPath="/en/work/redesign-website-ngo-london"
+  extraSchema={[breadcrumb]}
+>
+  <main id="page-case-en" class="page">
+    <section class="hero wrap">
+      <div class="shead reveal">
+        <div class="label"><span class="eyebrow">// Case Study</span><span class="folio">01</span></div>
+      </div>
+      <h1 class="h1 reveal d1" style="max-width:20ch;margin-top:18px;font-size:clamp(32px,4.4vw,58px)">Why This NGO's Website Failed at Two Previous Agencies</h1>
+      <p class="lead reveal d2" style="margin-top:22px">A well-known NGO in London had already burned budget at two agencies. Both produced beautiful sites. Neither worked.</p>
+      <div class="deflist reveal d3" style="margin-top:34px">
+        <div><b>Client</b><p>A well-known NGO in London. Unnamed for confidentiality.</p></div><div><b>Industry</b><p>Non-profit / advocacy</p></div><div><b>Starting situation</b><p>Two agencies, two sites, budget spent, zero results</p></div><div><b>My role</b><p>Diagnosis, strategy, redesign, development</p></div>
+      </div>
+    </section>
+    <hr class="hair" style="margin:0 var(--gut)">
+    <section class="pad-sm wrap">
+      <div class="shead reveal"><div class="label"><span class="eyebrow">// 02 — Context</span></div></div>
+      <div class="persp">
+        <div class="reveal"><p class="big">Two agencies. Two beautiful sites. Zero results.</p></div>
+        <div class="reveal d1">
+          <p class="lead" style="margin-bottom:20px">By the time they reached me, the site had already been rebuilt twice. Both by competent agencies. Both produced something good-looking — clean layouts, smooth animations, tidy mockups at every breakpoint.</p>
+          <p class="lead" style="margin-bottom:20px">And both failed to work. The interesting part wasn't the failure, but that nobody could explain why. Everyone in the room agreed the site was good. That was the most confusing part for them.</p>
+        </div>
+      </div>
+    </section>
+    <section class="pad-sm wrap">
+      <div class="shead reveal"><div class="label"><span class="eyebrow">// 03 — The real problem</span></div></div>
+      <div class="persp">
+        <div class="reveal"><p class="big">Nobody asked who was visiting.</p></div>
+        <div class="reveal d1">
+          <p class="lead" style="margin-bottom:20px">I re-read both agencies' briefs. Both contained the same thing: page structure, visual references, and a feature list. Neither answered three basic questions — who actually comes to this site, why they leave, and what this organisation needs from them.</p>
+          <p class="lead" style="margin-bottom:20px">Without those answers, the only criterion left to judge design is taste. And when the criterion is taste, the winner is the taste of the most senior person in the room — not the needs of the people who will actually use the site.</p>
+          <p class="lead" style="margin-bottom:20px">That's why two sites in a row could "succeed" in the presentation and fail in the real world. Both were built to make the founder proud, not to answer the visitor's anxiety.</p>
+        </div>
+      </div>
+    </section>
+    <section class="pad-sm wrap">
+      <div class="shead reveal"><div class="label"><span class="eyebrow">// 04 — Approach</span></div></div>
+      <div class="persp">
+        <div class="reveal"><p class="big">Start from the visitor's anxiety, not the founder's pride.</p></div>
+        <div class="reveal d1">
+          <p class="lead" style="margin-bottom:20px">I rebuilt it in reverse order. Not from page structure, but from a list of objections: what makes someone hesitate at the eighth second, and what they need to get past it.</p>
+          <p class="lead" style="margin-bottom:20px">The trade-off most often challenged: I actually added friction in a few places. Some steps were deliberately slowed, because a visitor who decides too fast there will regret it and leave. And I removed friction elsewhere that the internal team had long considered important, but was only important to them.</p>
+          <p class="lead" style="margin-bottom:20px">That's an uncomfortable decision. Adding a step sounds like a mistake to anyone who has read an article on conversion optimisation. But friction isn't the enemy — friction in the wrong place is.</p>
+        </div>
+      </div>
+    </section>
+    <hr class="hair" style="margin:0 var(--gut)">
+    <section class="pad-sm wrap">
+      <div class="shead reveal">
+        <div class="label">
+          <div>
+            <span class="eyebrow">// 05 — Results</span>
+            <h2 class="h2" style="margin-top:18px">What I can stand behind.</h2>
+          </div>
+          <span class="folio">05</span>
+        </div>
+      </div>
+      <div class="stats reveal">
+        <div class="stat"><div class="num" style="font-size:clamp(26px,2.6vw,38px)">Conversion up 2×</div><p style="margin-top:10px">Within six weeks of launch.</p></div><div class="stat"><div class="num" style="font-size:clamp(26px,2.6vw,38px)">Zero third agency</div><p style="margin-top:10px">The site didn't need rebuilding again after that.</p></div>
+      </div>
+      <p class="lead" style="margin-top:28px;font-size:15px;color:var(--ink-soft);max-width:70ch">The conversion figure above is what the client reported in the first six weeks. I've left out other metrics because I don't hold the data — and a number I can't stand behind is better left unwritten.</p>
+    </section>
+    <section class="pad-sm wrap">
+      <div class="reveal" style="display:flex;gap:14px;flex-wrap:wrap">
+        <a href="/en/services/website-consulting-retainer" class="btn ghost">Website support &amp; consulting <span class="arr">↗</span></a>
+        <a href="/en/work" class="btn ghost">All projects <span class="arr">↗</span></a>
+      </div>
+    </section>
+    <section class="cta-ink pad">
+      <img class="bgimg" src="/img/cta-bg.webp" width="1440" height="1024" loading="lazy" decoding="async" alt="" aria-hidden="true">
+      <div class="wrap" style="position:relative">
+        <span class="eyebrow reveal">// Let's talk</span>
+        <h2 class="h2 reveal d1" style="margin:24px 0 36px;max-width:20ch">Got a problem worth solving?</h2>
+        <div class="reveal d2">
+          <a href={waCta} class="btn on-ink" target="_blank" rel="noopener" data-wa="cta" data-page="/en/work/redesign-website-ngo-london">
+            Free Consultation<span class="arr">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Base>

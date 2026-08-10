@@ -1,0 +1,151 @@
+---
+import Base from '../layouts/Base.astro';
+
+const breadcrumb = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Beranda', item: 'https://mglportfolio.vercel.app/' },
+    { '@type': 'ListItem', position: 2, name: 'Sistem Desain', item: 'https://mglportfolio.vercel.app/sistem-desain' },
+  ],
+};
+const waSystem = "https://wa.me/6285927277560?text=Hi!%20Saya%20tertarik%20dengan%20pendekatan%20sistem%20desain%20Anda...";
+---
+
+<Base
+  lang="id"
+  title="Sistem Desain — Aturan di Balik Website | MGL"
+  description="Website adalah sistem, bukan tumpukan halaman. Token warna, tipografi, komponen, motion, grid, dan aksesibilitas yang saya bawa ke tiap proyek."
+  idPath="/sistem-desain"
+  enPath="/en/design-system"
+  extraSchema={[breadcrumb]}
+>
+  <main id="page-system" class="page">
+    <section class="hero wrap" style="padding-top:clamp(120px,16vh,180px);padding-bottom:clamp(48px,6vw,96px)">
+      <div class="shead reveal"><div class="label"><span class="eyebrow">// Sistem Desain</span><span class="folio">01</span></div></div>
+      <h1 class="h1 reveal d1" style="max-width:15ch">Aturan di balik<br><span class="u-accent">setiap karya.</span></h1>
+      <p class="lead reveal d2" style="margin-top:20px">Website adalah sistem, bukan tumpukan halaman. Ini token, tipografi, dan aturan motion yang membangun setiap layar di situs ini — disiplin yang sama yang saya bawa ke pekerjaan klien. <span class="muted">Klik swatch mana pun untuk menyalin nilainya.</span></p>
+    </section>
+    <hr class="hair" style="margin:0 var(--gut)">
+
+    <!-- WARNA -->
+    <section class="pad wrap">
+      <div class="shead reveal">
+        <div class="label">
+          <div><span class="eyebrow">// 02 — Warna</span><h2 class="h2" style="margin-top:18px">Menahan diri, dengan satu suara.</h2><p class="lead" style="margin-top:16px;max-width:58ch">Tinta nyaris hitam di atas kertas hangat, dan satu kobalt percaya diri yang mengerjakan semua penunjukan. Kontras tinggi, tanpa dekorasi yang tak perlu.</p></div>
+          <span class="folio">02</span>
+        </div>
+      </div>
+      <div class="ds-swatches reveal" id="swatches"></div>
+    </section>
+    <hr class="hair">
+
+    <!-- TIPOGRAFI -->
+    <section class="pad wrap">
+      <div class="shead reveal">
+        <div class="label">
+          <div><span class="eyebrow">// 03 — Tipografi</span><h2 class="h2" style="margin-top:18px">Tiga suara, peran yang jelas.</h2><p class="lead" style="margin-top:16px;max-width:58ch">Bricolage Grotesque memikul display dan heading, Inter menangani keterbacaan, Space Mono menandai label teknis dan data. Masing-masing mengerjakan satu tugas.</p></div>
+          <span class="folio">03</span>
+        </div>
+      </div>
+      <div class="ds-type reveal">
+        <div class="row"><div><div class="k">Display</div><div class="spec">Bricolage Grotesque · 800 · clamp 36→79px</div></div><div class="h1" style="line-height:.95">Lebih mudah dipahami.</div></div>
+        <div class="row"><div><div class="k">Heading</div><div class="spec">Bricolage Grotesque · 800 · clamp 30→68px</div></div><div class="h2">Kejelasan sebelum kerumitan.</div></div>
+        <div class="row"><div><div class="k">Sub-heading</div><div class="spec">Bricolage Grotesque · 700 · clamp 22→34px</div></div><div class="h3">Strategi, desain &amp; pengembangan.</div></div>
+        <div class="row"><div><div class="k">Lead</div><div class="spec">Inter · 400 · clamp 18→22px</div></div><p class="lead" style="margin:0">Mengubah keahlian menjadi sesuatu yang langsung dipahami orang — dalam tiga puluh detik pertama.</p></div>
+        <div class="row"><div><div class="k">Body</div><div class="spec">Inter · 400 · 17px / 1.6</div></div><p style="margin:0;max-width:54ch">Website yang baik tidak dibangun dari halaman, tapi dari kejelasan. Setiap paragraf punya alasan untuk ada, dan tidak ada yang diam-diam merangkap dua tugas.</p></div>
+        <div class="row"><div><div class="k">Label / Folio</div><div class="spec">Space Mono · 700 · tracked .22em</div></div><div style="display:flex;gap:22px;align-items:center;flex-wrap:wrap"><span class="eyebrow">// Label Eyebrow</span><span class="folio" style="font-size:54px">02</span></div></div>
+      </div>
+    </section>
+    <hr class="hair">
+
+    <!-- KOMPONEN -->
+    <section class="pad wrap">
+      <div class="shead reveal">
+        <div class="label">
+          <div><span class="eyebrow">// 04 — Komponen</span><h2 class="h2" style="margin-top:18px">Bagian yang menskala.</h2></div>
+          <span class="folio">04</span>
+        </div>
+      </div>
+      <div class="ds-comp reveal">
+        <div class="ds-cell"><span class="lab">/ Tombol</span><div class="demo"><a href="/kontak" class="btn">Primary <span class="arr">↗</span></a><a href="/sistem-desain" class="btn ghost">Ghost <span class="arr">↗</span></a></div></div>
+        <div class="ds-cell" style="background:var(--ink)"><span class="lab" style="color:#8a877d">/ Tombol di atas tinta</span><div class="demo"><a href="/kontak" class="btn on-ink">On ink <span class="arr">↗</span></a></div></div>
+        <div class="ds-cell"><span class="lab">/ Eyebrow + Folio</span><div class="demo" style="justify-content:space-between;width:100%"><span class="eyebrow">// 02 — Bagian</span><span class="folio">03</span></div></div>
+        <div class="ds-cell"><span class="lab">/ Daftar tag</span><ul class="tags" style="width:100%"><li>Workshop Discovery</li><li>Arsitektur Informasi</li><li>Strategi Konten</li></ul></div>
+        <div class="ds-cell"><span class="lab">/ Blok statistik</span><div style="width:100%"><div class="num" style="font-family:var(--disp);font-weight:900;font-size:64px;line-height:.9;letter-spacing:-.04em">200</div><span class="k" style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:block;margin-top:10px">Website Dikelola</span></div></div>
+        <div class="ds-cell"><span class="lab">/ Tanda anotasi</span><p style="margin:0;font-size:18px">Dibangun dari <span class="mark">kejelasan</span>, bukan <span class="u-accent">palet warna.</span></p></div>
+      </div>
+      <div class="marquee ink" style="margin-top:30px;border:1px solid var(--hair-ink)" aria-hidden="true">
+        <div class="marquee-track"><span>Marquee Ticker</span><span>Komponen</span><span>Dapat Dipakai Ulang</span><span>Marquee Ticker</span><span>Komponen</span><span>Dapat Dipakai Ulang</span></div>
+      </div>
+    </section>
+    <hr class="hair">
+
+    <!-- MOTION -->
+    <section class="pad wrap">
+      <div class="shead reveal">
+        <div class="label">
+          <div><span class="eyebrow">// 05 — Motion</span><h2 class="h2" style="margin-top:18px">Gerak yang tahu diri.</h2><p class="lead" style="margin-top:16px;max-width:58ch">Motion menegaskan sebab dan akibat — bukan untuk pamer. Reveal-nya singkat, easing-nya konsisten, dan semuanya mengalah pada <span class="u-accent">prefers-reduced-motion</span>.</p></div>
+          <span class="folio">05</span>
+        </div>
+      </div>
+      <div class="ease-box reveal">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+          <div><div class="eyebrow no-tick">/ Easing khas</div><div style="font-family:var(--mono);font-size:13px;margin-top:8px;color:var(--ink-2)">cubic-bezier(.16, 1, .3, 1) — "ease-out-quint"</div></div>
+          <button class="replay" id="replayEase">▷ Putar ulang</button>
+        </div>
+        <div class="ease-track"><div class="ease-dot run" id="easeDot"></div></div>
+      </div>
+      <div class="prin" style="margin-top:30px;border-top:1px solid var(--hair)">
+        <div class="prin-item reveal"><span class="pn">/01</span><h3>Reveal</h3><p>Konten memudar masuk dan naik 24px saat memasuki viewport, bertahap dalam hitungan puluhan milidetik. Begitu tampil, ia menetap.</p></div>
+        <div class="prin-item reveal d1"><span class="pn">/02</span><h3>Respons</h3><p>Hover dan fokus menggeser bobot, warna, atau posisi dalam 250ms. Tombol condong ke arah kursor; baris proyek memunculkan karyanya.</p></div>
+      </div>
+    </section>
+    <hr class="hair">
+
+    <!-- GRID & RUANG -->
+    <section class="pad wrap">
+      <div class="shead reveal">
+        <div class="label">
+          <div><span class="eyebrow">// 06 — Grid &amp; Ruang</span><h2 class="h2" style="margin-top:18px">Tulang punggung 12 kolom.</h2><p class="lead" style="margin-top:16px;max-width:58ch">Lebar maksimum 1320px dengan gutter cair yang bernapas dari 20px di mobile hingga 80px di desktop. Asimetri datang dari cara konten duduk di atas grid, bukan dari grid-nya sendiri.</p></div>
+          <span class="folio">06</span>
+        </div>
+      </div>
+      <div class="ds-grid-demo reveal"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="tech-grid reveal" style="margin-top:34px">
+        <div class="tech-col"><h4>Lebar maks</h4><ul><li>1320px</li></ul></div>
+        <div class="tech-col"><h4>Gutter</h4><ul><li>20 → 80px</li></ul></div>
+        <div class="tech-col"><h4>Padding bagian</h4><ul><li>70 → 140px</li></ul></div>
+        <div class="tech-col"><h4>Radius</h4><ul><li>0px — sudut tegas</li></ul></div>
+        <div class="tech-col"><h4>Garis rambut</h4><ul><li>1px #C9C5B7</li></ul></div>
+      </div>
+    </section>
+    <hr class="hair">
+
+    <!-- AKSESIBILITAS -->
+    <section class="pad wrap">
+      <div class="shead reveal">
+        <div class="label">
+          <div><span class="eyebrow">// 07 — Aksesibilitas</span><h2 class="h2" style="margin-top:18px">Yang tidak bisa ditawar.</h2></div>
+          <span class="folio">07</span>
+        </div>
+      </div>
+      <div class="chips reveal">
+        <div class="chip"><h4>Kontras</h4><p>Tinta di atas kertas melewati WCAG AA pada ukuran body; kobalt disimpan untuk teks besar dan penanda.</p></div>
+        <div class="chip"><h4>Fokus</h4><p>Setiap elemen interaktif mempertahankan status fokus yang terlihat untuk navigasi keyboard.</p></div>
+        <div class="chip"><h4>Reduced motion</h4><p>Semua reveal, marquee, loader, dan kursor menyerah dengan anggun saat sistem operasi memintanya.</p></div>
+        <div class="chip"><h4>Semantik &amp; alt</h4><p>Heading yang sebenarnya, region landmark, dan teks alt deskriptif di setiap gambar proyek.</p></div>
+      </div>
+    </section>
+
+    <section class="cta-ink pad">
+      <img class="bgimg" src="/img/cta-bg.webp" width="1440" height="1024" loading="lazy" decoding="async" alt="" aria-hidden="true" />
+      <div class="wrap" style="position:relative">
+        <span class="eyebrow reveal">// Mari Bicara</span>
+        <h2 class="h2 reveal d1" style="margin:24px 0 36px">Ingin website yang dibangun di atas sistem seperti ini?</h2>
+        <div class="reveal d2"><a href={waSystem} class="btn on-ink" target="_blank" rel="noopener" data-wa="cta" data-page="/sistem-desain">
+          Konsultasi Gratis<span class="arr">↗</span>
+        </a></div>
+      </div>
+    </section>
+  </main>
+</Base>

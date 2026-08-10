@@ -1,0 +1,250 @@
+---
+import { NAV, UI, wa, EMAIL, type Lang } from '../data/site';
+
+export interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  /** Path halaman ini versi Indonesia, mis. "/tentang" atau "/" */
+  idPath: string;
+  /** Path halaman ini versi Inggris, mis. "/en/about" atau "/en" */
+  enPath: string;
+  /** OG image absolut/relatif; default og-default */
+  image?: string;
+  /** Node JSON-LD tambahan yang digabung ke @graph */
+  extraSchema?: unknown[];
+}
+
+const { lang, title, description, idPath, enPath, image, extraSchema = [] } =
+  Astro.props;
+const ui = UI[lang];
+const nav = NAV[lang];
+
+const site = Astro.site ?? new URL('https://mglportfolio.vercel.app');
+const abs = (p: string) => new URL(p, site).href;
+
+const canonicalPath = lang === 'id' ? idPath : enPath;
+const canonical = abs(canonicalPath);
+const altOtherPath = lang === 'id' ? enPath : idPath;
+const ogImage = abs(image ?? '/img/og-default.jpg');
+const current = canonicalPath;
+
+// JSON-LD: graf identitas situs, dilokalkan per bahasa.
+const graph = [
+  {
+    '@type': 'Person',
+    '@id': abs('/') + '#person',
+    name: 'Manganju Glory Laurencius',
+    url: canonical,
+    image: abs('/img/portrait-mgl.webp'),
+    jobTitle:
+      lang === 'id'
+        ? 'Konsultan Website, Desainer & Developer'
+        : 'Website Consultant, Designer & Developer',
+    email: EMAIL,
+    telephone: '+6285927277560',
+    knowsLanguage: ['id', 'en'],
+    knowsAbout:
+      lang === 'id'
+        ? ['Konsultan Website', 'Strategi Website', 'WordPress', 'Wix Studio', 'Arsitektur Informasi', 'User Experience']
+        : ['Website Consulting', 'Website Strategy', 'WordPress', 'Wix Studio', 'Information Architecture', 'User Experience'],
+  },
+  {
+    '@type': 'ProfessionalService',
+    '@id': abs('/') + '#service',
+    name:
+      lang === 'id'
+        ? 'Manganju Glory Laurencius — Konsultan Website'
+        : 'Manganju Glory Laurencius — Website Consultant',
+    url: canonical,
+    image: abs('/logo.png'),
+    description:
+      lang === 'id'
+        ? 'Konsultan website independen di Indonesia. Strategi, desain, dan pengembangan website untuk bisnis, organisasi, dan profesional.'
+        : 'Independent website consultant based in Indonesia. Strategy, design, and development for businesses, organisations, and professionals.',
+    telephone: '+6285927277560',
+    email: EMAIL,
+    priceRange: '$$',
+    areaServed: { '@type': 'Country', name: 'Indonesia' },
+    founder: { '@id': abs('/') + '#person' },
+    provider: { '@id': abs('/') + '#person' },
+  },
+  {
+    '@type': 'WebSite',
+    '@id': abs('/') + '#website',
+    url: canonical,
+    name: 'Manganju Glory Laurencius',
+    inLanguage: ui.htmlLang,
+    publisher: { '@id': abs('/') + '#person' },
+  },
+  ...extraSchema,
+];
+const jsonLd = { '@context': 'https://schema.org', '@graph': graph };
+---
+
+<!DOCTYPE html>
+<html lang={ui.htmlLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Manganju Glory Laurencius" />
+    <link rel="alternate" hreflang="id" href={abs(idPath)} />
+    <link rel="alternate" hreflang="en" href={abs(enPath)} />
+    <link rel="alternate" hreflang="x-default" href={abs(idPath)} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={ui.ogLocale} />
+    <meta property="og:locale:alternate" content={ui.ogLocaleAlt} />
+    <meta property="og:site_name" content="Manganju Glory Laurencius" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@500;600;700;800;900&family=Archivo:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <div class="loader" id="loader" aria-hidden="true">
+      <div class="lbrand">:}MGL<span class="dot">.</span></div>
+      <div class="lbar"><i></i></div>
+      <div class="lpct">{ui.loader}</div>
+    </div>
+    <div class="progress" id="progress"></div>
+    <div class="cur-ring" id="curRing"></div>
+    <div class="cur-dot" id="curDot"></div>
+    <div class="proj-preview" id="projPreview"><img alt="" /></div>
+
+    <div class="topbar">
+      <nav class="langtoggle" aria-label={lang === 'id' ? 'Bahasa' : 'Language'}>
+        {lang === 'id' ? (
+          <>
+            <span class="lt active" aria-current="true">
+              <span aria-hidden="true">ID</span>
+              <span class="sr-only">Bahasa Indonesia</span>
+            </span>
+            <a href={altOtherPath} class="lt" hreflang="en" lang="en">
+              <span aria-hidden="true">EN</span>
+              <span class="sr-only">English</span>
+            </a>
+          </>
+        ) : (
+          <>
+            <a href={altOtherPath} class="lt" hreflang="id" lang="id">
+              <span aria-hidden="true">ID</span>
+              <span class="sr-only">Bahasa Indonesia</span>
+            </a>
+            <span class="lt active" aria-current="true">
+              <span aria-hidden="true">EN</span>
+              <span class="sr-only">English</span>
+            </span>
+          </>
+        )}
+      </nav>
+    </div>
+
+    <nav class="nav" id="nav">
+      <a href={nav[0].href} class="brand" aria-label={ui.brandHome}>
+        <img src="/logo.png" alt="MGL" width="67" height="80" />
+      </a>
+      <div class="nav-links">
+        {nav.map((item) => (
+          <a
+            href={item.href}
+            class={item.href === current ? 'active' : undefined}
+            aria-current={item.href === current ? 'page' : undefined}
+          >
+            <span class="idx">{item.idx}</span>{item.label}
+          </a>
+        ))}
+      </div>
+      <a
+        href={wa(lang)}
+        class="nav-cta"
+        target="_blank"
+        rel="noopener"
+        data-wa="nav">{ui.navCta}</a
+      >
+      <button class="burger" id="burger" aria-label={ui.menuOpen}>
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <button class="close" id="closeMenu">{ui.menuClose}</button>
+      {nav.map((item) => (
+        <a href={item.href}><span class="idx">{item.idx}</span> {item.label}</a>
+      ))}
+      <a
+        class="mm-cta"
+        href={wa(lang)}
+        target="_blank"
+        rel="noopener"
+        data-wa="mobile-menu">{ui.mmCta}</a
+      >
+    </div>
+
+    <slot />
+
+    <footer>
+      <div class="foot-top">
+        <div>
+          <div class="foot-brand">:}MGL<span class="dot">.</span></div>
+          <p>{ui.footerBlurb}</p>
+        </div>
+        <div class="foot-col">
+          <h5>{ui.footerMenu}</h5>
+          {nav.map((item) => (
+            <a href={item.href}>{item.label}</a>
+          ))}
+        </div>
+        <div class="foot-col">
+          <h5>{ui.footerContact}</h5>
+          <a href={wa(lang)} target="_blank" rel="noopener" data-wa="footer"
+            >{ui.footerWa}</a
+          >
+          <a href={`mailto:${EMAIL}?subject=${ui.mailtoSubject}`}>{ui.footerEmail}</a>
+          <a href={wa(lang)} target="_blank" rel="noopener" data-wa="footer-cta"
+            >{ui.footerCta}</a
+          >
+        </div>
+      </div>
+      <div class="foot-bot">
+        <span>{ui.footerRights}</span>
+        <span>{ui.footerTag}</span>
+      </div>
+    </footer>
+
+    <script is:inline src="/main.js"></script>
+    <script is:inline>
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[data-wa]');
+        if (!a) return;
+        var payload = {
+          cta_location: a.getAttribute('data-wa'),
+          source_page: a.getAttribute('data-page') || location.pathname,
+          link_url: a.href,
+        };
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'whatsapp_click', payload);
+        }
+        if (window.va) window.va('event', { name: 'whatsapp_click', data: payload });
+      });
+    </script>
+  </body>
+</html>

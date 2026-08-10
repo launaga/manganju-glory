@@ -1,0 +1,151 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const breadcrumb = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mglportfolio.vercel.app/en' },
+    { '@type': 'ListItem', position: 2, name: 'Design System', item: 'https://mglportfolio.vercel.app/en/design-system' },
+  ],
+};
+const waSystem = "https://wa.me/6285927277560?text=Hi!%20I'm%20interested%20in%20your%20design%20system%20approach...";
+---
+
+<Base
+  lang="en"
+  title="Design System — The Rules Behind the Website | MGL"
+  description="A website is a system, not a stack of pages. The colour tokens, typography, components, motion, grid, and accessibility I bring to every project."
+  idPath="/sistem-desain"
+  enPath="/en/design-system"
+  extraSchema={[breadcrumb]}
+>
+  <main id="page-system-en" class="page">
+    <section class="hero wrap" style="padding-top:clamp(120px,16vh,180px);padding-bottom:clamp(48px,6vw,96px)">
+      <div class="shead reveal"><div class="label"><span class="eyebrow">// Design System</span><span class="folio">01</span></div></div>
+      <h1 class="h1 reveal d1" style="max-width:15ch">The rules behind<br><span class="u-accent">every piece of work.</span></h1>
+      <p class="lead reveal d2" style="margin-top:20px">A website is a system, not a stack of pages. These are the tokens, typography, and motion rules that build every screen on this site — the same discipline I bring to client work. <span class="muted">Click any swatch to copy its value.</span></p>
+    </section>
+    <hr class="hair" style="margin:0 var(--gut)">
+
+    <!-- COLOUR -->
+    <section class="pad wrap">
+      <div class="shead reveal">
+        <div class="label">
+          <div><span class="eyebrow">// 02 — Colour</span><h2 class="h2" style="margin-top:18px">Restraint, in one voice.</h2><p class="lead" style="margin-top:16px;max-width:58ch">Near-black ink on warm paper, and one confident cobalt doing all the pointing. High contrast, with no unnecessary decoration.</p></div>
+          <span class="folio">02</span>
+        </div>
+      </div>
+      <div class="ds-swatches reveal" id="swatches"></div>
+    </section>
+    <hr class="hair">
+
+    <!-- TYPOGRAPHY -->
+    <section class="pad wrap">
+      <div class="shead reveal">
+        <div class="label">
+          <div><span class="eyebrow">// 03 — Typography</span><h2 class="h2" style="margin-top:18px">Three voices, clear roles.</h2><p class="lead" style="margin-top:16px;max-width:58ch">Bricolage Grotesque carries display and headings, Inter handles readability, Space Mono marks technical labels and data. Each does one job.</p></div>
+          <span class="folio">03</span>
+        </div>
+      </div>
+      <div class="ds-type reveal">
+        <div class="row"><div><div class="k">Display</div><div class="spec">Bricolage Grotesque · 800 · clamp 36→79px</div></div><div class="h1" style="line-height:.95">Easier to understand.</div></div>
+        <div class="row"><div><div class="k">Heading</div><div class="spec">Bricolage Grotesque · 800 · clamp 30→68px</div></div><div class="h2">Clarity before complexity.</div></div>
+        <div class="row"><div><div class="k">Sub-heading</div><div class="spec">Bricolage Grotesque · 700 · clamp 22→34px</div></div><div class="h3">Strategy, design &amp; development.</div></div>
+        <div class="row"><div><div class="k">Lead</div><div class="spec">Inter · 400 · clamp 18→22px</div></div><p class="lead" style="margin:0">Turning expertise into something people understand instantly — in the first thirty seconds.</p></div>
+        <div class="row"><div><div class="k">Body</div><div class="spec">Inter · 400 · 17px / 1.6</div></div><p style="margin:0;max-width:54ch">Good websites are not built out of pages, but out of clarity. Every paragraph earns its place, and none quietly does two jobs at once.</p></div>
+        <div class="row"><div><div class="k">Label / Folio</div><div class="spec">Space Mono · 700 · tracked .22em</div></div><div style="display:flex;gap:22px;align-items:center;flex-wrap:wrap"><span class="eyebrow">// Eyebrow Label</span><span class="folio" style="font-size:54px">02</span></div></div>
+      </div>
+    </section>
+    <hr class="hair">
+
+    <!-- COMPONENTS -->
+    <section class="pad wrap">
+      <div class="shead reveal">
+        <div class="label">
+          <div><span class="eyebrow">// 04 — Components</span><h2 class="h2" style="margin-top:18px">Parts that scale.</h2></div>
+          <span class="folio">04</span>
+        </div>
+      </div>
+      <div class="ds-comp reveal">
+        <div class="ds-cell"><span class="lab">/ Buttons</span><div class="demo"><a href="/en/contact" class="btn">Primary <span class="arr">↗</span></a><a href="/en/design-system" class="btn ghost">Ghost <span class="arr">↗</span></a></div></div>
+        <div class="ds-cell" style="background:var(--ink)"><span class="lab" style="color:#8a877d">/ Buttons on ink</span><div class="demo"><a href="/en/contact" class="btn on-ink">On ink <span class="arr">↗</span></a></div></div>
+        <div class="ds-cell"><span class="lab">/ Eyebrow + Folio</span><div class="demo" style="justify-content:space-between;width:100%"><span class="eyebrow">// 02 — Section</span><span class="folio">03</span></div></div>
+        <div class="ds-cell"><span class="lab">/ Tag list</span><ul class="tags" style="width:100%"><li>Discovery Workshop</li><li>Information Architecture</li><li>Content Strategy</li></ul></div>
+        <div class="ds-cell"><span class="lab">/ Stat block</span><div style="width:100%"><div class="num" style="font-family:var(--disp);font-weight:900;font-size:64px;line-height:.9;letter-spacing:-.04em">200</div><span class="k" style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:block;margin-top:10px">Websites Managed</span></div></div>
+        <div class="ds-cell"><span class="lab">/ Annotation marks</span><p style="margin:0;font-size:18px">Built from <span class="mark">clarity</span>, not a <span class="u-accent">colour palette.</span></p></div>
+      </div>
+      <div class="marquee ink" style="margin-top:30px;border:1px solid var(--hair-ink)" aria-hidden="true">
+        <div class="marquee-track"><span>Marquee Ticker</span><span>Components</span><span>Reusable</span><span>Marquee Ticker</span><span>Components</span><span>Reusable</span></div>
+      </div>
+    </section>
+    <hr class="hair">
+
+    <!-- MOTION -->
+    <section class="pad wrap">
+      <div class="shead reveal">
+        <div class="label">
+          <div><span class="eyebrow">// 05 — Motion</span><h2 class="h2" style="margin-top:18px">Motion that knows its place.</h2><p class="lead" style="margin-top:16px;max-width:58ch">Motion clarifies cause and effect — not to show off. The reveals are brief, the easing consistent, and everything yields to <span class="u-accent">prefers-reduced-motion</span>.</p></div>
+          <span class="folio">05</span>
+        </div>
+      </div>
+      <div class="ease-box reveal">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+          <div><div class="eyebrow no-tick">/ Signature easing</div><div style="font-family:var(--mono);font-size:13px;margin-top:8px;color:var(--ink-2)">cubic-bezier(.16, 1, .3, 1) — "ease-out-quint"</div></div>
+          <button class="replay" id="replayEase">▷ Replay</button>
+        </div>
+        <div class="ease-track"><div class="ease-dot run" id="easeDot"></div></div>
+      </div>
+      <div class="prin" style="margin-top:30px;border-top:1px solid var(--hair)">
+        <div class="prin-item reveal"><span class="pn">/01</span><h3>Reveal</h3><p>Content fades in and rises 24px as it enters the viewport, staggered by tens of milliseconds. Once shown, it stays put.</p></div>
+        <div class="prin-item reveal d1"><span class="pn">/02</span><h3>Response</h3><p>Hover and focus shift weight, colour, or position within 250ms. Buttons lean toward the cursor; project rows surface their work.</p></div>
+      </div>
+    </section>
+    <hr class="hair">
+
+    <!-- GRID & SPACE -->
+    <section class="pad wrap">
+      <div class="shead reveal">
+        <div class="label">
+          <div><span class="eyebrow">// 06 — Grid &amp; Space</span><h2 class="h2" style="margin-top:18px">A 12-column backbone.</h2><p class="lead" style="margin-top:16px;max-width:58ch">A 1320px max width with fluid gutters that breathe from 20px on mobile to 80px on desktop. The asymmetry comes from how content sits on the grid, not from the grid itself.</p></div>
+          <span class="folio">06</span>
+        </div>
+      </div>
+      <div class="ds-grid-demo reveal"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="tech-grid reveal" style="margin-top:34px">
+        <div class="tech-col"><h4>Max width</h4><ul><li>1320px</li></ul></div>
+        <div class="tech-col"><h4>Gutter</h4><ul><li>20 → 80px</li></ul></div>
+        <div class="tech-col"><h4>Section padding</h4><ul><li>70 → 140px</li></ul></div>
+        <div class="tech-col"><h4>Radius</h4><ul><li>0px — hard corners</li></ul></div>
+        <div class="tech-col"><h4>Hairline</h4><ul><li>1px #C9C5B7</li></ul></div>
+      </div>
+    </section>
+    <hr class="hair">
+
+    <!-- ACCESSIBILITY -->
+    <section class="pad wrap">
+      <div class="shead reveal">
+        <div class="label">
+          <div><span class="eyebrow">// 07 — Accessibility</span><h2 class="h2" style="margin-top:18px">Non-negotiables.</h2></div>
+          <span class="folio">07</span>
+        </div>
+      </div>
+      <div class="chips reveal">
+        <div class="chip"><h4>Contrast</h4><p>Ink on paper passes WCAG AA at body size; cobalt is reserved for large text and markers.</p></div>
+        <div class="chip"><h4>Focus</h4><p>Every interactive element keeps a visible focus state for keyboard navigation.</p></div>
+        <div class="chip"><h4>Reduced motion</h4><p>All reveals, marquees, the loader, and the cursor bow out gracefully when the OS asks.</p></div>
+        <div class="chip"><h4>Semantics &amp; alt</h4><p>Real headings, landmark regions, and descriptive alt text on every project image.</p></div>
+      </div>
+    </section>
+
+    <section class="cta-ink pad">
+      <img class="bgimg" src="/img/cta-bg.webp" width="1440" height="1024" loading="lazy" decoding="async" alt="" aria-hidden="true" />
+      <div class="wrap" style="position:relative">
+        <span class="eyebrow reveal">// Let's talk</span>
+        <h2 class="h2 reveal d1" style="margin:24px 0 36px">Want a website built on a system like this?</h2>
+        <div class="reveal d2"><a href={waSystem} class="btn on-ink" target="_blank" rel="noopener" data-wa="cta" data-page="/en/design-system">
+          Free Consultation<span class="arr">↗</span>
+        </a></div>
+      </div>
+    </section>
+  </main>
+</Base>

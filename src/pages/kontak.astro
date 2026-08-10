@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import { WA_ID, EMAIL } from '../data/site';
+
+const breadcrumb = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Beranda', item: 'https://mglportfolio.vercel.app/' },
+    { '@type': 'ListItem', position: 2, name: 'Kontak', item: 'https://mglportfolio.vercel.app/kontak' },
+  ],
+};
+---
+
+<Base
+  lang="id"
+  title="Kontak — Konsultasi Website Gratis | MGL"
+  description="Konsultasi gratis via WhatsApp. Ceritakan apa yang sedang Anda bangun dan apa yang menghambat — saya akan jujur menilai apakah saya orang yang tepat."
+  idPath="/kontak"
+  enPath="/en/contact"
+  extraSchema={[breadcrumb]}
+>
+  <main id="page-contact" class="page">
+    <section class="hero wrap contact-hero" style="padding-top:clamp(120px,16vh,180px)">
+      <div class="shead reveal"><div class="label"><span class="eyebrow">// Kontak</span><span class="folio">01</span></div></div>
+      <h1 class="h1 reveal d1" style="max-width:14ch">Tertarik bekerja <span class="u-accent">sama?</span></h1>
+      <p class="lead reveal d2" style="margin-top:20px">Tanpa formulir berisi dua belas kolom wajib. Ceritakan apa yang sedang Anda bangun dan apa yang menghambatnya — saya akan menilai dengan jujur apakah saya orang yang tepat.</p>
+    </section>
+    <section class="pad wrap">
+      <div class="contact-grid">
+        <div class="contact-direct reveal">
+          <span class="eyebrow no-tick" style="margin-bottom:18px;display:block">/ Cara tercepat</span>
+          <span class="email">Kontak Saya</span>
+          <p class="muted" style="margin-top:28px;max-width:46ch">Konsultasi awal gratis. Ceritakan bisnis Anda, linimasa yang diinginkan, dan masalah yang ingin diselesaikan — semakin banyak konteks, semakin berguna jawaban pertama saya. Biasanya saya balas di hari yang sama.</p>
+          <div style="margin-top:34px"><a href={WA_ID} class="btn" target="_blank" rel="noopener" data-wa="hero" data-page="/kontak">
+            Konsultasi Gratis<span class="arr">↗</span>
+          </a></div>
+          <p class="muted" style="margin-top:34px;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em">Lebih suka email? <a href={`mailto:${EMAIL}?subject=Pertanyaan%20Proyek`} class="u-accent">{EMAIL}</a></p>
+        </div>
+        <div class="contact-form reveal d1">
+          <span class="eyebrow no-tick" style="margin-bottom:18px;display:block">/ Atau kirim brief</span>
+          <form id="contactForm" novalidate>
+            <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true"><label for="cf-company">Perusahaan</label><input id="cf-company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
+            <div class="form-field"><label for="cf-name">Nama Anda</label><input id="cf-name" name="name" type="text" autocomplete="name" required></div>
+            <div class="form-field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" autocomplete="email" required></div>
+            <div class="form-field"><label for="cf-msg">Apa yang ingin Anda selesaikan?</label><textarea id="cf-msg" name="message" rows="4" required></textarea></div>
+            <div class="form-field">
+              <span class="field-title">Lampiran (opsional)</span>
+              <input id="cf-file" name="file" type="file" class="file-input" multiple accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.webp,.txt,.zip">
+              <label for="cf-file" class="file-btn">Pilih file</label>
+              <ul class="file-list" id="fileList"></ul>
+              <p class="file-hint">PDF, DOC, gambar, atau ZIP — maks. 3 file, total 3 MB.</p>
+            </div>
+            <button type="submit" class="btn" style="border:none;cursor:pointer;width:100%;justify-content:center">Kirim brief <span class="arr">↗</span></button>
+          </form>
+          <p id="formStatus" role="status" aria-live="polite" style="font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;margin-top:16px;min-height:18px"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+</Base>
