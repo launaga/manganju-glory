@@ -1,0 +1,46 @@
+backend:
+  name: github
+  repo: launaga/manganju-glory
+  branch: main
+  base_url: https://mglportfolio.vercel.app
+  auth_endpoint: /api/auth
+
+# Untuk mengedit secara lokal tanpa OAuth: jalankan `npx decap-server`
+# lalu buka http://localhost:4321/admin/ dari `astro dev`.
+local_backend: true
+
+media_folder: public/img
+public_folder: /img
+
+publish_mode: simple
+site_url: https://mglportfolio.vercel.app
+locale: id
+
+collections:
+  - name: projects
+    label: Portofolio
+    label_singular: Proyek
+    description: Proyek yang tampil di halaman Portofolio (ID) / Work (EN).
+    folder: src/content/projects
+    create: true
+    delete: true
+    identifier_field: name
+    slug: "{{fields.order}}-{{slug}}"
+    sortable_fields: [order, name]
+    format: json
+    media_folder: /public/img/work
+    public_folder: /img/work
+    fields:
+      - { label: "Urutan tampil", name: order, widget: number, value_type: int, min: 1, hint: "Angka kecil tampil lebih dulu." }
+      - { label: "Karya Pilihan (Featured)", name: featured, widget: boolean, default: false, hint: "Aktif = masuk daftar utama; nonaktif = grid 'Proyek lainnya'." }
+      - { label: "Nama proyek", name: name, widget: string }
+      - { label: "URL situs", name: url, widget: string, pattern: ['^https?://', "Harus diawali http:// atau https://"] }
+      - { label: "Tags", name: tags, widget: list, default: [], hint: "Contoh: Creator, WordPress, Wix Studio. Ditulis tanpa titik." }
+      - { label: "Gambar (thumbnail)", name: image, widget: image, choose_url: true, hint: "Otomatis di-upload ke /img/work." }
+      - { label: "Lebar gambar (px)", name: imageWidth, widget: number, value_type: int, required: false }
+      - { label: "Tinggi gambar (px)", name: imageHeight, widget: number, value_type: int, required: false }
+      - { label: "Alt text — Indonesia", name: alt_id, widget: string, hint: "Deskripsi gambar untuk pembaca layar & SEO." }
+      - { label: "Alt text — English", name: alt_en, widget: string }
+      - { label: "Deskripsi — Indonesia", name: desc_id, widget: text }
+      - { label: "Deskripsi — English", name: desc_en, widget: text }
+      - { label: "Slug studi kasus", name: caseStudy, widget: string, required: false, default: "", hint: "Kosongkan kalau proyek ini tidak punya halaman studi kasus." }

@@ -1,0 +1,18 @@
+{
+  "order": 13,
+  "featured": false,
+  "name": "Spotless Mobile App",
+  "url": "https://app-eight-phi-12.vercel.app/",
+  "tags": [
+    "Creator",
+    "Vercel"
+  ],
+  "image": "/img/work/spotless-mobile-app.webp",
+  "imageWidth": 537,
+  "imageHeight": 922,
+  "alt_id": "Tangkapan layar proyek Spotless Mobile App",
+  "alt_en": "Spotless Mobile App project screenshot",
+  "desc_id": "Aplikasi mobile cuci mobil premium yang dibayangkan ulang dari Karcher. React 19 + TypeScript, terasa native — 30+ layar: onboarding, pencarian merchant dengan peta, booking dengan add-on, dompet token, QR, dan 10 metode pembayaran.",
+  "desc_en": "A premium car wash mobile app reimagined from Karcher. React 19 + TypeScript, native in feel — 30+ screens: onboarding, merchant search with maps, booking with add-ons, token wallet, QR, and 10 payment methods.",
+  "caseStudy": ""
+}

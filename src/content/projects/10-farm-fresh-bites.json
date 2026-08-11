@@ -1,0 +1,18 @@
+{
+  "order": 10,
+  "featured": true,
+  "name": "Farm Fresh Bites",
+  "url": "https://farmfreshbites.wixstudio.com/farm-fresh-bites",
+  "tags": [
+    "Wix Studio",
+    "eCommerce"
+  ],
+  "image": "/img/work/farm-fresh-bites.webp",
+  "imageWidth": 1145,
+  "imageHeight": 750,
+  "alt_id": "Tangkapan layar proyek Farm Fresh Bites",
+  "alt_en": "Farm Fresh Bites project screenshot",
+  "desc_id": "Usaha hyperlocal di Mumbai yang mengantarkan buah eksotis bersumber bertanggung jawab. Tantangannya: menjual produk premium sambil menonjolkan misi sosial yang nyata. Saya bangun etalase Wix Studio yang menyatukan toko, cerita pendiri, dan CSR — pendapatan vendor dan makanan yang didonasikan — sehingga setiap pembelian punya makna.",
+  "desc_en": "A hyperlocal business in Mumbai delivering responsibly sourced exotic fruit. The challenge: sell a premium product while keeping a real social mission visible. I built a Wix Studio storefront that does both without either undercutting the other.",
+  "caseStudy": ""
+}

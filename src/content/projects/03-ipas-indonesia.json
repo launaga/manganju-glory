@@ -1,0 +1,18 @@
+{
+  "order": 3,
+  "featured": true,
+  "name": "Ipas Indonesia",
+  "url": "https://ipasindonesia.org/",
+  "tags": [
+    "Redesign",
+    "WordPress"
+  ],
+  "image": "/img/work/ipas-indonesia.webp",
+  "imageWidth": 947,
+  "imageHeight": 857,
+  "alt_id": "Tangkapan layar proyek Ipas Indonesia",
+  "alt_en": "Ipas Indonesia project screenshot",
+  "desc_id": "NGO kesehatan reproduksi yang memperluas akses layanan pascakeguguran yang aman. Situs lama mereka menyimpang dari design system internasional yang baru. Saya bangun ulang agar selaras dengan brand global, tanpa mengorbankan preferensi audiens Indonesia.",
+  "desc_en": "A reproductive health NGO expanding access to safe post-abortion care. Their old site had drifted away from the new international design system. I rebuilt it to align with the global brand without sacrificing what the Indonesian audience responds to.",
+  "caseStudy": ""
+}

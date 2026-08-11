@@ -1,0 +1,19 @@
+{
+  "order": 12,
+  "featured": false,
+  "name": "Spotless Web App",
+  "url": "https://dashboard-gilt-six-hkvkubuygh.vercel.app/",
+  "tags": [
+    "Creator",
+    "Vercel",
+    "GitHub"
+  ],
+  "image": "/img/work/spotless-web-app.webp",
+  "imageWidth": 1200,
+  "imageHeight": 580,
+  "alt_id": "Tangkapan layar proyek Spotless Web App",
+  "alt_en": "Spotless Web App project screenshot",
+  "desc_id": "Sistem manajemen SaaS 3 portal yang menopang ekosistem cuci mobil Spotless. React 19 + TypeScript + Recharts, dengan antarmuka POS real-time, manajemen keranjang, dan multi-pembayaran (Tunai, Debit, QRIS).",
+  "desc_en": "A 3-portal SaaS management system running the Spotless car wash ecosystem. React 19 + TypeScript + Recharts, with a real-time POS interface, cart management, and multi-payment support.",
+  "caseStudy": ""
+}

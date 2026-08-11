@@ -1,0 +1,17 @@
+{
+  "order": 5,
+  "featured": true,
+  "name": "Cari Layanan",
+  "url": "https://carilayanan.com/",
+  "tags": [
+    "WordPress"
+  ],
+  "image": "/img/work/cari-layanan.webp",
+  "imageWidth": 861,
+  "imageHeight": 822,
+  "alt_id": "Tangkapan layar proyek Cari Layanan",
+  "alt_en": "Cari Layanan project screenshot",
+  "desc_id": "Direktori krisis untuk penyintas kekerasan berbasis gender selama COVID-19. Saya bangun direktori WordPress yang memetakan layanan terverifikasi berdasarkan lokasi dan kebutuhan — rahasia, langsung bisa diakses, dan menskala hingga ribuan pengguna.",
+  "desc_en": "A crisis directory for survivors of gender-based violence during COVID-19. I built a WordPress directory mapping verified services by location and need — confidential, immediately accessible, and able to scale to thousands of users.",
+  "caseStudy": ""
+}

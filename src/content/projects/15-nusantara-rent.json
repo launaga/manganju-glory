@@ -1,0 +1,18 @@
+{
+  "order": 15,
+  "featured": false,
+  "name": "Nusantara Rent",
+  "url": "https://indycar-fleet-hub.lovable.app/",
+  "tags": [
+    "Creator",
+    "Lovable"
+  ],
+  "image": "/img/work/nusantara-rent.webp",
+  "imageWidth": 1200,
+  "imageHeight": 555,
+  "alt_id": "Tangkapan layar proyek Nusantara Rent",
+  "alt_en": "Nusantara Rent project screenshot",
+  "desc_id": "Rental mobil dengan driver yang beroperasi lintas kota. Tantangannya: rentang armada dari Avanza keluarga sampai Alphard tamu VVIP harus terbaca dalam satu layar tanpa membuat calon penyewa merasa salah alamat. Saya susun hierarki gelap-keemasan yang menaruh kapasitas dan harga di muka, lalu memangkas jalur booking menjadi satu langkah ke WhatsApp.",
+  "desc_en": "A car rental service with drivers operating across cities. The challenge: a fleet spanning family Avanzas to VVIP Alphards had to read clearly in one screen without making anyone feel they were in the wrong place. I built a dark-and-gold hierarchy that leads with capacity and price, then cut the booking path down to a single step into WhatsApp.",
+  "caseStudy": ""
+}

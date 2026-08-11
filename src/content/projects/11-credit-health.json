@@ -1,0 +1,19 @@
+{
+  "order": 11,
+  "featured": false,
+  "name": "Credit Health",
+  "url": "https://credithealth.vercel.app/",
+  "tags": [
+    "Creator",
+    "Vercel",
+    "GitHub"
+  ],
+  "image": "/img/work/credit-health.webp",
+  "imageWidth": 1200,
+  "imageHeight": 675,
+  "alt_id": "Tangkapan layar proyek Credit Health",
+  "alt_en": "Credit Health project screenshot",
+  "desc_id": "Dibangun karena hampir semua tool keuangan pribadi yang layak memasang tarif $99–109/tahun dan mengunci fitur dasar di balik paywall. Saya ingin membuktikan dashboard finansial berfitur lengkap bisa dibangun dan dibagikan gratis.",
+  "desc_en": "Built because nearly every decent personal finance tool charges $99–109 a year and locks basic features behind a paywall. I wanted to prove a full-featured financial dashboard could be free.",
+  "caseStudy": ""
+}
