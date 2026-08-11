@@ -1,0 +1,18 @@
+---
+import statsData from '../data/stats.json';
+import type { Lang } from '../data/site';
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const L = lang;
+const stats = statsData.items;
+const delay = ['', 'd1', 'd2'];
+---
+<div class="stats">
+  {stats.map((s: any, i: number) => (
+    <div class={`stat reveal ${delay[i] ?? ''}`.trim()}>
+      <div class="num">{s.num}{s.suffix && <b>{s.suffix}</b>}</div>
+      <span class="k">{s[`label_${L}`]}</span>
+      <p>{s[`desc_${L}`]}</p>
+    </div>
+  ))}
+</div>

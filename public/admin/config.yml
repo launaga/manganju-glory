@@ -45,6 +45,30 @@ collections:
       - { label: "Deskripsi — English", name: desc_en, widget: text }
       - { label: "Slug studi kasus", name: caseStudy, widget: string, required: false, default: "", hint: "Kosongkan kalau proyek ini tidak punya halaman studi kasus." }
 
+  - name: services
+    label: Layanan (kartu)
+    label_singular: Layanan
+    description: Kartu di halaman Layanan / Services. (Halaman detail tiap layanan belum masuk CMS.)
+    folder: src/content/services
+    create: true
+    delete: true
+    identifier_field: h_id
+    slug: "{{fields.order}}-{{slug}}"
+    sortable_fields: [order]
+    format: json
+    fields:
+      - { label: "Urutan", name: order, widget: number, value_type: int, min: 1 }
+      - { label: "Slug URL (ID)", name: slug_id, widget: string, hint: "Bagian setelah /layanan/ — mis. jasa-website-wordpress" }
+      - { label: "Slug URL (EN)", name: slug_en, widget: string, hint: "Bagian setelah /en/services/ — mis. wordpress-development" }
+      - { label: "Nomor label (ID)", name: n_id, widget: string, hint: "Contoh: /01 — Website WordPress" }
+      - { label: "Nomor label (EN)", name: n_en, widget: string }
+      - { label: "Judul kartu (ID)", name: h_id, widget: string }
+      - { label: "Judul kartu (EN)", name: h_en, widget: string }
+      - { label: "Deskripsi (ID)", name: p_id, widget: text }
+      - { label: "Deskripsi (EN)", name: p_en, widget: text }
+      - { label: "Harga/timeline (ID)", name: meta_id, widget: string }
+      - { label: "Harga/timeline (EN)", name: meta_en, widget: string }
+
   - name: pricing
     label: Harga
     description: Paket harga, faktor, yang tidak termasuk, dan FAQ (halaman Harga / Pricing).
@@ -136,6 +160,27 @@ collections:
           - { label: "CTA — judul (EN)", name: ctaTitle_en, widget: string }
           - { label: "CTA — pesan WA (ID)", name: ctaWa_id, widget: text }
           - { label: "CTA — pesan WA (EN)", name: ctaWa_en, widget: text }
+
+  - name: stats
+    label: Statistik
+    description: Blok statistik yang tampil di Beranda & Tentang (dipakai bersama).
+    files:
+      - name: stats
+        label: Statistik (3 angka)
+        file: src/data/stats.json
+        format: json
+        fields:
+          - label: "Statistik"
+            name: items
+            widget: list
+            summary: "{{fields.num}}{{fields.suffix}} — {{fields.label_id}}"
+            fields:
+              - { label: "Angka", name: num, widget: string }
+              - { label: "Sufiks", name: suffix, widget: string, required: false, default: "" }
+              - { label: "Label (ID)", name: label_id, widget: string }
+              - { label: "Label (EN)", name: label_en, widget: string }
+              - { label: "Deskripsi (ID)", name: desc_id, widget: text }
+              - { label: "Deskripsi (EN)", name: desc_en, widget: text }
 
   - name: settings
     label: Pengaturan Global

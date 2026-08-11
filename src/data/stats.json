@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "num": "06",
+      "suffix": "+",
+      "label_id": "Tahun Pengalaman Internasional",
+      "label_en": "Years of international work",
+      "desc_id": "Menavigasi pasar global, dari startup bertumbuh cepat hingga organisasi nirlaba mapan.",
+      "desc_en": "Navigating global markets, from fast-growing startups to established non-profits."
+    },
+    {
+      "num": "200",
+      "suffix": "",
+      "label_id": "Website Dikelola",
+      "label_en": "Websites managed",
+      "desc_id": "Rekam jejak nyata dalam menghadirkan solusi web yang skalabel dan berperforma tinggi.",
+      "desc_en": "A real track record of delivering scalable, high-performing web solutions."
+    },
+    {
+      "num": "15",
+      "suffix": "+",
+      "label_id": "Industri Global",
+      "label_en": "Global industries",
+      "desc_id": "Pengalaman lintas industri: pendidikan, perdagangan, teknologi, dan seni kreatif.",
+      "desc_en": "Across education, commerce, technology, and the creative arts."
+    }
+  ]
+}

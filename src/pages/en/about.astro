@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import StatsBlock from '../../components/StatsBlock.astro';
 
 const breadcrumb = {
   '@type': 'BreadcrumbList',
@@ -35,11 +36,7 @@ const waAbout = "https://wa.me/6285927277560?text=Hi!%20I%20read%20your%20about%
     </section>
 
     <section class="pad-sm wrap">
-      <div class="stats">
-        <div class="stat reveal"><div class="num">06<b>+</b></div><span class="k">Years of international work</span><p>Navigating global markets, from fast-growing startups to established non-profits.</p></div>
-        <div class="stat reveal d1"><div class="num">200</div><span class="k">Websites managed</span><p>A real track record of delivering scalable, high-performing web solutions.</p></div>
-        <div class="stat reveal d2"><div class="num">15<b>+</b></div><span class="k">Global industries</span><p>Across education, commerce, technology, and the creative arts.</p></div>
-      </div>
+      <StatsBlock lang="en" />
     </section>
 
     <!-- THE STORY -->

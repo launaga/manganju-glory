@@ -23,4 +23,23 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { projects };
+// Koleksi Layanan — kartu di halaman Layanan (ID) / Services (EN).
+// Halaman detail tiap layanan masih file terpisah (belum di-CMS-kan).
+const services = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './src/content/services' }),
+  schema: z.object({
+    order: z.number(),
+    slug_id: z.string(),
+    slug_en: z.string(),
+    n_id: z.string(),
+    n_en: z.string(),
+    h_id: z.string(),
+    h_en: z.string(),
+    p_id: z.string(),
+    p_en: z.string(),
+    meta_id: z.string(),
+    meta_en: z.string(),
+  }),
+});
+
+export const collections = { projects, services };
