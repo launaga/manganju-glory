@@ -5,16 +5,11 @@ backend:
   base_url: https://mglportfolio.vercel.app
   auth_endpoint: /api/auth
 
-# Untuk mengedit secara lokal tanpa OAuth: jalankan `npx decap-server`
-# lalu buka http://localhost:4321/admin/ dari `astro dev`.
-local_backend: true
-
 media_folder: public/img
 public_folder: /img
 
 publish_mode: simple
 site_url: https://mglportfolio.vercel.app
-locale: id
 
 collections:
   - name: projects
