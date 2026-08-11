@@ -1,6 +1,8 @@
-# Admin Konten (Decap CMS)
+# Admin Konten (Sveltia CMS)
 
 Panel admin git-based untuk mengedit konten situs **tanpa menyentuh kode**.
+UI-nya **Sveltia CMS** (modern, ringan) yang membaca konfigurasi Decap yang sama
+(`public/admin/config.yml`) — jadi semua koleksi & field tetap sama.
 Data disimpan sebagai file di repo ini (mis. `src/content/projects/*.json`); tiap
 simpan = commit ke GitHub → Vercel rebuild (~1 menit).
 
@@ -12,23 +14,18 @@ Menyusul: Harga, Layanan, dan teks halaman + SEO.
 
 ---
 
-## 1. Mengedit secara LOKAL (tanpa OAuth)
+## 1. Mengedit secara LOKAL (tanpa login)
 
 Cocok untuk mencoba/menyiapkan konten sebelum tayang.
 
 ```bash
-# terminal 1 — proxy git lokal
-npx decap-server
-
-# terminal 2 — situs
 npm run dev
 ```
 
-Buka `http://localhost:4321/admin/index.html` → klik **Login** (langsung masuk,
-tanpa password). Perubahan menulis langsung ke file di folder ini; commit &
-push seperti biasa saat siap.
-
-> Diaktifkan lewat `local_backend: true` di `public/admin/config.yml`.
+Buka `http://localhost:4321/admin/index.html` → klik **Work with Local
+Repository** → pilih folder repo ini (`files`). Sveltia menulis langsung ke
+file lewat browser (File System Access API — Chrome/Edge). Commit & push
+seperti biasa saat siap. Tidak perlu server proxy tambahan.
 
 ---
 
@@ -63,8 +60,15 @@ vercel env add GITHUB_CLIENT_SECRET production
 vercel --prod
 ```
 
-Selesai. Buka `https://mglportfolio.vercel.app/admin` → **Login with GitHub**.
+Selesai. Buka `https://mglportfolio.vercel.app/admin` → **Sign In with GitHub**.
 Hanya akun yang punya akses tulis ke repo `launaga/manganju-glory` yang bisa masuk.
+
+### Alternatif tercepat: Personal Access Token (tanpa OAuth App)
+Sveltia juga mendukung login pakai token. Kalau tidak mau repot bikin OAuth App:
+1. Buat token di <https://github.com/settings/tokens> (fine-grained: akses **Contents: Read and write** untuk repo `manganju-glory`).
+2. Buka `/admin` → **Sign In Using Access Token** → tempel token.
+
+Cukup untuk pemakaian solo. OAuth App tetap lebih nyaman untuk jangka panjang.
 
 ---
 
