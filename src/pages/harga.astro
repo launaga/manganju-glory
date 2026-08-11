@@ -1,14 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
+import PricingBody from '../components/PricingBody.astro';
+import pricing from '../data/pricing.json';
 
-const faqs = [
-  ['Berapa lama pengerjaan website?', 'Umumnya 4–12 minggu tergantung kompleksitas. Company profile biasanya 2–4 minggu, e-commerce 4–8 minggu. Yang paling sering memperlambat proyek bukan pengerjaannya, melainkan menunggu konten dan keputusan dari sisi klien — jadi linimasa di atas mengasumsikan umpan balik datang dalam beberapa hari, bukan beberapa minggu.'],
-  ['Apakah saya bisa mengelola website sendiri?', 'Ya, dan itu memang tujuannya. Website WordPress dan Wix yang saya bangun dirancang supaya Anda bisa mengubah teks, gambar, dan menambah halaman tanpa menghubungi saya. Setiap proyek termasuk sesi training penggunaan. Kalau setiap perubahan kecil harus lewat developer, itu bukan aset — itu ketergantungan.'],
-  ['Apakah harga sudah termasuk domain dan hosting?', 'Belum. Domain dan hosting dibayar langsung ke penyedia atas nama Anda, supaya kepemilikannya jelas milik Anda dan tidak menumpang akun saya. Saya bantu memilih dan menyiapkannya. Kisarannya relatif kecil dibanding biaya pengembangan, tapi sengaja saya pisahkan supaya tidak ada biaya tersembunyi.'],
-  ['Apakah bisa redesign website lama?', 'Bisa, dan itu sebagian besar pekerjaan saya. Ipas Indonesia dan Jakarta Feminist keduanya redesign. Tapi saya akan mulai dengan pertanyaan yang mungkin tidak Anda harapkan: apa sebenarnya yang tidak bekerja? Kalau masalahnya positioning dan pesan, desain baru tidak akan memperbaikinya — dan saya akan bilang itu di depan.'],
-  ['Apakah menerima klien di luar Jakarta?', 'Ya. Sebagian besar proyek saya justru dikerjakan jarak jauh — termasuk klien di Tanzania, Mumbai, dan London. Prosesnya sama: discovery lewat video call, update rutin, dan dokumen yang bisa Anda baca kapan saja. Lokasi belum pernah jadi faktor penentu hasil.'],
-  ['Bagaimana kalau saya belum yakin butuh website baru?', 'Itu justru alasan bagus untuk mengambil sesi konsultasi gratis. Beberapa kali percakapan itu berakhir dengan saya menyarankan klien tidak membangun apa pun dulu — karena yang mereka butuhkan ternyata memperjelas positioning, bukan mengganti tampilan. Saya lebih suka kehilangan proyek daripada mengambil proyek yang salah.'],
-];
 const extraSchema = [
   {
     '@type': 'BreadcrumbList',
@@ -19,14 +13,13 @@ const extraSchema = [
   },
   {
     '@type': 'FAQPage',
-    mainEntity: faqs.map(([q, a]) => ({
+    mainEntity: pricing.faq.map((q) => ({
       '@type': 'Question',
-      name: q,
-      acceptedAnswer: { '@type': 'Answer', text: a },
+      name: q.q_id,
+      acceptedAnswer: { '@type': 'Answer', text: q.a_id },
     })),
   },
 ];
-const wa = (t: string) => `https://wa.me/6285927277560?text=${t}`;
 ---
 
 <Base
@@ -37,161 +30,5 @@ const wa = (t: string) => `https://wa.me/6285927277560?text=${t}`;
   enPath="/en/pricing"
   extraSchema={extraSchema}
 >
-  <main id="page-harga" class="page">
-    <section class="hero wrap">
-      <div class="shead reveal">
-        <div class="label"><span class="eyebrow">// Harga</span><span class="folio">01</span></div>
-      </div>
-      <h1 class="h1 reveal d1" style="max-width:18ch;margin-top:18px">Harga pembuatan website, <span class="u-accent">tanpa tebak-tebakan.</span></h1>
-      <p class="lead reveal d2" style="margin-top:22px">Kebanyakan penyedia jasa menyembunyikan harga di balik "hubungi kami" — dan itu membuang waktu kedua pihak. Ini kisaran yang sebenarnya, apa yang Anda dapat, dan yang lebih penting: apa yang tidak termasuk.</p>
-    </section>
-    <hr class="hair" style="margin:0 var(--gut)">
-
-    <section class="pad-sm wrap">
-      <div class="shead reveal">
-        <div class="label">
-          <div>
-            <span class="eyebrow">// 02 — Paket</span>
-            <h2 class="h2" style="margin-top:18px;max-width:20ch">Empat titik masuk. Satu cara kerja.</h2>
-          </div>
-          <span class="folio">02</span>
-        </div>
-      </div>
-      <div class="price-grid">
-        <div class="price-card">
-          <span class="pc-name">Konsultasi</span>
-          <span class="pc-price">Gratis</span>
-          <span class="pc-meta">30 menit</span>
-          <ul class="pc-items">
-            <li>Diskusi kebutuhan bisnis</li><li>Analisis website yang ada</li><li>Rekomendasi solusi</li><li>Tanpa komitmen</li>
-          </ul>
-          <a href={wa('Hi!%20Saya%20ingin%20booking%20sesi%20konsultasi%20gratis%2030%20menit...')} class="btn" target="_blank" rel="noopener" data-wa="pricing-konsultasi" data-page="/harga">
-            Booking Sekarang<span class="arr">↗</span>
-          </a>
-        </div>
-        <div class="price-card">
-          <span class="pc-name">Website Company Profile</span>
-          <span class="pc-price">Mulai Rp5.000.000</span>
-          <span class="pc-meta">Timeline 2–4 minggu</span>
-          <ul class="pc-items">
-            <li>Desain premium</li><li>Mobile responsive</li><li>SEO basic</li><li>Integrasi WhatsApp</li><li>Contact form</li><li>Training penggunaan</li><li>Support setelah launch</li>
-          </ul>
-          <a href={wa('Hi!%20Saya%20tertarik%20dengan%20paket%20Website%20Company%20Profile...')} class="btn" target="_blank" rel="noopener" data-wa="pricing-website-company-profile" data-page="/harga">
-            Diskusikan Proyek<span class="arr">↗</span>
-          </a>
-        </div>
-        <div class="price-card is-featured">
-          <span class="pc-badge">Paling Diminati</span>
-          <span class="pc-name">Website E-Commerce</span>
-          <span class="pc-price">Mulai Rp15.000.000</span>
-          <span class="pc-meta">Timeline 4–8 minggu</span>
-          <ul class="pc-items">
-            <li>Katalog produk</li><li>Shopping cart</li><li>Payment gateway</li><li>Dashboard admin</li><li>Integrasi pengiriman</li><li>SEO optimization</li><li>Mobile responsive</li>
-          </ul>
-          <a href={wa('Hi!%20Saya%20tertarik%20dengan%20paket%20Website%20E-Commerce...')} class="btn on-ink" target="_blank" rel="noopener" data-wa="pricing-website-e-commerce" data-page="/harga">
-            Mulai Sekarang<span class="arr">↗</span>
-          </a>
-        </div>
-        <div class="price-card">
-          <span class="pc-name">Custom Website</span>
-          <span class="pc-price">By Consultation</span>
-          <span class="pc-meta">Timeline menyesuaikan scope</span>
-          <ul class="pc-items">
-            <li>Dashboard custom</li><li>API integration</li><li>Automation</li><li>Membership system</li><li>Marketplace system</li><li>Scalability planning</li>
-          </ul>
-          <a href={wa('Hi!%20Saya%20punya%20kebutuhan%20website%20custom%20dan%20ingin%20diskusi...')} class="btn" target="_blank" rel="noopener" data-wa="pricing-custom-website" data-page="/harga">
-            Hubungi Saya<span class="arr">↗</span>
-          </a>
-        </div>
-      </div>
-      <p class="lead reveal" style="margin-top:26px;font-size:15px;color:var(--ink-soft);max-width:70ch">Semua angka di atas adalah titik awal, bukan penawaran final. Angka pastinya keluar setelah sesi discovery — dan kalau ternyata kebutuhan Anda lebih kecil dari paketnya, saya akan bilang begitu.</p>
-    </section>
-    <hr class="hair" style="margin:0 var(--gut)">
-
-    <section class="pad-sm wrap">
-      <div class="shead reveal">
-        <div class="label">
-          <div>
-            <span class="eyebrow">// 03 — Transparansi</span>
-            <h2 class="h2" style="margin-top:18px;max-width:22ch">Kenapa harganya bervariasi.</h2>
-            <p class="lead" style="margin-top:16px;max-width:62ch">"Mulai dari" adalah kata yang sering dipakai untuk menghindar. Ini empat hal yang benar-benar menggeser angkanya, supaya Anda bisa memperkirakan sendiri sebelum kita bicara.</p>
-          </div>
-          <span class="folio">03</span>
-        </div>
-      </div>
-      <div class="deflist reveal">
-        <div><b>Jumlah halaman</b><p>Company profile 5 halaman dan 25 halaman bukan pekerjaan yang sama. Setiap halaman butuh struktur, konten, dan pengujiannya sendiri.</p></div><div><b>Kompleksitas fungsi</b><p>Contact form itu satu hal. Booking dengan jadwal, pembayaran, dan notifikasi otomatis adalah hal yang sama sekali berbeda.</p></div><div><b>Kesiapan konten</b><p>Kalau teks dan foto sudah siap, saya tinggal membangun. Kalau belum, kita perlu tahap penyusunan dulu — dan itu menambah waktu.</p></div><div><b>Integrasi pihak ketiga</b><p>Payment gateway, ekspedisi, CRM, atau sistem internal yang sudah ada — tiap sambungan menambah pengujian dan titik yang bisa gagal.</p></div>
-      </div>
-    </section>
-
-    <section class="pad-sm wrap">
-      <div class="shead reveal">
-        <div class="label">
-          <div>
-            <span class="eyebrow">// 04 — Yang tidak termasuk</span>
-            <h2 class="h2" style="margin-top:18px;max-width:22ch">Yang tidak saya kerjakan.</h2>
-            <p class="lead" style="margin-top:16px;max-width:62ch">Ditulis di depan, bukan disisipkan di tengah proyek. Kalau salah satu poin di bawah ini krusial buat Anda, lebih baik kita tahu sekarang.</p>
-          </div>
-          <span class="folio">04</span>
-        </div>
-      </div>
-      <div class="deflist reveal">
-        <div><b>Domain &amp; hosting</b><p>Dibayar langsung ke penyedia atas nama Anda, supaya kepemilikannya jelas milik Anda — bukan menumpang akun saya. Saya bantu setup-nya.</p></div><div><b>Penulisan konten</b><p>Saya menyusun struktur dan arah pesan. Penulisan naskah panjang, artikel, dan deskripsi produk ada di luar scope.</p></div><div><b>Foto &amp; videografi</b><p>Termasuk foto produk dan foto tim. Saya bisa rekomendasikan fotografer.</p></div><div><b>Logo &amp; identitas visual</b><p>Kalau belum punya logo, itu proyek tersendiri sebelum website dimulai.</p></div><div><b>Iklan berbayar</b><p>Google Ads dan Meta Ads bukan layanan saya.</p></div><div><b>Lisensi plugin premium</b><p>Kalau proyeknya butuh, biayanya disampaikan di awal — bukan di akhir.</p></div>
-      </div>
-    </section>
-    <hr class="hair" style="margin:0 var(--gut)">
-
-    <section class="pad-sm wrap">
-      <div class="shead reveal">
-        <div class="label">
-          <div>
-            <span class="eyebrow">// 05 — Pertanyaan</span>
-            <h2 class="h2" style="margin-top:18px">Yang paling sering ditanyakan.</h2>
-          </div>
-          <span class="folio">05</span>
-        </div>
-      </div>
-      <div class="faq reveal">
-        <details>
-          <summary><span class="fq">/01</span>Berapa lama pengerjaan website?</summary>
-          <p class="fa">Umumnya 4–12 minggu tergantung kompleksitas. Company profile biasanya 2–4 minggu, e-commerce 4–8 minggu. Yang paling sering memperlambat proyek bukan pengerjaannya, melainkan menunggu konten dan keputusan dari sisi klien — jadi linimasa di atas mengasumsikan umpan balik datang dalam beberapa hari, bukan beberapa minggu.</p>
-        </details><details>
-          <summary><span class="fq">/02</span>Apakah saya bisa mengelola website sendiri?</summary>
-          <p class="fa">Ya, dan itu memang tujuannya. Website WordPress dan Wix yang saya bangun dirancang supaya Anda bisa mengubah teks, gambar, dan menambah halaman tanpa menghubungi saya. Setiap proyek termasuk sesi training penggunaan. Kalau setiap perubahan kecil harus lewat developer, itu bukan aset — itu ketergantungan.</p>
-        </details><details>
-          <summary><span class="fq">/03</span>Apakah harga sudah termasuk domain dan hosting?</summary>
-          <p class="fa">Belum. Domain dan hosting dibayar langsung ke penyedia atas nama Anda, supaya kepemilikannya jelas milik Anda dan tidak menumpang akun saya. Saya bantu memilih dan menyiapkannya. Kisarannya relatif kecil dibanding biaya pengembangan, tapi sengaja saya pisahkan supaya tidak ada biaya tersembunyi.</p>
-        </details><details>
-          <summary><span class="fq">/04</span>Apakah bisa redesign website lama?</summary>
-          <p class="fa">Bisa, dan itu sebagian besar pekerjaan saya. Ipas Indonesia dan Jakarta Feminist keduanya redesign. Tapi saya akan mulai dengan pertanyaan yang mungkin tidak Anda harapkan: apa sebenarnya yang tidak bekerja? Kalau masalahnya positioning dan pesan, desain baru tidak akan memperbaikinya — dan saya akan bilang itu di depan.</p>
-        </details><details>
-          <summary><span class="fq">/05</span>Apakah menerima klien di luar Jakarta?</summary>
-          <p class="fa">Ya. Sebagian besar proyek saya justru dikerjakan jarak jauh — termasuk klien di Tanzania, Mumbai, dan London. Prosesnya sama: discovery lewat video call, update rutin, dan dokumen yang bisa Anda baca kapan saja. Lokasi belum pernah jadi faktor penentu hasil.</p>
-        </details><details>
-          <summary><span class="fq">/06</span>Bagaimana kalau saya belum yakin butuh website baru?</summary>
-          <p class="fa">Itu justru alasan bagus untuk mengambil sesi konsultasi gratis. Beberapa kali percakapan itu berakhir dengan saya menyarankan klien tidak membangun apa pun dulu — karena yang mereka butuhkan ternyata memperjelas positioning, bukan mengganti tampilan. Saya lebih suka kehilangan proyek daripada mengambil proyek yang salah.</p>
-        </details>
-      </div>
-    </section>
-
-    <div class="marquee accent" aria-hidden="true">
-      <div class="marquee-track">
-        <span>Strategi</span><span>Desain</span><span>Pengembangan</span><span>Konsultasi</span><span>Problem Solving</span><span>User Experience</span><span>Produk Digital</span>
-        <span>Strategi</span><span>Desain</span><span>Pengembangan</span><span>Konsultasi</span><span>Problem Solving</span><span>User Experience</span><span>Produk Digital</span>
-      </div>
-    </div>
-
-    <section class="cta-ink pad">
-      <img class="bgimg" src="/img/cta-bg.webp" width="1440" height="1024" loading="lazy" decoding="async" alt="" aria-hidden="true" />
-      <div class="wrap" style="position:relative">
-        <span class="eyebrow reveal">// Mari Bicara</span>
-        <h2 class="h2 reveal d1" style="margin:24px 0 36px">Masih ragu paket mana yang cocok?</h2>
-        <div class="reveal d2">
-          <a href={wa('Hi!%20Saya%20lihat%20halaman%20harga%20dan%20ingin%20tanya%20paket%20mana%20yang%20cocok...')} class="btn on-ink" target="_blank" rel="noopener" data-wa="cta" data-page="/harga">
-            Konsultasi Gratis<span class="arr">↗</span>
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
+  <PricingBody lang="id" />
 </Base>

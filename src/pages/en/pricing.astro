@@ -1,14 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PricingBody from '../../components/PricingBody.astro';
+import pricing from '../../data/pricing.json';
 
-const faqs = [
-  ['How long does a website take?', "Typically 4–12 weeks depending on complexity. A company profile is usually 2–4 weeks, e-commerce 4–8 weeks. What most often slows a project down isn't the build, but waiting on content and decisions from the client side — so the timeline above assumes feedback comes within days, not weeks."],
-  ['Can I manage the website myself?', "Yes, and that's the point. The WordPress and Wix sites I build are designed so you can change text, images, and add pages without contacting me. Every project includes a usage training session. If every small change has to go through a developer, that's not an asset — it's a dependency."],
-  ['Does the price include domain and hosting?', 'No. Domain and hosting are paid directly to the provider in your name, so ownership is clearly yours and not riding on my account. I help choose and set them up. The cost is relatively small compared to development, but I keep it separate on purpose so there are no hidden fees.'],
-  ['Can you redesign an old website?', "Yes, and it's most of my work. Ipas Indonesia and Jakarta Feminist were both redesigns. But I'll start with a question you might not expect: what exactly isn't working? If the problem is positioning and message, a new design won't fix it — and I'll say so up front."],
-  ['Do you take clients outside Jakarta?', 'Yes. Most of my projects are actually done remotely — including clients in Tanzania, Mumbai, and London. The process is the same: discovery over video call, regular updates, and documents you can read any time. Location has never been the deciding factor in the outcome.'],
-  ["What if I'm not sure I need a new website?", "That's exactly a good reason to take the free consultation. More than once that conversation has ended with me advising the client not to build anything yet — because what they needed was to clarify positioning, not change the look. I'd rather lose a project than take the wrong one."],
-];
 const extraSchema = [
   {
     '@type': 'BreadcrumbList',
@@ -19,14 +13,13 @@ const extraSchema = [
   },
   {
     '@type': 'FAQPage',
-    mainEntity: faqs.map(([q, a]) => ({
+    mainEntity: pricing.faq.map((q) => ({
       '@type': 'Question',
-      name: q,
-      acceptedAnswer: { '@type': 'Answer', text: a },
+      name: q.q_en,
+      acceptedAnswer: { '@type': 'Answer', text: q.a_en },
     })),
   },
 ];
-const wa = (t: string) => `https://wa.me/6285927277560?text=${t}`;
 ---
 
 <Base
@@ -37,161 +30,5 @@ const wa = (t: string) => `https://wa.me/6285927277560?text=${t}`;
   enPath="/en/pricing"
   extraSchema={extraSchema}
 >
-  <main id="page-pricing-en" class="page">
-    <section class="hero wrap">
-      <div class="shead reveal">
-        <div class="label"><span class="eyebrow">// Pricing</span><span class="folio">01</span></div>
-      </div>
-      <h1 class="h1 reveal d1" style="max-width:18ch;margin-top:18px">Website pricing, <span class="u-accent">with no guesswork.</span></h1>
-      <p class="lead reveal d2" style="margin-top:22px">Most providers hide their pricing behind "contact us" — and that wastes everyone's time. Here are the real ranges, what you get, and more importantly: what's not included.</p>
-    </section>
-    <hr class="hair" style="margin:0 var(--gut)">
-
-    <section class="pad-sm wrap">
-      <div class="shead reveal">
-        <div class="label">
-          <div>
-            <span class="eyebrow">// 02 — Packages</span>
-            <h2 class="h2" style="margin-top:18px;max-width:20ch">Four entry points. One way of working.</h2>
-          </div>
-          <span class="folio">02</span>
-        </div>
-      </div>
-      <div class="price-grid">
-        <div class="price-card">
-          <span class="pc-name">Consultation</span>
-          <span class="pc-price">Free</span>
-          <span class="pc-meta">30 minutes</span>
-          <ul class="pc-items">
-            <li>Business needs discussion</li><li>Analysis of your existing website</li><li>Solution recommendations</li><li>No commitment</li>
-          </ul>
-          <a href={wa("Hi!%20I'd%20like%20to%20book%20the%20free%2030-minute%20consultation...")} class="btn" target="_blank" rel="noopener" data-wa="pricing-consultation" data-page="/en/pricing">
-            Book Now<span class="arr">↗</span>
-          </a>
-        </div>
-        <div class="price-card">
-          <span class="pc-name">Company Profile Website</span>
-          <span class="pc-price">From Rp5,000,000</span>
-          <span class="pc-meta">Timeline 2–4 weeks</span>
-          <ul class="pc-items">
-            <li>Premium design</li><li>Mobile responsive</li><li>Basic SEO</li><li>WhatsApp integration</li><li>Contact form</li><li>Usage training</li><li>Post-launch support</li>
-          </ul>
-          <a href={wa("Hi!%20I'm%20interested%20in%20the%20Company%20Profile%20Website%20package...")} class="btn" target="_blank" rel="noopener" data-wa="pricing-company-profile" data-page="/en/pricing">
-            Discuss Project<span class="arr">↗</span>
-          </a>
-        </div>
-        <div class="price-card is-featured">
-          <span class="pc-badge">Most Popular</span>
-          <span class="pc-name">E-Commerce Website</span>
-          <span class="pc-price">From Rp15,000,000</span>
-          <span class="pc-meta">Timeline 4–8 weeks</span>
-          <ul class="pc-items">
-            <li>Product catalogue</li><li>Shopping cart</li><li>Payment gateway</li><li>Admin dashboard</li><li>Shipping integration</li><li>SEO optimization</li><li>Mobile responsive</li>
-          </ul>
-          <a href={wa("Hi!%20I'm%20interested%20in%20the%20E-Commerce%20Website%20package...")} class="btn on-ink" target="_blank" rel="noopener" data-wa="pricing-e-commerce" data-page="/en/pricing">
-            Start Now<span class="arr">↗</span>
-          </a>
-        </div>
-        <div class="price-card">
-          <span class="pc-name">Custom Website</span>
-          <span class="pc-price">By Consultation</span>
-          <span class="pc-meta">Timeline scales with scope</span>
-          <ul class="pc-items">
-            <li>Custom dashboard</li><li>API integration</li><li>Automation</li><li>Membership system</li><li>Marketplace system</li><li>Scalability planning</li>
-          </ul>
-          <a href={wa('Hi!%20I%20have%20a%20custom%20website%20need%20and%20would%20like%20to%20discuss...')} class="btn" target="_blank" rel="noopener" data-wa="pricing-custom" data-page="/en/pricing">
-            Contact Me<span class="arr">↗</span>
-          </a>
-        </div>
-      </div>
-      <p class="lead reveal" style="margin-top:26px;font-size:15px;color:var(--ink-soft);max-width:70ch">All figures above are a starting point, not a final quote. The exact number comes after the discovery session — and if your needs turn out smaller than the package, I'll tell you.</p>
-    </section>
-    <hr class="hair" style="margin:0 var(--gut)">
-
-    <section class="pad-sm wrap">
-      <div class="shead reveal">
-        <div class="label">
-          <div>
-            <span class="eyebrow">// 03 — Transparency</span>
-            <h2 class="h2" style="margin-top:18px;max-width:22ch">Why the price varies.</h2>
-            <p class="lead" style="margin-top:16px;max-width:62ch">"Starting from" is a phrase often used to dodge. Here are the four things that genuinely shift the number, so you can estimate for yourself before we talk.</p>
-          </div>
-          <span class="folio">03</span>
-        </div>
-      </div>
-      <div class="deflist reveal">
-        <div><b>Number of pages</b><p>A 5-page company profile and a 25-page one are not the same job. Each page needs its own structure, content, and testing.</p></div><div><b>Functional complexity</b><p>A contact form is one thing. Booking with scheduling, payments, and automatic notifications is something else entirely.</p></div><div><b>Content readiness</b><p>If text and photos are ready, I just build. If not, we need a preparation stage first — and that adds time.</p></div><div><b>Third-party integrations</b><p>Payment gateway, courier, CRM, or an existing internal system — each connection adds testing and a point that can fail.</p></div>
-      </div>
-    </section>
-
-    <section class="pad-sm wrap">
-      <div class="shead reveal">
-        <div class="label">
-          <div>
-            <span class="eyebrow">// 04 — What's not included</span>
-            <h2 class="h2" style="margin-top:18px;max-width:22ch">What I don't handle.</h2>
-            <p class="lead" style="margin-top:16px;max-width:62ch">Written up front, not slipped in mid-project. If any point below is crucial to you, better we know now.</p>
-          </div>
-          <span class="folio">04</span>
-        </div>
-      </div>
-      <div class="deflist reveal">
-        <div><b>Domain &amp; hosting</b><p>Paid directly to the provider in your name, so ownership is clearly yours — not riding on my account. I help set it up.</p></div><div><b>Content writing</b><p>I set the structure and message direction. Long-form copy, articles, and product descriptions are out of scope.</p></div><div><b>Photo &amp; videography</b><p>Including product and team photos. I can recommend a photographer.</p></div><div><b>Logo &amp; visual identity</b><p>If you don't have a logo yet, that's a separate project before the website begins.</p></div><div><b>Paid advertising</b><p>Google Ads and Meta Ads are not my service.</p></div><div><b>Premium plugin licences</b><p>If the project needs them, the cost is stated up front — not at the end.</p></div>
-      </div>
-    </section>
-    <hr class="hair" style="margin:0 var(--gut)">
-
-    <section class="pad-sm wrap">
-      <div class="shead reveal">
-        <div class="label">
-          <div>
-            <span class="eyebrow">// 05 — Questions</span>
-            <h2 class="h2" style="margin-top:18px">The most common questions.</h2>
-          </div>
-          <span class="folio">05</span>
-        </div>
-      </div>
-      <div class="faq reveal">
-        <details>
-          <summary><span class="fq">/01</span>How long does a website take?</summary>
-          <p class="fa">Typically 4–12 weeks depending on complexity. A company profile is usually 2–4 weeks, e-commerce 4–8 weeks. What most often slows a project down isn't the build, but waiting on content and decisions from the client side — so the timeline above assumes feedback comes within days, not weeks.</p>
-        </details><details>
-          <summary><span class="fq">/02</span>Can I manage the website myself?</summary>
-          <p class="fa">Yes, and that's the point. The WordPress and Wix sites I build are designed so you can change text, images, and add pages without contacting me. Every project includes a usage training session. If every small change has to go through a developer, that's not an asset — it's a dependency.</p>
-        </details><details>
-          <summary><span class="fq">/03</span>Does the price include domain and hosting?</summary>
-          <p class="fa">No. Domain and hosting are paid directly to the provider in your name, so ownership is clearly yours and not riding on my account. I help choose and set them up. The cost is relatively small compared to development, but I keep it separate on purpose so there are no hidden fees.</p>
-        </details><details>
-          <summary><span class="fq">/04</span>Can you redesign an old website?</summary>
-          <p class="fa">Yes, and it's most of my work. Ipas Indonesia and Jakarta Feminist were both redesigns. But I'll start with a question you might not expect: what exactly isn't working? If the problem is positioning and message, a new design won't fix it — and I'll say so up front.</p>
-        </details><details>
-          <summary><span class="fq">/05</span>Do you take clients outside Jakarta?</summary>
-          <p class="fa">Yes. Most of my projects are actually done remotely — including clients in Tanzania, Mumbai, and London. The process is the same: discovery over video call, regular updates, and documents you can read any time. Location has never been the deciding factor in the outcome.</p>
-        </details><details>
-          <summary><span class="fq">/06</span>What if I'm not sure I need a new website?</summary>
-          <p class="fa">That's exactly a good reason to take the free consultation. More than once that conversation has ended with me advising the client not to build anything yet — because what they needed was to clarify positioning, not change the look. I'd rather lose a project than take the wrong one.</p>
-        </details>
-      </div>
-    </section>
-
-    <div class="marquee accent" aria-hidden="true">
-      <div class="marquee-track">
-        <span>Strategy</span><span>Design</span><span>Development</span><span>Consulting</span><span>Problem Solving</span><span>User Experience</span><span>Digital Products</span>
-        <span>Strategy</span><span>Design</span><span>Development</span><span>Consulting</span><span>Problem Solving</span><span>User Experience</span><span>Digital Products</span>
-      </div>
-    </div>
-
-    <section class="cta-ink pad">
-      <img class="bgimg" src="/img/cta-bg.webp" width="1440" height="1024" loading="lazy" decoding="async" alt="" aria-hidden="true" />
-      <div class="wrap" style="position:relative">
-        <span class="eyebrow reveal">// Let's talk</span>
-        <h2 class="h2 reveal d1" style="margin:24px 0 36px">Still unsure which package fits?</h2>
-        <div class="reveal d2">
-          <a href={wa('Hi!%20I%20saw%20the%20pricing%20page%20and%20want%20to%20ask%20which%20package%20fits...')} class="btn on-ink" target="_blank" rel="noopener" data-wa="cta" data-page="/en/pricing">
-            Free Consultation<span class="arr">↗</span>
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
+  <PricingBody lang="en" />
 </Base>

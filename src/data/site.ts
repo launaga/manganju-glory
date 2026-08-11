@@ -1,18 +1,17 @@
 // Sumber tunggal untuk konstanta situs + string "chrome" (nav, footer, langtoggle,
-// loader, CTA) dalam dua bahasa. Konten badan tiap halaman ada di masing-masing
-// file .astro; di sini hanya elemen yang berulang di seluruh halaman.
+// loader, CTA) dalam dua bahasa. Nilai yang bisa diedit lewat admin (kontak, CTA,
+// footer) diambil dari settings.json; sisanya (label menu, loader) tetap di kode.
+import S from './settings.json';
 
 export type Lang = 'id' | 'en';
 
-export const PHONE = '6285927277560';
-export const PHONE_DISPLAY_ID = '0859 2727 7560';
-export const PHONE_DISPLAY_EN = '+62 859 2727 7560';
-export const EMAIL = 'manganjuglory@gmail.com';
+export const PHONE = S.phone;
+export const PHONE_DISPLAY_ID = S.phoneDisplayId;
+export const PHONE_DISPLAY_EN = S.phoneDisplayEn;
+export const EMAIL = S.email;
 
-export const WA_ID =
-  `https://wa.me/${PHONE}?text=Hi!%20Saya%20ingin%20Konsultasi%20Website...`;
-export const WA_EN =
-  `https://wa.me/${PHONE}?text=Hi!%20I'd%20like%20to%20talk%20about%20a%20website%20project...`;
+export const WA_ID = `https://wa.me/${PHONE}?text=${encodeURIComponent(S.waText_id)}`;
+export const WA_EN = `https://wa.me/${PHONE}?text=${encodeURIComponent(S.waText_en)}`;
 
 export const wa = (lang: Lang) => (lang === 'id' ? WA_ID : WA_EN);
 
@@ -53,18 +52,17 @@ export const UI = {
     loader: 'Memuat kejelasan',
     menuOpen: 'Buka menu',
     menuClose: '[ TUTUP ]',
-    navCta: 'Konsultasi Gratis',
-    mmCta: 'Konsultasi Gratis ↗',
+    navCta: S.navCta_id,
+    mmCta: `${S.navCta_id} ↗`,
     brandHome: 'Manganju Glory — beranda',
-    footerBlurb:
-      'Konsultan, desainer, dan developer website independen. Saya membuat website yang membuat bisnis lebih mudah dipahami.',
+    footerBlurb: S.footerBlurb_id,
     footerMenu: '/ Menu',
     footerContact: '/ Hubungi saya',
     footerWa: `WhatsApp — ${PHONE_DISPLAY_ID}`,
     footerEmail: EMAIL,
-    footerCta: 'Konsultasi Gratis ↗',
-    footerRights: '©2026 Manganju Glory Laurencius — Seluruh Hak Cipta.',
-    footerTag: 'Kejelasan sebelum palet warna.',
+    footerCta: `${S.navCta_id} ↗`,
+    footerRights: S.footerRights_id,
+    footerTag: S.footerTagline_id,
     mailtoSubject: 'Pertanyaan%20Proyek',
   },
   en: {
@@ -75,18 +73,17 @@ export const UI = {
     loader: 'Loading clarity',
     menuOpen: 'Open menu',
     menuClose: '[ CLOSE ]',
-    navCta: 'Free Consultation',
-    mmCta: 'Free Consultation ↗',
+    navCta: S.navCta_en,
+    mmCta: `${S.navCta_en} ↗`,
     brandHome: 'Manganju Glory — home',
-    footerBlurb:
-      'Independent website consultant, designer, and developer. I build websites that make businesses easier to understand.',
+    footerBlurb: S.footerBlurb_en,
     footerMenu: '/ Menu',
     footerContact: '/ Get in touch',
     footerWa: `WhatsApp — ${PHONE_DISPLAY_EN}`,
     footerEmail: EMAIL,
-    footerCta: 'Free Consultation ↗',
-    footerRights: '©2026 Manganju Glory Laurencius — All rights reserved.',
-    footerTag: 'Clarity before colour palettes.',
+    footerCta: `${S.navCta_en} ↗`,
+    footerRights: S.footerRights_en,
+    footerTag: S.footerTagline_en,
     mailtoSubject: 'Project%20enquiry',
   },
 } as const;

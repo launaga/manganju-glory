@@ -44,3 +44,119 @@ collections:
       - { label: "Deskripsi — Indonesia", name: desc_id, widget: text }
       - { label: "Deskripsi — English", name: desc_en, widget: text }
       - { label: "Slug studi kasus", name: caseStudy, widget: string, required: false, default: "", hint: "Kosongkan kalau proyek ini tidak punya halaman studi kasus." }
+
+  - name: pricing
+    label: Harga
+    description: Paket harga, faktor, yang tidak termasuk, dan FAQ (halaman Harga / Pricing).
+    files:
+      - name: pricing
+        label: Halaman Harga
+        file: src/data/pricing.json
+        format: json
+        fields:
+          - { label: "Eyebrow (ID)", name: eyebrow_id, widget: string }
+          - { label: "Eyebrow (EN)", name: eyebrow_en, widget: string }
+          - { label: "Judul H1 (ID)", name: h1_lead_id, widget: string }
+          - { label: "Judul H1 (EN)", name: h1_lead_en, widget: string }
+          - { label: "Judul H1 — bagian aksen (ID)", name: h1_accent_id, widget: string }
+          - { label: "Judul H1 — bagian aksen (EN)", name: h1_accent_en, widget: string }
+          - { label: "Intro (ID)", name: lead_id, widget: text }
+          - { label: "Intro (EN)", name: lead_en, widget: text }
+          - { label: "Paket — eyebrow (ID)", name: packagesEyebrow_id, widget: string }
+          - { label: "Paket — eyebrow (EN)", name: packagesEyebrow_en, widget: string }
+          - { label: "Paket — judul (ID)", name: packagesTitle_id, widget: string }
+          - { label: "Paket — judul (EN)", name: packagesTitle_en, widget: string }
+          - { label: "Paket — catatan (ID)", name: packagesNote_id, widget: text }
+          - { label: "Paket — catatan (EN)", name: packagesNote_en, widget: text }
+          - label: "Paket"
+            name: packages
+            widget: list
+            summary: "{{fields.name_id}}"
+            fields:
+              - { label: "Key (untuk tracking)", name: key, widget: string }
+              - { label: "Unggulan (featured)", name: featured, widget: boolean, default: false }
+              - { label: "Badge (ID)", name: badge_id, widget: string, required: false, default: "" }
+              - { label: "Badge (EN)", name: badge_en, widget: string, required: false, default: "" }
+              - { label: "Nama (ID)", name: name_id, widget: string }
+              - { label: "Nama (EN)", name: name_en, widget: string }
+              - { label: "Harga (ID)", name: price_id, widget: string }
+              - { label: "Harga (EN)", name: price_en, widget: string }
+              - { label: "Meta/timeline (ID)", name: meta_id, widget: string }
+              - { label: "Meta/timeline (EN)", name: meta_en, widget: string }
+              - { label: "Fitur (ID)", name: features_id, widget: list, field: { label: Fitur, name: item, widget: string } }
+              - { label: "Fitur (EN)", name: features_en, widget: list, field: { label: Feature, name: item, widget: string } }
+              - { label: "Teks tombol (ID)", name: cta_id, widget: string }
+              - { label: "Teks tombol (EN)", name: cta_en, widget: string }
+              - { label: "Pesan WhatsApp (ID)", name: wa_id, widget: text }
+              - { label: "Pesan WhatsApp (EN)", name: wa_en, widget: text }
+          - { label: "Faktor — eyebrow (ID)", name: factorsEyebrow_id, widget: string }
+          - { label: "Faktor — eyebrow (EN)", name: factorsEyebrow_en, widget: string }
+          - { label: "Faktor — judul (ID)", name: factorsTitle_id, widget: string }
+          - { label: "Faktor — judul (EN)", name: factorsTitle_en, widget: string }
+          - { label: "Faktor — intro (ID)", name: factorsLead_id, widget: text }
+          - { label: "Faktor — intro (EN)", name: factorsLead_en, widget: text }
+          - label: "Faktor penentu harga"
+            name: factors
+            widget: list
+            summary: "{{fields.title_id}}"
+            fields:
+              - { label: "Judul (ID)", name: title_id, widget: string }
+              - { label: "Judul (EN)", name: title_en, widget: string }
+              - { label: "Deskripsi (ID)", name: desc_id, widget: text }
+              - { label: "Deskripsi (EN)", name: desc_en, widget: text }
+          - { label: "Tidak termasuk — eyebrow (ID)", name: notIncludedEyebrow_id, widget: string }
+          - { label: "Tidak termasuk — eyebrow (EN)", name: notIncludedEyebrow_en, widget: string }
+          - { label: "Tidak termasuk — judul (ID)", name: notIncludedTitle_id, widget: string }
+          - { label: "Tidak termasuk — judul (EN)", name: notIncludedTitle_en, widget: string }
+          - { label: "Tidak termasuk — intro (ID)", name: notIncludedLead_id, widget: text }
+          - { label: "Tidak termasuk — intro (EN)", name: notIncludedLead_en, widget: text }
+          - label: "Yang tidak termasuk"
+            name: notIncluded
+            widget: list
+            summary: "{{fields.title_id}}"
+            fields:
+              - { label: "Judul (ID)", name: title_id, widget: string }
+              - { label: "Judul (EN)", name: title_en, widget: string }
+              - { label: "Deskripsi (ID)", name: desc_id, widget: text }
+              - { label: "Deskripsi (EN)", name: desc_en, widget: text }
+          - { label: "FAQ — eyebrow (ID)", name: faqEyebrow_id, widget: string }
+          - { label: "FAQ — eyebrow (EN)", name: faqEyebrow_en, widget: string }
+          - { label: "FAQ — judul (ID)", name: faqTitle_id, widget: string }
+          - { label: "FAQ — judul (EN)", name: faqTitle_en, widget: string }
+          - label: "FAQ"
+            name: faq
+            widget: list
+            summary: "{{fields.q_id}}"
+            fields:
+              - { label: "Pertanyaan (ID)", name: q_id, widget: string }
+              - { label: "Pertanyaan (EN)", name: q_en, widget: string }
+              - { label: "Jawaban (ID)", name: a_id, widget: text }
+              - { label: "Jawaban (EN)", name: a_en, widget: text }
+          - { label: "CTA — judul (ID)", name: ctaTitle_id, widget: string }
+          - { label: "CTA — judul (EN)", name: ctaTitle_en, widget: string }
+          - { label: "CTA — pesan WA (ID)", name: ctaWa_id, widget: text }
+          - { label: "CTA — pesan WA (EN)", name: ctaWa_en, widget: text }
+
+  - name: settings
+    label: Pengaturan Global
+    description: Kontak, tombol CTA, dan teks footer yang dipakai di semua halaman.
+    files:
+      - name: settings
+        label: Global (kontak & footer)
+        file: src/data/settings.json
+        format: json
+        fields:
+          - { label: "Nomor WhatsApp (angka, tanpa +)", name: phone, widget: string, hint: "Contoh: 6285927277560" }
+          - { label: "Tampilan nomor (ID)", name: phoneDisplayId, widget: string }
+          - { label: "Tampilan nomor (EN)", name: phoneDisplayEn, widget: string }
+          - { label: "Email", name: email, widget: string }
+          - { label: "Pesan WhatsApp default (ID)", name: waText_id, widget: text }
+          - { label: "Pesan WhatsApp default (EN)", name: waText_en, widget: text }
+          - { label: "Teks tombol CTA (ID)", name: navCta_id, widget: string }
+          - { label: "Teks tombol CTA (EN)", name: navCta_en, widget: string }
+          - { label: "Blurb footer (ID)", name: footerBlurb_id, widget: text }
+          - { label: "Blurb footer (EN)", name: footerBlurb_en, widget: text }
+          - { label: "Tagline footer (ID)", name: footerTagline_id, widget: string }
+          - { label: "Tagline footer (EN)", name: footerTagline_en, widget: string }
+          - { label: "Hak cipta (ID)", name: footerRights_id, widget: string }
+          - { label: "Hak cipta (EN)", name: footerRights_en, widget: string }
