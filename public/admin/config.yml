@@ -177,6 +177,118 @@ collections:
               - { label: "Deskripsi (ID)", name: desc_id, widget: text }
               - { label: "Deskripsi (EN)", name: desc_en, widget: text }
 
+  - name: pages
+    label: Halaman
+    description: Isi tiap section per halaman (teks, judul, daftar). Bertambah seiring waktu.
+    files:
+      - name: home
+        label: Beranda / Home
+        file: src/data/home.json
+        format: json
+        fields:
+          - { label: "Hero — eyebrow (ID)", name: hero_eyebrow_id, widget: string }
+          - { label: "Hero — eyebrow (EN)", name: hero_eyebrow_en, widget: string }
+          - { label: "Hero — judul baris 1 (ID)", name: hero_h1a_id, widget: string }
+          - { label: "Hero — judul baris 1 (EN)", name: hero_h1a_en, widget: string }
+          - { label: "Hero — judul baris 2 (ID)", name: hero_h1b_id, widget: string }
+          - { label: "Hero — judul baris 2 (EN)", name: hero_h1b_en, widget: string }
+          - { label: "Hero — judul baris 3 / aksen (ID)", name: hero_h1c_id, widget: string }
+          - { label: "Hero — judul baris 3 / aksen (EN)", name: hero_h1c_en, widget: string }
+          - { label: "Hero — subjudul (ID)", name: hero_sub_id, widget: string }
+          - { label: "Hero — subjudul (EN)", name: hero_sub_en, widget: string }
+          - { label: "Hero — paragraf, sebelum highlight (ID)", name: hero_leadBefore_id, widget: text }
+          - { label: "Hero — paragraf, sebelum highlight (EN)", name: hero_leadBefore_en, widget: text }
+          - { label: "Hero — kata highlight (ID)", name: hero_leadMark_id, widget: string }
+          - { label: "Hero — kata highlight (EN)", name: hero_leadMark_en, widget: string }
+          - { label: "Hero — paragraf, sesudah highlight (ID)", name: hero_leadAfter_id, widget: text }
+          - { label: "Hero — paragraf, sesudah highlight (EN)", name: hero_leadAfter_en, widget: text }
+          - { label: "Hero — teks tombol (ID)", name: hero_cta_id, widget: string }
+          - { label: "Hero — teks tombol (EN)", name: hero_cta_en, widget: string }
+          - { label: "Hero — alt foto (ID)", name: hero_photoAlt_id, widget: string }
+          - { label: "Hero — alt foto (EN)", name: hero_photoAlt_en, widget: string }
+          - { label: "Marquee tools (ID)", name: marqueeTools_id, widget: list, field: { label: Item, name: item, widget: string } }
+          - { label: "Marquee tools (EN)", name: marqueeTools_en, widget: list, field: { label: Item, name: item, widget: string } }
+          - { label: "Sudut Pandang — eyebrow (ID)", name: angle_eyebrow_id, widget: string }
+          - { label: "Sudut Pandang — eyebrow (EN)", name: angle_eyebrow_en, widget: string }
+          - { label: "Sudut Pandang — judul, sebelum aksen (ID)", name: angle_bigBefore_id, widget: string }
+          - { label: "Sudut Pandang — judul, sebelum aksen (EN)", name: angle_bigBefore_en, widget: string }
+          - { label: "Sudut Pandang — judul, aksen (ID)", name: angle_bigAccent_id, widget: string }
+          - { label: "Sudut Pandang — judul, aksen (EN)", name: angle_bigAccent_en, widget: string }
+          - { label: "Sudut Pandang — paragraf 1 (ID)", name: angle_p1_id, widget: text }
+          - { label: "Sudut Pandang — paragraf 1 (EN)", name: angle_p1_en, widget: text }
+          - { label: "Sudut Pandang — paragraf 2 (ID)", name: angle_p2_id, widget: text }
+          - { label: "Sudut Pandang — paragraf 2 (EN)", name: angle_p2_en, widget: text }
+          - { label: "Sudut Pandang — penutup, sebelum highlight (ID)", name: angle_closeBefore_id, widget: text }
+          - { label: "Sudut Pandang — penutup, sebelum highlight (EN)", name: angle_closeBefore_en, widget: text }
+          - { label: "Sudut Pandang — penutup, highlight (ID)", name: angle_closeMark_id, widget: string }
+          - { label: "Sudut Pandang — penutup, highlight (EN)", name: angle_closeMark_en, widget: string }
+          - { label: "Keahlian — eyebrow (ID)", name: exp_eyebrow_id, widget: string }
+          - { label: "Keahlian — eyebrow (EN)", name: exp_eyebrow_en, widget: string }
+          - { label: "Keahlian — judul (ID)", name: exp_title_id, widget: string }
+          - { label: "Keahlian — judul (EN)", name: exp_title_en, widget: string }
+          - label: "Keahlian — kolom"
+            name: exp_cols
+            widget: list
+            summary: "{{fields.h_id}}"
+            fields:
+              - { label: "Label (ID)", name: n_id, widget: string }
+              - { label: "Label (EN)", name: n_en, widget: string }
+              - { label: "Judul (ID)", name: h_id, widget: string }
+              - { label: "Judul (EN)", name: h_en, widget: string }
+              - { label: "Deskripsi (ID)", name: p_id, widget: text }
+              - { label: "Deskripsi (EN)", name: p_en, widget: text }
+              - { label: "Tags (ID)", name: tags_id, widget: list, field: { label: Tag, name: item, widget: string } }
+              - { label: "Tags (EN)", name: tags_en, widget: list, field: { label: Tag, name: item, widget: string } }
+          - { label: "Teaser Tentang — eyebrow (ID)", name: about_eyebrow_id, widget: string }
+          - { label: "Teaser Tentang — eyebrow (EN)", name: about_eyebrow_en, widget: string }
+          - { label: "Teaser Tentang — judul, sebelum aksen (ID)", name: about_h2Before_id, widget: text }
+          - { label: "Teaser Tentang — judul, sebelum aksen (EN)", name: about_h2Before_en, widget: text }
+          - { label: "Teaser Tentang — judul, aksen (ID)", name: about_h2Accent_id, widget: string }
+          - { label: "Teaser Tentang — judul, aksen (EN)", name: about_h2Accent_en, widget: string }
+          - { label: "Teaser Tentang — paragraf (ID)", name: about_lead_id, widget: text }
+          - { label: "Teaser Tentang — paragraf (EN)", name: about_lead_en, widget: text }
+          - { label: "Teaser Tentang — teks tombol (ID)", name: about_btn_id, widget: string }
+          - { label: "Teaser Tentang — teks tombol (EN)", name: about_btn_en, widget: string }
+          - { label: "Layanan — eyebrow (ID)", name: svc_eyebrow_id, widget: string }
+          - { label: "Layanan — eyebrow (EN)", name: svc_eyebrow_en, widget: string }
+          - { label: "Layanan — judul (ID)", name: svc_title_id, widget: string }
+          - { label: "Layanan — judul (EN)", name: svc_title_en, widget: string }
+          - { label: "Layanan — label 'paling cocok' (ID)", name: svc_bestLabel_id, widget: string }
+          - { label: "Layanan — label 'paling cocok' (EN)", name: svc_bestLabel_en, widget: string }
+          - label: "Layanan — baris"
+            name: svc_rows
+            widget: list
+            summary: "{{fields.h_id}}"
+            fields:
+              - { label: "Ikon (mis. *, **, ***)", name: ico, widget: string }
+              - { label: "Judul (ID)", name: h_id, widget: string }
+              - { label: "Judul (EN)", name: h_en, widget: string }
+              - { label: "Deskripsi (ID)", name: p_id, widget: text }
+              - { label: "Deskripsi (EN)", name: p_en, widget: text }
+              - { label: "Paling cocok untuk (ID)", name: best_id, widget: text }
+              - { label: "Paling cocok untuk (EN)", name: best_en, widget: text }
+          - { label: "Proses — eyebrow (ID)", name: proc_eyebrow_id, widget: string }
+          - { label: "Proses — eyebrow (EN)", name: proc_eyebrow_en, widget: string }
+          - { label: "Proses — judul (ID)", name: proc_title_id, widget: string }
+          - { label: "Proses — judul (EN)", name: proc_title_en, widget: string }
+          - { label: "Proses — intro (ID)", name: proc_lead_id, widget: text }
+          - { label: "Proses — intro (EN)", name: proc_lead_en, widget: text }
+          - label: "Proses — langkah"
+            name: proc_steps
+            widget: list
+            summary: "{{fields.h_id}}"
+            fields:
+              - { label: "Judul (ID)", name: h_id, widget: string }
+              - { label: "Judul (EN)", name: h_en, widget: string }
+              - { label: "Deskripsi (ID)", name: p_id, widget: text }
+              - { label: "Deskripsi (EN)", name: p_en, widget: text }
+          - { label: "Marquee bawah (ID)", name: marqueeAccent_id, widget: list, field: { label: Item, name: item, widget: string } }
+          - { label: "Marquee bawah (EN)", name: marqueeAccent_en, widget: list, field: { label: Item, name: item, widget: string } }
+          - { label: "CTA — judul (ID)", name: cta_title_id, widget: string }
+          - { label: "CTA — judul (EN)", name: cta_title_en, widget: string }
+          - { label: "CTA — teks tombol (ID)", name: cta_btn_id, widget: string }
+          - { label: "CTA — teks tombol (EN)", name: cta_btn_en, widget: string }
+
   - name: seo
     label: SEO per Halaman
     description: Judul, deskripsi, dan gambar OG tiap halaman (untuk Google & share sosial).
