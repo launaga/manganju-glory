@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import seo from '../data/seo/services.json';
 
 const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
 const waHero = "https://wa.me/6285927277560?text=Hi!%20Saya%20ingin%20diskusi%20layanan%20mana%20yang%20cocok%20untuk%20kebutuhan%20saya...";
@@ -16,8 +17,9 @@ const breadcrumb = {
 
 <Base
   lang="id"
-  title="Jasa Pembuatan Website Profesional | MGL"
-  description="Jasa pembuatan website: company profile, e-commerce, landing page, WordPress, dan pendampingan jangka panjang. Mulai dari strategi, bukan template."
+  title={seo.title_id}
+  description={seo.desc_id}
+  image={seo.ogImage}
   idPath="/layanan"
   enPath="/en/services"
   extraSchema={[breadcrumb]}

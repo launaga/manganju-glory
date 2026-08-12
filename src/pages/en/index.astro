@@ -2,12 +2,14 @@
 import Base from '../../layouts/Base.astro';
 import StatsBlock from '../../components/StatsBlock.astro';
 import { WA_EN } from '../../data/site';
+import seo from '../../data/seo/home.json';
 ---
 
 <Base
   lang="en"
-  title="Website Consultant in Indonesia — Manganju Glory"
-  description="Independent website consultant in Indonesia. I build websites that make businesses easier to understand — strategy first, not colour palettes."
+  title={seo.title_en}
+  description={seo.desc_en}
+  image={seo.ogImage}
   idPath="/"
   enPath="/en"
 >

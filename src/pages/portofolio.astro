@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import seo from '../data/seo/work.json';
 
 const all = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 const featured = all.filter((p) => p.data.featured);
@@ -18,8 +19,9 @@ const collectionSchema = {
 
 <Base
   lang="id"
-  title="Portofolio Website WordPress & Wix | MGL"
-  description="Proyek website WordPress, Wix Studio, dan aplikasi web untuk NGO, agensi, dan bisnis — lengkap dengan konteks di balik setiap keputusannya."
+  title={seo.title_id}
+  description={seo.desc_id}
+  image={seo.ogImage}
   idPath="/portofolio"
   enPath="/en/work"
   extraSchema={[collectionSchema]}

@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import seo from '../../data/seo/design-system.json';
 
 const breadcrumb = {
   '@type': 'BreadcrumbList',
@@ -13,8 +14,9 @@ const waSystem = "https://wa.me/6285927277560?text=Hi!%20I'm%20interested%20in%2
 
 <Base
   lang="en"
-  title="Design System — The Rules Behind the Website | MGL"
-  description="A website is a system, not a stack of pages. The colour tokens, typography, components, motion, grid, and accessibility I bring to every project."
+  title={seo.title_en}
+  description={seo.desc_en}
+  image={seo.ogImage}
   idPath="/sistem-desain"
   enPath="/en/design-system"
   extraSchema={[breadcrumb]}

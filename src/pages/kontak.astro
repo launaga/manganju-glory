@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { WA_ID, EMAIL } from '../data/site';
+import seo from '../data/seo/contact.json';
 
 const breadcrumb = {
   '@type': 'BreadcrumbList',
@@ -13,8 +14,9 @@ const breadcrumb = {
 
 <Base
   lang="id"
-  title="Kontak — Konsultasi Website Gratis | MGL"
-  description="Konsultasi gratis via WhatsApp. Ceritakan apa yang sedang Anda bangun dan apa yang menghambat — saya akan jujur menilai apakah saya orang yang tepat."
+  title={seo.title_id}
+  description={seo.desc_id}
+  image={seo.ogImage}
   idPath="/kontak"
   enPath="/en/contact"
   extraSchema={[breadcrumb]}

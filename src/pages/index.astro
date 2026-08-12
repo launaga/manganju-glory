@@ -2,12 +2,14 @@
 import Base from '../layouts/Base.astro';
 import StatsBlock from '../components/StatsBlock.astro';
 import { WA_ID } from '../data/site';
+import seo from '../data/seo/home.json';
 ---
 
 <Base
   lang="id"
-  title="Konsultan Website Indonesia — Manganju Glory"
-  description="Konsultan website independen di Indonesia. Saya membuat website yang membuat bisnis lebih mudah dipahami — strategi dulu, bukan palet warna."
+  title={seo.title_id}
+  description={seo.desc_id}
+  image={seo.ogImage}
   idPath="/"
   enPath="/en"
 >

@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import PricingBody from '../components/PricingBody.astro';
 import pricing from '../data/pricing.json';
+import seo from '../data/seo/pricing.json';
 
 const extraSchema = [
   {
@@ -24,8 +25,9 @@ const extraSchema = [
 
 <Base
   lang="id"
-  title="Harga Pembuatan Website — Paket & Biaya | MGL"
-  description="Harga pembuatan website mulai Rp5.000.000. Paket company profile, e-commerce, dan custom — lengkap dengan apa yang tidak termasuk."
+  title={seo.title_id}
+  description={seo.desc_id}
+  image={seo.ogImage}
   idPath="/harga"
   enPath="/en/pricing"
   extraSchema={extraSchema}

@@ -177,6 +177,24 @@ collections:
               - { label: "Deskripsi (ID)", name: desc_id, widget: text }
               - { label: "Deskripsi (EN)", name: desc_en, widget: text }
 
+  - name: seo
+    label: SEO per Halaman
+    description: Judul, deskripsi, dan gambar OG tiap halaman (untuk Google & share sosial).
+    files:
+      - { name: home, label: "SEO — Beranda / Home", file: src/data/seo/home.json, format: json, fields: &seofields [
+          { label: "Judul (ID)", name: title_id, widget: string, hint: "Muncul di tab browser & hasil Google. Idealnya 50–60 karakter." },
+          { label: "Judul (EN)", name: title_en, widget: string },
+          { label: "Deskripsi (ID)", name: desc_id, widget: text, hint: "Ringkasan di hasil Google. Idealnya 140–160 karakter." },
+          { label: "Deskripsi (EN)", name: desc_en, widget: text },
+          { label: "Gambar OG (share sosial)", name: ogImage, widget: image, required: false, hint: "1200×630px. Kosongkan untuk pakai default." },
+        ] }
+      - { name: about, label: "SEO — Tentang / About", file: src/data/seo/about.json, format: json, fields: *seofields }
+      - { name: services, label: "SEO — Layanan / Services", file: src/data/seo/services.json, format: json, fields: *seofields }
+      - { name: pricing, label: "SEO — Harga / Pricing", file: src/data/seo/pricing.json, format: json, fields: *seofields }
+      - { name: work, label: "SEO — Portofolio / Work", file: src/data/seo/work.json, format: json, fields: *seofields }
+      - { name: design-system, label: "SEO — Sistem Desain", file: src/data/seo/design-system.json, format: json, fields: *seofields }
+      - { name: contact, label: "SEO — Kontak / Contact", file: src/data/seo/contact.json, format: json, fields: *seofields }
+
   - name: settings
     label: Pengaturan Global
     description: Kontak, tombol CTA, dan teks footer yang dipakai di semua halaman.

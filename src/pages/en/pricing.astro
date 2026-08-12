@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import PricingBody from '../../components/PricingBody.astro';
 import pricing from '../../data/pricing.json';
+import seo from '../../data/seo/pricing.json';
 
 const extraSchema = [
   {
@@ -24,8 +25,9 @@ const extraSchema = [
 
 <Base
   lang="en"
-  title="Website Pricing — Packages & Costs | MGL"
-  description="Website pricing from Rp5,000,000. Company profile, e-commerce, and custom packages — including what's not included."
+  title={seo.title_en}
+  description={seo.desc_en}
+  image={seo.ogImage}
   idPath="/harga"
   enPath="/en/pricing"
   extraSchema={extraSchema}

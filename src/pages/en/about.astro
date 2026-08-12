@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import StatsBlock from '../../components/StatsBlock.astro';
+import seo from '../../data/seo/about.json';
 
 const breadcrumb = {
   '@type': 'BreadcrumbList',
@@ -14,8 +15,9 @@ const waAbout = "https://wa.me/6285927277560?text=Hi!%20I%20read%20your%20about%
 
 <Base
   lang="en"
-  title="About — Independent Website Consultant | MGL"
-  description="Building websites is what I do; understanding the problem is why. How an independent website consultant with 6+ years of international work operates."
+  title={seo.title_en}
+  description={seo.desc_en}
+  image={seo.ogImage}
   idPath="/tentang"
   enPath="/en/about"
   extraSchema={[breadcrumb]}

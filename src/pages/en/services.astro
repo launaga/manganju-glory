@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import seo from '../../data/seo/services.json';
 
 const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
 const waHero = "https://wa.me/6285927277560?text=Hi!%20I'd%20like%20to%20discuss%20which%20service%20fits%20my%20needs...";
@@ -16,8 +17,9 @@ const breadcrumb = {
 
 <Base
   lang="en"
-  title="Professional Website Services | MGL"
-  description="Website services: company profile, e-commerce, landing page, WordPress, and long-term partnership. Starting from strategy, not a template."
+  title={seo.title_en}
+  description={seo.desc_en}
+  image={seo.ogImage}
   idPath="/layanan"
   enPath="/en/services"
   extraSchema={[breadcrumb]}
