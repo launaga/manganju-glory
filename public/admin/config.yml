@@ -289,6 +289,131 @@ collections:
           - { label: "CTA — teks tombol (ID)", name: cta_btn_id, widget: string }
           - { label: "CTA — teks tombol (EN)", name: cta_btn_en, widget: string }
 
+      - name: about
+        label: Tentang / About
+        file: src/data/about.json
+        format: json
+        fields:
+          - { label: "Hero — eyebrow (ID)", name: hero_eyebrow_id, widget: string }
+          - { label: "Hero — eyebrow (EN)", name: hero_eyebrow_en, widget: string }
+          - { label: "Hero — judul depan (ID)", name: hero_h1Before_id, widget: text }
+          - { label: "Hero — judul depan (EN)", name: hero_h1Before_en, widget: text }
+          - { label: "Hero — judul aksen (ID)", name: hero_h1Accent_id, widget: string }
+          - { label: "Hero — judul aksen (EN)", name: hero_h1Accent_en, widget: string }
+          - { label: "Hero — intro (ID)", name: hero_lead_id, widget: text }
+          - { label: "Hero — intro (EN)", name: hero_lead_en, widget: text }
+          - { label: "Hero — alt foto (ID)", name: hero_photoAlt_id, widget: string }
+          - { label: "Hero — alt foto (EN)", name: hero_photoAlt_en, widget: string }
+          - { label: "Cerita — eyebrow (ID)", name: story_eyebrow_id, widget: string }
+          - { label: "Cerita — eyebrow (EN)", name: story_eyebrow_en, widget: string }
+          - { label: "Cerita — judul (ID)", name: story_title_id, widget: string }
+          - { label: "Cerita — judul (EN)", name: story_title_en, widget: string }
+          - { label: "Label 'baca studi kasus' (ID)", name: story_readCaseLabel_id, widget: string }
+          - { label: "Label 'baca studi kasus' (EN)", name: story_readCaseLabel_en, widget: string }
+          - label: "Cerita — paragraf"
+            name: story_paragraphs
+            widget: list
+            summary: "{{fields.text_id}}"
+            fields:
+              - { label: "Kutipan besar (pull)?", name: pull, widget: boolean, default: false }
+              - { label: "Slug studi kasus (opsional)", name: link, widget: string, required: false, default: "", hint: "mis. jakarta-feminist — menambah link ke studi kasus." }
+              - { label: "Teks (ID)", name: text_id, widget: text }
+              - { label: "Teks (EN)", name: text_en, widget: text }
+          - { label: "Marquee (ID)", name: marquee_id, widget: list, field: { label: Teks, name: t, widget: string } }
+          - { label: "Marquee (EN)", name: marquee_en, widget: list, field: { label: Text, name: t, widget: string } }
+          - { label: "Prinsip — eyebrow (ID)", name: prin_eyebrow_id, widget: string }
+          - { label: "Prinsip — eyebrow (EN)", name: prin_eyebrow_en, widget: string }
+          - { label: "Prinsip — judul (ID)", name: prin_title_id, widget: string }
+          - { label: "Prinsip — judul (EN)", name: prin_title_en, widget: string }
+          - label: "Prinsip"
+            name: prin_items
+            widget: list
+            summary: "{{fields.h_id}}"
+            fields:
+              - { label: "Nomor", name: pn, widget: string }
+              - { label: "Judul (ID)", name: h_id, widget: string }
+              - { label: "Judul (EN)", name: h_en, widget: string }
+              - { label: "Deskripsi (ID)", name: p_id, widget: text }
+              - { label: "Deskripsi (EN)", name: p_en, widget: text }
+          - { label: "Keahlian — eyebrow (ID)", name: chips_eyebrow_id, widget: string }
+          - { label: "Keahlian — eyebrow (EN)", name: chips_eyebrow_en, widget: string }
+          - { label: "Keahlian — judul (ID)", name: chips_title_id, widget: string }
+          - { label: "Keahlian — judul (EN)", name: chips_title_en, widget: string }
+          - label: "Bidang keahlian"
+            name: chips
+            widget: list
+            summary: "{{fields.h_id}}"
+            fields:
+              - { label: "Judul (ID)", name: h_id, widget: string }
+              - { label: "Judul (EN)", name: h_en, widget: string }
+              - { label: "Deskripsi (ID)", name: p_id, widget: text }
+              - { label: "Deskripsi (EN)", name: p_en, widget: text }
+          - { label: "Batasan — eyebrow (ID)", name: bound_eyebrow_id, widget: string }
+          - { label: "Batasan — eyebrow (EN)", name: bound_eyebrow_en, widget: string }
+          - { label: "Batasan — judul baris 1 (ID)", name: bound_titleA_id, widget: string }
+          - { label: "Batasan — judul baris 1 (EN)", name: bound_titleA_en, widget: string }
+          - { label: "Batasan — judul baris 2 (ID)", name: bound_titleB_id, widget: string }
+          - { label: "Batasan — judul baris 2 (EN)", name: bound_titleB_en, widget: string }
+          - label: "Yang tidak dikerjakan"
+            name: bound_items
+            widget: list
+            summary: "{{fields.h_id}}"
+            fields:
+              - { label: "Judul (ID)", name: h_id, widget: string }
+              - { label: "Judul (EN)", name: h_en, widget: string }
+              - { label: "Deskripsi (ID)", name: p_id, widget: text }
+              - { label: "Deskripsi (EN)", name: p_en, widget: text }
+          - { label: "Batasan — penutup (ID)", name: bound_closeBefore_id, widget: text }
+          - { label: "Batasan — penutup (EN)", name: bound_closeBefore_en, widget: text }
+          - { label: "Batasan — penutup ditandai (ID)", name: bound_closeMark_id, widget: string }
+          - { label: "Batasan — penutup ditandai (EN)", name: bound_closeMark_en, widget: string }
+          - { label: "CTA — judul (ID)", name: cta_title_id, widget: string }
+          - { label: "CTA — judul (EN)", name: cta_title_en, widget: string }
+          - { label: "CTA — tombol (ID)", name: cta_btn_id, widget: string }
+          - { label: "CTA — tombol (EN)", name: cta_btn_en, widget: string }
+          - { label: "CTA — pesan WA (ID)", name: cta_wa_id, widget: text }
+          - { label: "CTA — pesan WA (EN)", name: cta_wa_en, widget: text }
+
+      - name: contact
+        label: Kontak / Contact
+        file: src/data/contact.json
+        format: json
+        fields:
+          - { label: "Hero — eyebrow (ID)", name: hero_eyebrow_id, widget: string }
+          - { label: "Hero — eyebrow (EN)", name: hero_eyebrow_en, widget: string }
+          - { label: "Hero — judul (ID)", name: hero_h1Before_id, widget: string }
+          - { label: "Hero — judul (EN)", name: hero_h1Before_en, widget: string }
+          - { label: "Hero — judul aksen (ID)", name: hero_h1Accent_id, widget: string }
+          - { label: "Hero — judul aksen (EN)", name: hero_h1Accent_en, widget: string }
+          - { label: "Hero — intro (ID)", name: hero_lead_id, widget: text }
+          - { label: "Hero — intro (EN)", name: hero_lead_en, widget: text }
+          - { label: "Kolom kiri — eyebrow (ID)", name: direct_eyebrow_id, widget: string }
+          - { label: "Kolom kiri — eyebrow (EN)", name: direct_eyebrow_en, widget: string }
+          - { label: "Kolom kiri — judul (ID)", name: direct_heading_id, widget: string }
+          - { label: "Kolom kiri — judul (EN)", name: direct_heading_en, widget: string }
+          - { label: "Kolom kiri — paragraf (ID)", name: direct_muted_id, widget: text }
+          - { label: "Kolom kiri — paragraf (EN)", name: direct_muted_en, widget: text }
+          - { label: "Tombol (ID)", name: direct_btn_id, widget: string }
+          - { label: "Tombol (EN)", name: direct_btn_en, widget: string }
+          - { label: "Teks 'lebih suka email' (ID)", name: direct_emailPrefix_id, widget: string }
+          - { label: "Teks 'lebih suka email' (EN)", name: direct_emailPrefix_en, widget: string }
+          - { label: "Form — eyebrow (ID)", name: form_eyebrow_id, widget: string }
+          - { label: "Form — eyebrow (EN)", name: form_eyebrow_en, widget: string }
+          - { label: "Label 'Nama' (ID)", name: form_label_name_id, widget: string }
+          - { label: "Label 'Nama' (EN)", name: form_label_name_en, widget: string }
+          - { label: "Label 'Email' (ID)", name: form_label_email_id, widget: string }
+          - { label: "Label 'Email' (EN)", name: form_label_email_en, widget: string }
+          - { label: "Label pesan (ID)", name: form_label_msg_id, widget: string }
+          - { label: "Label pesan (EN)", name: form_label_msg_en, widget: string }
+          - { label: "Judul lampiran (ID)", name: form_attachTitle_id, widget: string }
+          - { label: "Judul lampiran (EN)", name: form_attachTitle_en, widget: string }
+          - { label: "Tombol pilih file (ID)", name: form_fileBtn_id, widget: string }
+          - { label: "Tombol pilih file (EN)", name: form_fileBtn_en, widget: string }
+          - { label: "Petunjuk file (ID)", name: form_fileHint_id, widget: string }
+          - { label: "Petunjuk file (EN)", name: form_fileHint_en, widget: string }
+          - { label: "Tombol submit (ID)", name: form_submit_id, widget: string }
+          - { label: "Tombol submit (EN)", name: form_submit_en, widget: string }
+
   - name: seo
     label: SEO per Halaman
     description: Judul, deskripsi, dan gambar OG tiap halaman (untuk Google & share sosial).

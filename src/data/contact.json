@@ -1,0 +1,21 @@
+{
+  "hero_eyebrow_id": "// Kontak", "hero_eyebrow_en": "// Contact",
+  "hero_h1Before_id": "Tertarik bekerja", "hero_h1Before_en": "Interested in working",
+  "hero_h1Accent_id": "sama?", "hero_h1Accent_en": "together?",
+  "hero_lead_id": "Tanpa formulir berisi dua belas kolom wajib. Ceritakan apa yang sedang Anda bangun dan apa yang menghambatnya — saya akan menilai dengan jujur apakah saya orang yang tepat.",
+  "hero_lead_en": "No form with twelve required fields. Tell me what you're building and what's holding it back — I'll give an honest read on whether I'm the right person.",
+  "direct_eyebrow_id": "/ Cara tercepat", "direct_eyebrow_en": "/ Fastest way",
+  "direct_heading_id": "Kontak Saya", "direct_heading_en": "Contact Me",
+  "direct_muted_id": "Konsultasi awal gratis. Ceritakan bisnis Anda, linimasa yang diinginkan, dan masalah yang ingin diselesaikan — semakin banyak konteks, semakin berguna jawaban pertama saya. Biasanya saya balas di hari yang sama.",
+  "direct_muted_en": "Free initial consultation. Tell me about your business, your desired timeline, and the problem you want to solve — the more context, the more useful my first reply. I usually respond the same day.",
+  "direct_btn_id": "Konsultasi Gratis", "direct_btn_en": "Free Consultation",
+  "direct_emailPrefix_id": "Lebih suka email?", "direct_emailPrefix_en": "Prefer email?",
+  "form_eyebrow_id": "/ Atau kirim brief", "form_eyebrow_en": "/ Or send a brief",
+  "form_label_name_id": "Nama Anda", "form_label_name_en": "Your name",
+  "form_label_email_id": "Email", "form_label_email_en": "Email",
+  "form_label_msg_id": "Apa yang ingin Anda selesaikan?", "form_label_msg_en": "What do you want to solve?",
+  "form_attachTitle_id": "Lampiran (opsional)", "form_attachTitle_en": "Attachment (optional)",
+  "form_fileBtn_id": "Pilih file", "form_fileBtn_en": "Choose file",
+  "form_fileHint_id": "PDF, DOC, gambar, atau ZIP — maks. 3 file, total 3 MB.", "form_fileHint_en": "PDF, DOC, images, or ZIP — max. 3 files, 3 MB total.",
+  "form_submit_id": "Kirim brief", "form_submit_en": "Send brief"
+}

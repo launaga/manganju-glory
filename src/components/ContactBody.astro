@@ -1,0 +1,51 @@
+---
+import contact from '../data/contact.json';
+import { wa, EMAIL, UI, type Lang } from '../data/site';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const L = lang;
+const d = contact as Record<string, any>;
+const f = (k: string) => d[`${k}_${L}`];
+const pagePath = lang === 'id' ? '/kontak' : '/en/contact';
+const mailSubject = UI[lang].mailtoSubject;
+---
+
+<main id="page-contact" class="page">
+  <section class="hero wrap contact-hero" style="padding-top:clamp(120px,16vh,180px)">
+    <div class="shead reveal"><div class="label"><span class="eyebrow">{f('hero_eyebrow')}</span><span class="folio">01</span></div></div>
+    <h1 class="h1 reveal d1" style="max-width:14ch">{f('hero_h1Before')} <span class="u-accent">{f('hero_h1Accent')}</span></h1>
+    <p class="lead reveal d2" style="margin-top:20px">{f('hero_lead')}</p>
+  </section>
+  <section class="pad wrap">
+    <div class="contact-grid">
+      <div class="contact-direct reveal">
+        <span class="eyebrow no-tick" style="margin-bottom:18px;display:block">{f('direct_eyebrow')}</span>
+        <span class="email">{f('direct_heading')}</span>
+        <p class="muted" style="margin-top:28px;max-width:46ch">{f('direct_muted')}</p>
+        <div style="margin-top:34px"><a href={wa(lang)} class="btn" target="_blank" rel="noopener" data-wa="hero" data-page={pagePath}>
+          {f('direct_btn')}<span class="arr">↗</span>
+        </a></div>
+        <p class="muted" style="margin-top:34px;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em">{f('direct_emailPrefix')} <a href={`mailto:${EMAIL}?subject=${mailSubject}`} class="u-accent">{EMAIL}</a></p>
+      </div>
+      <div class="contact-form reveal d1">
+        <span class="eyebrow no-tick" style="margin-bottom:18px;display:block">{f('form_eyebrow')}</span>
+        <form id="contactForm" novalidate>
+          <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true"><label for="cf-company">Company</label><input id="cf-company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
+          <div class="form-field"><label for="cf-name">{f('form_label_name')}</label><input id="cf-name" name="name" type="text" autocomplete="name" required></div>
+          <div class="form-field"><label for="cf-email">{f('form_label_email')}</label><input id="cf-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="form-field"><label for="cf-msg">{f('form_label_msg')}</label><textarea id="cf-msg" name="message" rows="4" required></textarea></div>
+          <div class="form-field">
+            <span class="field-title">{f('form_attachTitle')}</span>
+            <input id="cf-file" name="file" type="file" class="file-input" multiple accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.webp,.txt,.zip">
+            <label for="cf-file" class="file-btn">{f('form_fileBtn')}</label>
+            <ul class="file-list" id="fileList"></ul>
+            <p class="file-hint">{f('form_fileHint')}</p>
+          </div>
+          <button type="submit" class="btn" style="border:none;cursor:pointer;width:100%;justify-content:center">{f('form_submit')} <span class="arr">↗</span></button>
+        </form>
+        <p id="formStatus" role="status" aria-live="polite" style="font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;margin-top:16px;min-height:18px"></p>
+      </div>
+    </div>
+  </section>
+</main>

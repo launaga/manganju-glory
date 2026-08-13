@@ -1,0 +1,126 @@
+---
+import about from '../data/about.json';
+import StatsBlock from './StatsBlock.astro';
+import type { Lang } from '../data/site';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const L = lang;
+const d = about as Record<string, any>;
+const f = (k: string) => d[`${k}_${L}`];
+const wa = (t: string) => `https://wa.me/6285927277560?text=${encodeURIComponent(t)}`;
+const caseUrl = (slug: string) => (lang === 'id' ? `/portofolio/${slug}` : `/en/work/${slug}`);
+const pagePath = lang === 'id' ? '/tentang' : '/en/about';
+const marquee = f('marquee') as string[];
+---
+
+<main id="page-about" class="page">
+  <section class="hero wrap" style="padding-top:clamp(120px,16vh,180px)">
+    <div class="shead reveal"><div class="label"><span class="eyebrow">{f('hero_eyebrow')}</span><span class="folio">01</span></div></div>
+    <div class="hero-grid">
+      <div class="hero-meta">
+        <h1 class="h1 reveal d1">{f('hero_h1Before')}<br><span class="u-accent">{f('hero_h1Accent')}</span></h1>
+        <p class="lead reveal d2">{f('hero_lead')}</p>
+      </div>
+      <div class="hero-photo reveal d2">
+        <img src="/img/portrait-mgl.webp" alt={f('hero_photoAlt')} width="1000" height="1500" fetchpriority="high" decoding="async" />
+        <span class="cap">{lang === 'id' ? 'Gbr. 01' : 'Fig. 01'} — M.G. Laurencius</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad-sm wrap"><StatsBlock lang={lang} /></section>
+
+  <!-- CERITA -->
+  <section class="pad wrap">
+    <div class="shead reveal">
+      <div class="label">
+        <div><span class="eyebrow">{f('story_eyebrow')}</span></div>
+        <span class="folio">02</span>
+      </div>
+    </div>
+    <div class="story">
+      <div class="reveal"><h2 class="h2" style="position:sticky;top:120px">{f('story_title')}</h2></div>
+      <div class="body reveal d1">
+        {d.story_paragraphs.map((p: any) => (
+          <p class={p.pull ? 'pull' : undefined}>
+            {p[`text_${L}`]}
+            {p.link && (<> <a href={caseUrl(p.link)} style="text-decoration:underline;text-underline-offset:4px">{f('story_readCaseLabel')}</a></>)}
+          </p>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee ink" aria-hidden="true">
+    <div class="marquee-track">
+      {marquee.map((m) => <span>{m}</span>)}
+      {marquee.map((m) => <span>{m}</span>)}
+    </div>
+  </div>
+
+  <!-- PRINSIP -->
+  <section class="pad wrap">
+    <div class="shead reveal">
+      <div class="label">
+        <div><span class="eyebrow">{f('prin_eyebrow')}</span><h2 class="h2" style="margin-top:20px">{f('prin_title')}</h2></div>
+        <span class="folio">03</span>
+      </div>
+    </div>
+    <div class="prin">
+      {d.prin_items.map((x: any, i: number) => (
+        <div class={`prin-item reveal ${i % 2 === 1 ? 'd1' : ''}`.trim()}><span class="pn">{x.pn}</span><h3>{x[`h_${L}`]}</h3><p>{x[`p_${L}`]}</p></div>
+      ))}
+    </div>
+  </section>
+  <hr class="hair">
+
+  <!-- BIDANG KEAHLIAN -->
+  <section class="pad wrap">
+    <div class="shead reveal">
+      <div class="label">
+        <div><span class="eyebrow">{f('chips_eyebrow')}</span><h2 class="h2" style="margin-top:20px">{f('chips_title')}</h2></div>
+        <span class="folio">04</span>
+      </div>
+    </div>
+    <div class="chips reveal">
+      {d.chips.map((c: any) => (
+        <div class="chip"><h4>{c[`h_${L}`]}</h4><p>{c[`p_${L}`]}</p></div>
+      ))}
+    </div>
+  </section>
+  <hr class="hair">
+
+  <!-- BATASAN -->
+  <section class="pad wrap">
+    <div class="shead reveal">
+      <div class="label">
+        <div><span class="eyebrow">{f('bound_eyebrow')}</span></div>
+        <span class="folio">05</span>
+      </div>
+    </div>
+    <div class="persp">
+      <div class="reveal"><h2 class="h2" style="position:sticky;top:120px">{f('bound_titleA')}<br>{f('bound_titleB')}</h2></div>
+      <div class="reveal d1">
+        <div class="bound">
+          {d.bound_items.map((b: any) => (
+            <div class="bound-item"><span class="x">×</span><div><h4>{b[`h_${L}`]}</h4><p>{b[`p_${L}`]}</p></div></div>
+          ))}
+        </div>
+        <p class="lead" style="margin-top:30px;font-family:var(--disp);font-weight:700;font-size:clamp(18px,2vw,24px);line-height:1.25;color:var(--ink)">{f('bound_closeBefore')}<span class="mark">{f('bound_closeMark')}</span></p>
+      </div>
+    </div>
+  </section>
+  <hr class="hair">
+
+  <section class="cta-ink pad">
+    <img class="bgimg" src="/img/cta-bg.webp" width="1440" height="1024" loading="lazy" decoding="async" alt="" aria-hidden="true" />
+    <div class="wrap" style="position:relative">
+      <span class="eyebrow reveal">{lang === 'id' ? '// Mari Bicara' : "// Let's talk"}</span>
+      <h2 class="h2 reveal d1" style="margin:24px 0 36px">{f('cta_title')}</h2>
+      <div class="reveal d2"><a href={wa(f('cta_wa'))} class="btn on-ink" target="_blank" rel="noopener" data-wa="cta" data-page={pagePath}>
+        {f('cta_btn')}<span class="arr">↗</span>
+      </a></div>
+    </div>
+  </section>
+</main>

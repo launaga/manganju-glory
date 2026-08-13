@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { WA_EN, EMAIL } from '../../data/site';
+import ContactBody from '../../components/ContactBody.astro';
 import seo from '../../data/seo/contact.json';
 
 const breadcrumb = {
@@ -21,42 +21,5 @@ const breadcrumb = {
   enPath="/en/contact"
   extraSchema={[breadcrumb]}
 >
-  <main id="page-contact-en" class="page">
-    <section class="hero wrap contact-hero" style="padding-top:clamp(120px,16vh,180px)">
-      <div class="shead reveal"><div class="label"><span class="eyebrow">// Contact</span><span class="folio">01</span></div></div>
-      <h1 class="h1 reveal d1" style="max-width:14ch">Interested in working <span class="u-accent">together?</span></h1>
-      <p class="lead reveal d2" style="margin-top:20px">No form with twelve required fields. Tell me what you're building and what's holding it back — I'll give an honest read on whether I'm the right person.</p>
-    </section>
-    <section class="pad wrap">
-      <div class="contact-grid">
-        <div class="contact-direct reveal">
-          <span class="eyebrow no-tick" style="margin-bottom:18px;display:block">/ Fastest way</span>
-          <span class="email">Contact Me</span>
-          <p class="muted" style="margin-top:28px;max-width:46ch">Free initial consultation. Tell me about your business, your desired timeline, and the problem you want to solve — the more context, the more useful my first reply. I usually respond the same day.</p>
-          <div style="margin-top:34px"><a href={WA_EN} class="btn" target="_blank" rel="noopener" data-wa="hero" data-page="/en/contact">
-            Free Consultation<span class="arr">↗</span>
-          </a></div>
-          <p class="muted" style="margin-top:34px;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em">Prefer email? <a href={`mailto:${EMAIL}?subject=Project%20enquiry`} class="u-accent">{EMAIL}</a></p>
-        </div>
-        <div class="contact-form reveal d1">
-          <span class="eyebrow no-tick" style="margin-bottom:18px;display:block">/ Or send a brief</span>
-          <form id="contactForm" novalidate>
-            <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true"><label for="cf-company">Company</label><input id="cf-company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
-            <div class="form-field"><label for="cf-name">Your name</label><input id="cf-name" name="name" type="text" autocomplete="name" required></div>
-            <div class="form-field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" autocomplete="email" required></div>
-            <div class="form-field"><label for="cf-msg">What do you want to solve?</label><textarea id="cf-msg" name="message" rows="4" required></textarea></div>
-            <div class="form-field">
-              <span class="field-title">Attachment (optional)</span>
-              <input id="cf-file" name="file" type="file" class="file-input" multiple accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.webp,.txt,.zip">
-              <label for="cf-file" class="file-btn">Choose file</label>
-              <ul class="file-list" id="fileList"></ul>
-              <p class="file-hint">PDF, DOC, images, or ZIP — max. 3 files, 3 MB total.</p>
-            </div>
-            <button type="submit" class="btn" style="border:none;cursor:pointer;width:100%;justify-content:center">Send brief <span class="arr">↗</span></button>
-          </form>
-          <p id="formStatus" role="status" aria-live="polite" style="font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;margin-top:16px;min-height:18px"></p>
-        </div>
-      </div>
-    </section>
-  </main>
+  <ContactBody lang="en" />
 </Base>

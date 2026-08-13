@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import StatsBlock from '../components/StatsBlock.astro';
+import AboutBody from '../components/AboutBody.astro';
 import seo from '../data/seo/about.json';
 
 const breadcrumb = {
@@ -10,7 +10,6 @@ const breadcrumb = {
     { '@type': 'ListItem', position: 2, name: 'Tentang', item: 'https://mglportfolio.vercel.app/tentang' },
   ],
 };
-const waAbout = "https://wa.me/6285927277560?text=Hi!%20Saya%20baru%20baca%20halaman%20Tentang%20Anda%20dan%20ingin%20diskusi%20proyek...";
 ---
 
 <Base
@@ -22,124 +21,5 @@ const waAbout = "https://wa.me/6285927277560?text=Hi!%20Saya%20baru%20baca%20hal
   enPath="/en/about"
   extraSchema={[breadcrumb]}
 >
-  <main id="page-about" class="page">
-    <section class="hero wrap" style="padding-top:clamp(120px,16vh,180px)">
-      <div class="shead reveal"><div class="label"><span class="eyebrow">// 01 — Tentang</span><span class="folio">01</span></div></div>
-      <div class="hero-grid">
-        <div class="hero-meta">
-          <h1 class="h1 reveal d1">Membangun website adalah pekerjaan saya. Memahami masalah adalah<br><span class="u-accent">alasannya.</span></h1>
-          <p class="lead reveal d2">Website jarang sekadar website. Ia biasanya cerminan dari tujuan bisnis, tantangan komunikasi, dan peluang pertumbuhan. Peran saya adalah menghubungkan potongan-potongan itu — supaya kehadiran digital Anda benar-benar mewakili apa yang sudah Anda bangun.</p>
-        </div>
-        <div class="hero-photo reveal d2">
-          <img src="/img/portrait-mgl.webp" alt="Foto Manganju Glory Laurencius" width="1000" height="1500" fetchpriority="high" decoding="async" />
-          <span class="cap">Gbr. 01 — M.G. Laurencius</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="pad-sm wrap">
-      <StatsBlock lang="id" />
-    </section>
-
-    <!-- CERITA -->
-    <section class="pad wrap">
-      <div class="shead reveal">
-        <div class="label">
-          <div><span class="eyebrow">// 02 — Cerita di Balik Pekerjaan Ini</span></div>
-          <span class="folio">02</span>
-        </div>
-      </div>
-      <div class="story">
-        <div class="reveal">
-          <h2 class="h2" style="position:sticky;top:120px">Cerita di balik pekerjaan ini.</h2>
-        </div>
-        <div class="body reveal d1">
-          <p>Saya mulai dengan membangun website untuk diri sendiri — sekadar dokumentasi sederhana berbasis WordPress untuk hobi saya, fotografi. Lalu Covid datang. Saat itu saya mengambil dua pekerjaan sekaligus: bekerja penuh waktu di perusahaan travel dan logistik, sambil bertahun-tahun mengikuti kursus dan pelatihan desain, sebelum akhirnya mendapat klien pertama.</p>
-          <p>Klien itu Jakarta Feminist, sebuah NGO lokal di Jakarta. Awalnya saya hanya dikontrak membangun tiga website mereka, tapi berlanjut menjadi pendampingan jangka panjang selama hampir lima tahun. Satu hal yang saya pelajari: klien tahu apa yang mereka mau, tapi tidak mau fitur yang meragukan. Mereka ingin sederhana, ingin berfungsi, dan ingin masukan dari penggunanya. Itu yang saya kerjakan, dan itu fondasi perjalanan desain saya. <a href="/portofolio/jakarta-feminist" style="text-decoration:underline;text-underline-offset:4px">Baca studi kasus lengkapnya ↗</a></p>
-          <p class="pull">Situsnya terlihat sukses. Tapi tidak bekerja.</p>
-          <p>Saya juga melihat kebanyakan orang fokus pada apa yang terlihat bagus — layout bersih, animasi kekinian, mockup yang pixel-perfect. Klien senang saat presentasi. Tapi tiga bulan setelah peluncuran, saya cek analitik mereka: bounce rate tinggi, konversi rendah, pengunjung kebingungan.</p>
-          <p>Titik baliknya terjadi saat proyek untuk sebuah NGO ternama di London. Mereka sudah membakar anggaran di dua agensi. Keduanya menghasilkan situs yang indah. Tidak ada satu pun yang bertanya siapa sebenarnya yang berkunjung, kenapa mereka pergi, atau apa yang bisnis butuhkan dari mereka. Saya bangun ulang dengan cara berbeda — dimulai dari kecemasan pelanggan, bukan kebanggaan pendirinya. Menambah friksi di tempat yang perlu, menghapusnya di tempat yang tidak. Konversi naik dua kali lipat dalam enam minggu. <a href="/portofolio/redesign-website-ngo-london" style="text-decoration:underline;text-underline-offset:4px">Baca studi kasus lengkapnya ↗</a></p>
-          <p>Di situ saya sadar: kebanyakan proyek web gagal sebelum baris kode pertama ditulis. Gagal di brief. Di asumsi. Di jarak antara apa yang bisnis kira dibutuhkan dan apa yang benar-benar dialami pelanggan.</p>
-          <p>Hari ini saya bekerja di persimpangan strategi, desain, dan pengembangan — bukan sebagai tiga tahap terpisah, tapi sebagai satu keputusan yang berkelanjutan. Saya mengajukan pertanyaan yang memperlambat proyek, supaya peluncurannya tidak. Setiap situs yang saya bangun dirancang agar orang yang tepat merasa dipahami dalam 30 detik pertama, lalu mengambil langkah berikutnya tanpa berpikir dua kali.</p>
-        </div>
-      </div>
-    </section>
-
-    <div class="marquee ink" aria-hidden="true">
-      <div class="marquee-track">
-        <span>Kejelasan Sebelum Kerumitan</span><span>Sistem Ketimbang Fitur</span><span>Bisnis Sebelum Teknologi</span><span>Berpikir Jangka Panjang</span>
-        <span>Kejelasan Sebelum Kerumitan</span><span>Sistem Ketimbang Fitur</span><span>Bisnis Sebelum Teknologi</span><span>Berpikir Jangka Panjang</span>
-      </div>
-    </div>
-
-    <!-- PRINSIP -->
-    <section class="pad wrap">
-      <div class="shead reveal">
-        <div class="label">
-          <div><span class="eyebrow">// 03 — Cara Saya Berpikir</span><h2 class="h2" style="margin-top:20px">Cara saya memandang pekerjaan digital.</h2></div>
-          <span class="folio">03</span>
-        </div>
-      </div>
-      <div class="prin">
-        <div class="prin-item reveal"><span class="pn">/01</span><h3>Kejelasan Sebelum Kerumitan</h3><p>Kebanyakan situs adalah kebingungan yang didandani. Saya mulai dari pesannya. Kalau Anda belum bisa menjelaskan nilai Anda dalam satu kalimat, tidak ada palet warna yang bisa menyelamatkan.</p></div>
-        <div class="prin-item reveal d1"><span class="pn">/02</span><h3>Sistem Ketimbang Fitur</h3><p>Situs yang melakukan 3 hal dengan sempurna mengalahkan situs yang melakukan 12 hal dengan buruk. Setiap fitur adalah beban perawatan. Saya membangun sistem yang menskala, bukan daftar yang mengesankan.</p></div>
-        <div class="prin-item reveal"><span class="pn">/03</span><h3>Bisnis Sebelum Teknologi</h3><p>Tool terbaik adalah yang masih bisa dikelola tim Anda 2 tahun lagi. Saya tidak mengejar framework. Saya memilih yang melayani bisnis, bukan yang terdengar keren saat pitching.</p></div>
-        <div class="prin-item reveal d1"><span class="pn">/04</span><h3>Berpikir Jangka Panjang</h3><p>Kebanyakan agensi dinilai di hari peluncuran. Saya dinilai di hari ke-365. Situs yang harus dibangun ulang dalam 18 bulan adalah kegagalan, sebagus apa pun tampilannya di hari pertama.</p></div>
-      </div>
-    </section>
-    <hr class="hair">
-
-    <!-- BIDANG KEAHLIAN -->
-    <section class="pad wrap">
-      <div class="shead reveal">
-        <div class="label">
-          <div><span class="eyebrow">// 04 — Bidang Keahlian</span><h2 class="h2" style="margin-top:20px">Keahlian spesifik, bukan jargon.</h2></div>
-          <span class="folio">04</span>
-        </div>
-      </div>
-      <div class="chips reveal">
-        <div class="chip"><h4>Konsultasi</h4><p>Saran jujur yang kadang membuat saya kehilangan proyek, tapi membangun kepercayaan.</p></div>
-        <div class="chip"><h4>Komunikasi</h4><p>Membuat keahlian terlihat oleh orang yang tepat.</p></div>
-        <div class="chip"><h4>User Experience</h4><p>Merancang untuk dipahami, bukan sekadar untuk engagement.</p></div>
-        <div class="chip"><h4>Arsitektur Informasi</h4><p>Menata kerumitan sampai terasa sederhana.</p></div>
-        <div class="chip"><h4>Strategi Website</h4><p>Mengubah tujuan bisnis menjadi struktur digital.</p></div>
-        <div class="chip"><h4>Pengembangan Web</h4><p>Bangunan kustom yang tidak rusak saat Anda memperbaruinya.</p></div>
-      </div>
-    </section>
-    <hr class="hair">
-
-    <!-- BATASAN -->
-    <section class="pad wrap">
-      <div class="shead reveal">
-        <div class="label">
-          <div><span class="eyebrow">// 05 — Yang Tidak Saya Kerjakan</span></div>
-          <span class="folio">05</span>
-        </div>
-      </div>
-      <div class="persp">
-        <div class="reveal"><h2 class="h2" style="position:sticky;top:120px">Yang tidak<br>saya kerjakan.</h2></div>
-        <div class="reveal d1">
-          <div class="bound">
-            <div class="bound-item"><span class="x">×</span><div><h4>Saya tidak mengejar tren.</h4><p>Kalau tujuan Anda terlihat sama seperti semua orang di 2026, saya bukan orangnya.</p></div></div>
-            <div class="bound-item"><span class="x">×</span><div><h4>Saya tidak membangun tanpa tujuan.</h4><p>Setiap halaman harus punya alasan untuk ada.</p></div></div>
-            <div class="bound-item"><span class="x">×</span><div><h4>Saya tidak mengutamakan estetika di atas kejelasan.</h4><p>Situs indah yang membingungkan pengunjung adalah kegagalan.</p></div></div>
-            <div class="bound-item"><span class="x">×</span><div><h4>Saya tidak mengambil proyek yang tidak menghargai strategi.</h4><p>Kalau Anda mencari vendor yang sekadar mengeksekusi, ada pilihan yang lebih murah.</p></div></div>
-          </div>
-          <p class="lead" style="margin-top:30px;font-family:var(--disp);font-weight:700;font-size:clamp(18px,2vw,24px);line-height:1.25;color:var(--ink)">Kalau itu terdengar membatasi, memang. Tapi klien yang bekerja dengan saya justru menghargai bahwa saya berani menolak proyek yang tidak cocok. Artinya, ketika saya bilang ya, saya <span class="mark">sepenuhnya berkomitmen.</span></p>
-        </div>
-      </div>
-    </section>
-    <hr class="hair">
-
-    <section class="cta-ink pad">
-      <img class="bgimg" src="/img/cta-bg.webp" width="1440" height="1024" loading="lazy" decoding="async" alt="" aria-hidden="true" />
-      <div class="wrap" style="position:relative">
-        <span class="eyebrow reveal">// Mari Bicara</span>
-        <h2 class="h2 reveal d1" style="margin:24px 0 36px">Mari cari tahu dulu masalah sebenarnya.</h2>
-        <div class="reveal d2"><a href={waAbout} class="btn on-ink" target="_blank" rel="noopener" data-wa="cta" data-page="/tentang">
-          Konsultasi Gratis<span class="arr">↗</span>
-        </a></div>
-      </div>
-    </section>
-  </main>
+  <AboutBody lang="id" />
 </Base>
