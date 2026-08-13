@@ -47,6 +47,7 @@ by the `set_updated_at()` trigger). PKs are `uuid` except singletons (`smallint`
 | `supabase/migrations/0001_initial_schema.sql` | Extensions, `content_status` enum, `set_updated_at()`, `admin_users` + `is_admin()`, all tables, constraints, indexes, triggers. |
 | `supabase/migrations/0002_rls_policies.sql` | `enable row level security` on every table + admin/public policies. |
 | `supabase/migrations/0003_storage.sql` | `media` storage bucket + object policies. |
+| `supabase/migrations/0004_harden_functions.sql` | Moves `is_admin()` to a non-API `private` schema and pins `set_updated_at()` search_path — clears all Supabase security-linter warnings. |
 | `supabase/seed.sql` | **DEV-only** sample data (not production content). |
 
 Apply with the Supabase CLI (`supabase db reset` locally, or `supabase db push`
@@ -124,6 +125,10 @@ below). Expected results:
 10. Admin can CRUD all statuses.
 11. Draft & archived rows are invisible to anon; published rows are visible.
 12. Storage: anon read ok; anon write rejected; admin write ok.
+13. Supabase security advisor reports **zero** warnings after 0004.
+
+Applied to the live project `xgkzaehzjsijgjhapkce` (all 4 migrations); 17 tables
+created with RLS enabled on every one; advisor clean.
 
 ## H. Known issues / decisions
 
