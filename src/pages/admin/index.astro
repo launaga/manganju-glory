@@ -1,0 +1,63 @@
+---
+// Protected admin home — placeholder for Phase 4.
+// Real CMS/dashboard is Phase 5+. This only proves login/session/authz/logout.
+import '../../styles/admin.css';
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Admin — MGL</title>
+  </head>
+  <body class="admin-root">
+    <!-- Gate shown while we verify the session; hides protected content so it
+         never flashes before an unauthenticated user is redirected. -->
+    <div class="admin-gate" id="gate">
+      <div>
+        <div class="spinner"></div>
+        Memeriksa sesi…
+      </div>
+    </div>
+
+    <main class="admin-shell hidden" id="shell">
+      <div class="admin-topbar">
+        <span class="brand">:}MGL<span class="dot">.</span> Admin</span>
+        <button class="link-logout" id="logoutBtn" type="button">Keluar</button>
+      </div>
+      <div class="admin-note">
+        <h1>Admin authentication successful.</h1>
+        <p>
+          Sesi terverifikasi dan Anda terautorisasi sebagai admin. Dashboard dan
+          editor konten akan dibangun pada fase berikutnya.
+        </p>
+      </div>
+    </main>
+
+    <script>
+      import { requireAdmin, signOut, LOGIN_PATH } from '../../lib/auth';
+
+      const gate = document.getElementById('gate') as HTMLElement;
+      const shell = document.getElementById('shell') as HTMLElement;
+      const logoutBtn = document.getElementById('logoutBtn') as HTMLButtonElement;
+
+      logoutBtn.addEventListener('click', async () => {
+        logoutBtn.disabled = true;
+        logoutBtn.textContent = 'Keluar…';
+        await signOut();
+        window.location.replace(LOGIN_PATH);
+      });
+
+      // Guard first; only reveal protected content for an authorized admin.
+      (async () => {
+        const ok = await requireAdmin(); // redirects if not authed/authorized
+        if (ok) {
+          gate.classList.add('hidden');
+          shell.classList.remove('hidden');
+        }
+      })();
+    </script>
+  </body>
+</html>

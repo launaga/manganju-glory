@@ -1,0 +1,119 @@
+/* Minimal, admin-only styles. Deliberately separate from the public site's
+   styles.css so the admin area never affects the public design (and vice-versa).
+   Neutral, professional, responsive. */
+
+:root {
+  --a-bg: #0e0e10;
+  --a-panel: #17171b;
+  --a-line: #2a2a30;
+  --a-ink: #f4f4f5;
+  --a-soft: #a1a1aa;
+  --a-accent: #e8f14a; /* echoes the site's accent, admin-scoped */
+  --a-danger: #ff6b6b;
+  --a-ok: #4ade80;
+  --a-radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+.admin-root {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--a-bg);
+  color: var(--a-ink);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Full-screen state used while we check the session (prevents content flash). */
+.admin-gate {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--a-bg);
+  color: var(--a-soft);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  z-index: 50;
+}
+.admin-gate .spinner {
+  width: 22px; height: 22px; margin: 0 auto 12px;
+  border: 2px solid var(--a-line);
+  border-top-color: var(--a-accent);
+  border-radius: 50%;
+  animation: aspin 0.7s linear infinite;
+}
+@keyframes aspin { to { transform: rotate(360deg); } }
+
+/* Login ------------------------------------------------------------------- */
+.login-wrap {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background: var(--a-panel);
+  border: 1px solid var(--a-line);
+  border-radius: var(--a-radius);
+  padding: 32px 28px;
+}
+.login-brand {
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  margin: 0 0 4px;
+}
+.login-brand .dot { color: var(--a-accent); }
+.login-sub { color: var(--a-soft); font-size: 13px; margin: 0 0 24px; }
+
+.field { margin-bottom: 16px; }
+.field label {
+  display: block; font-size: 12px; color: var(--a-soft);
+  margin-bottom: 6px; letter-spacing: 0.03em;
+}
+.field input {
+  width: 100%; padding: 11px 12px;
+  background: #101014; color: var(--a-ink);
+  border: 1px solid var(--a-line); border-radius: 8px;
+  font-size: 15px; outline: none;
+}
+.field input:focus { border-color: var(--a-accent); }
+
+.btn-admin {
+  width: 100%; padding: 12px 16px; margin-top: 4px;
+  background: var(--a-accent); color: #101014;
+  border: none; border-radius: 8px;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  transition: opacity 0.15s;
+}
+.btn-admin:hover { opacity: 0.9; }
+.btn-admin:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.msg { font-size: 13px; margin-top: 14px; min-height: 18px; }
+.msg.error { color: var(--a-danger); }
+.msg.ok { color: var(--a-ok); }
+
+/* Protected placeholder --------------------------------------------------- */
+.admin-shell { max-width: 720px; margin: 0 auto; padding: 48px 24px; }
+.admin-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--a-line); padding-bottom: 16px; margin-bottom: 32px;
+}
+.admin-topbar .brand { font-weight: 800; font-size: 18px; }
+.admin-topbar .brand .dot { color: var(--a-accent); }
+.link-logout {
+  background: none; border: 1px solid var(--a-line); color: var(--a-soft);
+  padding: 8px 14px; border-radius: 8px; font-size: 13px; cursor: pointer;
+}
+.link-logout:hover { color: var(--a-ink); border-color: var(--a-soft); }
+.admin-note {
+  background: var(--a-panel); border: 1px solid var(--a-line);
+  border-radius: var(--a-radius); padding: 24px;
+}
+.admin-note h1 { font-size: 20px; margin: 0 0 8px; }
+.admin-note p { color: var(--a-soft); margin: 0; font-size: 14px; line-height: 1.6; }
+.hidden { display: none !important; }

@@ -1,0 +1,85 @@
+---
+// Admin login — public route (the only unprotected /admin/* page).
+// Static page; all auth happens client-side via Supabase Auth.
+import '../../styles/admin.css';
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Masuk — MGL Admin</title>
+  </head>
+  <body class="admin-root">
+    <main class="login-wrap">
+      <div class="login-card">
+        <p class="login-brand">:}MGL<span class="dot">.</span></p>
+        <p class="login-sub">Panel Admin — silakan masuk.</p>
+
+        <form id="loginForm" novalidate>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="username"
+                   required inputmode="email" />
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password"
+                   autocomplete="current-password" required />
+          </div>
+          <button class="btn-admin" id="submitBtn" type="submit">Masuk</button>
+          <p class="msg" id="msg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </main>
+
+    <script>
+      import { signIn, getUser, isAdmin, ADMIN_PATH } from '../../lib/auth';
+
+      const form = document.getElementById('loginForm') as HTMLFormElement;
+      const btn = document.getElementById('submitBtn') as HTMLButtonElement;
+      const msg = document.getElementById('msg') as HTMLParagraphElement;
+      const email = document.getElementById('email') as HTMLInputElement;
+      const password = document.getElementById('password') as HTMLInputElement;
+
+      const setMsg = (text: string, kind: 'error' | 'ok' | '' = '') => {
+        msg.textContent = text;
+        msg.className = 'msg' + (kind ? ' ' + kind : '');
+      };
+
+      // If an admin is already signed in, skip the login page.
+      (async () => {
+        if ((await getUser()) && (await isAdmin())) {
+          window.location.replace(ADMIN_PATH);
+        }
+      })();
+
+      // Show the access-denied message after a rejected authorization.
+      if (new URLSearchParams(location.search).get('denied') === '1') {
+        setMsg('Anda tidak memiliki akses ke area ini.', 'error');
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        setMsg('');
+        if (!email.value || !password.value) {
+          setMsg('Mohon lengkapi email dan password.', 'error');
+          return;
+        }
+        btn.disabled = true;
+        btn.textContent = 'Memproses…';
+        const res = await signIn(email.value.trim(), password.value);
+        if (res.ok) {
+          setMsg('Berhasil. Mengalihkan…', 'ok');
+          window.location.replace(ADMIN_PATH);
+        } else {
+          setMsg(res.message ?? 'Gagal masuk.', 'error');
+          btn.disabled = false;
+          btn.textContent = 'Masuk';
+        }
+      });
+    </script>
+  </body>
+</html>
