@@ -1,9 +1,13 @@
 ---
 import AdminLayout from '../../layouts/AdminLayout.astro';
 import PageHeader from '../../components/admin/PageHeader.astro';
-import Placeholder from '../../components/admin/Placeholder.astro';
 ---
 <AdminLayout title="Homepage">
-  <PageHeader title="Homepage" description="Kelola isi setiap section halaman Beranda." />
-  <Placeholder title="Editor Homepage" icon="homepage" />
+  <PageHeader title="Homepage" description="Kelola isi tiap section Beranda. Karya Pilihan diatur lewat toggle “featured” di tiap Proyek." />
+  <div id="root"></div>
+  <script>
+    import { initSingletonEditor } from '../../lib/admin/singleton';
+    import { homepageFields } from '../../lib/admin/singleton-configs';
+    initSingletonEditor(document.getElementById('root')!, 'homepage', homepageFields);
+  </script>
 </AdminLayout>

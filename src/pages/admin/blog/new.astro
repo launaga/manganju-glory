@@ -1,9 +1,16 @@
 ---
 import AdminLayout from '../../../layouts/AdminLayout.astro';
 import PageHeader from '../../../components/admin/PageHeader.astro';
-import Placeholder from '../../../components/admin/Placeholder.astro';
 ---
 <AdminLayout title="Artikel Baru">
-  <PageHeader title="Artikel Baru" description="Tulis artikel baru." crumbs={[{label:"Blog",href:"/admin/blog"},{label:"Baru"}]} />
-  <Placeholder title="Editor Artikel Baru" icon="blog" />
+  <PageHeader title="Artikel Baru" crumbs={[{label:"Blog",href:"/admin/blog"},{label:"Baru"}]} />
+  <div id="root"></div>
+  <script>
+    import { initEditor } from '../../../lib/admin/editor';
+    import { blogEditorConfig } from '../../../lib/admin/collections';
+    import { list } from '../../../lib/admin/db';
+    const cats = (await list('blog_categories', { order: { column: 'name', ascending: true } }))
+      .map((c) => ({ value: c.id as string, label: c.name as string }));
+    initEditor(document.getElementById('root')!, blogEditorConfig(cats));
+  </script>
 </AdminLayout>

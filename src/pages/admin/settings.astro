@@ -1,9 +1,13 @@
 ---
 import AdminLayout from '../../layouts/AdminLayout.astro';
 import PageHeader from '../../components/admin/PageHeader.astro';
-import Placeholder from '../../components/admin/Placeholder.astro';
 ---
 <AdminLayout title="Site Settings">
-  <PageHeader title="Site Settings" description="Kontak, footer, dan tautan sosial." />
-  <Placeholder title="Pengaturan Situs" icon="settings" />
+  <PageHeader title="Site Settings" description="Kontak, CTA, dan teks footer yang dipakai di semua halaman." />
+  <div id="root"></div>
+  <script>
+    import { initSingletonEditor } from '../../lib/admin/singleton';
+    import { settingsFields } from '../../lib/admin/singleton-configs';
+    initSingletonEditor(document.getElementById('root')!, 'site_settings', settingsFields);
+  </script>
 </AdminLayout>
