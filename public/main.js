@@ -85,7 +85,7 @@ function closeMobile(){mm.classList.remove('open')}
 document.getElementById('burger').addEventListener('click',()=>mm.classList.add('open'));
 document.getElementById('closeMenu').addEventListener('click',closeMobile);
 
-/* ---------------- contact form → /api/contact ---------------- */
+/* ---------------- contact form → Supabase (contact_submissions) ---------------- */
 const cform=document.getElementById('contactForm');
 if(cform){
   const status=document.getElementById('formStatus');
@@ -94,9 +94,9 @@ if(cform){
   const setStatus=(msg,kind)=>{status.style.color=kind==='err'?'#c0392b':kind==='ok'?'var(--accent)':'var(--ink-soft)';status.textContent=msg;};
 
   /* --- attachments ---
-     3 MB is not a round number chosen for looks: Vercel rejects request bodies
-     over 4.5 MB, and base64 inflates a file by ~33%, so 3 MB raw lands near
-     4 MB on the wire. Raising this cap without moving off base64 will 413. */
+     Files aren't uploaded (anon can't write Storage); we only note their names
+     in the message so I can request them. The cap is a client-side UX guard to
+     keep the picker sane, not a transport limit. */
   const MAX_FILES=3, MAX_TOTAL=3*1024*1024;
   const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fmtSize=b=>b<1024?b+' B':b<1048576?Math.round(b/1024)+' KB':(b/1048576).toFixed(1)+' MB';
@@ -112,13 +112,6 @@ if(cform){
       `<button type="button" class="fdel" data-i="${i}" aria-label="Hapus ${esc(f.name)}">×</button></li>`
     ).join('');
   }
-
-  const toB64=f=>new Promise((res,rej)=>{
-    const r=new FileReader();
-    r.onload=()=>res(String(r.result).split(',')[1]);
-    r.onerror=()=>rej(new Error('Gagal membaca '+f.name));
-    r.readAsDataURL(f);
-  });
 
   if(fileInput&&fileList){
     fileInput.addEventListener('change',()=>{
@@ -152,24 +145,23 @@ if(cform){
     if(!name||!email||!message){setStatus('Mohon lengkapi semua kolom.','err');return;}
     if(picked.length>MAX_FILES){setStatus('Maksimal '+MAX_FILES+' file.','err');return;}
     if(totalBytes()>MAX_TOTAL){setStatus('Total lampiran melebihi 3 MB — hapus sebagian file.','err');return;}
-    btn.disabled=true;btn.style.opacity='.7';setStatus('','');
+    // Honeypot: real users never fill "company"; bots often do → fake success.
+    if(company){setStatus('Terima kasih — brief Anda sudah terkirim. Saya akan segera membalas.','ok');cform.reset();picked=[];renderFiles();return;}
+    const sbUrl=cform.dataset.sbUrl,sbKey=cform.dataset.sbKey;
+    if(!sbUrl||!sbKey){setStatus('Formulir belum dikonfigurasi. Silakan hubungi saya langsung via WhatsApp.','err');return;}
+    btn.disabled=true;btn.style.opacity='.7';btn.innerHTML='Mengirim…';setStatus('','');
+    // Attachments can't be uploaded anonymously; note their names so I can request them.
+    const fullMessage=picked.length?message+'\n\n[Lampiran disebut: '+picked.map(f=>f.name).join(', ')+']':message;
     try{
-      let attachments=[];
-      if(picked.length){
-        btn.innerHTML='Menyiapkan lampiran…';
-        attachments=await Promise.all(picked.map(async f=>({filename:f.name,content:await toB64(f)})));
-      }
-      btn.innerHTML='Mengirim…';
-      const r=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,message,company,attachments})});
-      const data=await r.json().catch(()=>({}));
+      const r=await fetch(sbUrl+'/rest/v1/contact_submissions',{method:'POST',headers:{'Content-Type':'application/json','apikey':sbKey,'Authorization':'Bearer '+sbKey,'Prefer':'return=minimal'},body:JSON.stringify({name,email,message:fullMessage})});
       if(r.ok){
         setStatus('Terima kasih — brief Anda sudah terkirim. Saya akan segera membalas.','ok');
         cform.reset();picked=[];renderFiles();
+      } else {
+        setStatus('Terjadi kendala. Silakan hubungi saya langsung via WhatsApp.','err');
       }
-      else if(r.status===413)setStatus('Lampiran terlalu besar. Kirim file di bawah 3 MB, atau bagikan lewat tautan Drive.','err');
-      else setStatus((data&&data.error)||'Terjadi kendala. Silakan hubungi saya langsung via WhatsApp.','err');
     }catch(err){
-      setStatus(err&&/Gagal membaca/.test(err.message)?err.message:'Koneksi bermasalah. Silakan hubungi saya langsung via WhatsApp.','err');
+      setStatus('Koneksi bermasalah. Silakan hubungi saya langsung via WhatsApp.','err');
     }finally{
       btn.disabled=false;btn.style.opacity='';btn.innerHTML=btnHTML;
     }

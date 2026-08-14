@@ -30,7 +30,9 @@ const mailSubject = UI[lang].mailtoSubject;
       </div>
       <div class="contact-form reveal d1">
         <span class="eyebrow no-tick" style="margin-bottom:18px;display:block">{f('form_eyebrow')}</span>
-        <form id="contactForm" novalidate>
+        <form id="contactForm" novalidate
+              data-sb-url={import.meta.env.PUBLIC_SUPABASE_URL}
+              data-sb-key={import.meta.env.PUBLIC_SUPABASE_ANON_KEY}>
           <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true"><label for="cf-company">Company</label><input id="cf-company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
           <div class="form-field"><label for="cf-name">{f('form_label_name')}</label><input id="cf-name" name="name" type="text" autocomplete="name" required></div>
           <div class="form-field"><label for="cf-email">{f('form_label_email')}</label><input id="cf-email" name="email" type="email" autocomplete="email" required></div>

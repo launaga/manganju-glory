@@ -1,0 +1,12 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import PageHeader from '../../components/admin/PageHeader.astro';
+---
+<AdminLayout title="Pesan">
+  <PageHeader title="Pesan" description="Pesan masuk dari formulir kontak situs." />
+  <div id="root"></div>
+  <script>
+    import { initMessages } from '../../lib/admin/messages';
+    initMessages(document.getElementById('root')!);
+  </script>
+</AdminLayout>

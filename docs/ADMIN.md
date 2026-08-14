@@ -1,86 +1,79 @@
-# Admin Konten (Sveltia CMS)
+# Admin (Supabase Auth) — Phase 4
 
-Panel admin git-based untuk mengedit konten situs **tanpa menyentuh kode**.
-UI-nya **Sveltia CMS** (modern, ringan) yang membaca konfigurasi Decap yang sama
-(`public/admin/config.yml`) — jadi semua koleksi & field tetap sama.
-Data disimpan sebagai file di repo ini (mis. `src/content/projects/*.json`); tiap
-simpan = commit ke GitHub → Vercel rebuild (~1 menit).
+The admin area lives at **`/admin`** and is protected by **Supabase Auth**.
+This replaces the previous Sveltia/Decap + GitHub-OAuth setup (removed). The
+public website is unaffected.
 
-- URL admin (produksi): `https://mglportfolio.vercel.app/admin`
-- URL admin (lokal, `astro dev`): `http://localhost:4321/admin/index.html`
+- `/admin/login` — public login page (email + password).
+- `/admin` — protected; only an authenticated **and authorized** admin gets in.
 
-Status v1: koleksi **Portofolio** sudah aktif (CRUD proyek + gambar + ID/EN).
-Menyusul: Harga, Layanan, dan teks halaman + SEO.
+Everything is **client-side** (no Node/SSR server), so the site stays a static
+Astro build deployable to Hostinger. Real security is enforced by **Row Level
+Security** in the database, not by hiding UI.
 
----
+## How it works
 
-## 1. Mengedit secara LOKAL (tanpa login)
+1. Login calls `supabase.auth.signInWithPassword()`.
+2. On success we check authorization: a `select` on `admin_users`. Its RLS
+   policy only returns rows when `private.is_admin()` is true, so a non-empty
+   read *is* the admin signal. Non-admins are signed out immediately.
+3. The session (JWT) is stored by supabase-js and survives refresh/navigation;
+   it auto-refreshes and is cleared on logout.
+4. `/admin` runs a guard before revealing anything: no session → redirect to
+   `/admin/login`; authenticated-but-not-admin → sign out + access denied.
 
-Cocok untuk mencoba/menyiapkan konten sebelum tayang.
+## Files
 
-```bash
-npm run dev
+| File | Role |
+|---|---|
+| `src/lib/supabase.ts` | Browser Supabase client (anon key only). |
+| `src/lib/auth.ts` | `signIn`, `signOut`, `isAdmin`, `requireAdmin` guard. |
+| `src/pages/admin/login.astro` | Login page. |
+| `src/pages/admin/index.astro` | Protected placeholder (dashboard is Phase 5+). |
+| `src/styles/admin.css` | Admin-only styles (separate from public `styles.css`). |
+
+## Environment variables (client-safe)
+
+Copy `.env.example` → `.env` and set:
+
+```
+PUBLIC_SUPABASE_URL="https://<ref>.supabase.co"
+PUBLIC_SUPABASE_ANON_KEY="<anon or publishable key>"
 ```
 
-Buka `http://localhost:4321/admin/index.html` → klik **Work with Local
-Repository** → pilih folder repo ini (`files`). Sveltia menulis langsung ke
-file lewat browser (File System Access API — Chrome/Edge). Commit & push
-seperti biasa saat siap. Tidak perlu server proxy tambahan.
+Both are **public by design** (RLS protects data). The **service-role key is
+never** used in client code or committed. `.env` is git-ignored.
 
----
+## Creating the initial admin (do this once)
 
-## 2. Mengaktifkan admin di PRODUKSI (GitHub OAuth)
+There is **no public registration**. Create the single admin securely:
 
-Admin produksi login lewat GitHub. Perlu satu kali setup:
+1. Supabase Dashboard → **Authentication → Users → Add user**. Enter the admin
+   email + a strong password, and enable "Auto Confirm User".
+2. Authorize that user by adding them to `admin_users` (SQL editor):
 
-### a. Buat GitHub OAuth App
-1. Buka <https://github.com/settings/developers> → **New OAuth App**.
-2. Isi:
-   - **Application name:** `MGL Admin`
-   - **Homepage URL:** `https://mglportfolio.vercel.app`
-   - **Authorization callback URL:** `https://mglportfolio.vercel.app/api/callback`
-3. **Register** → catat **Client ID**, lalu **Generate a new client secret** → catat **Client Secret**.
+   ```sql
+   insert into admin_users (user_id, email)
+   select id, email from auth.users where email = 'you@example.com'
+   on conflict (user_id) do nothing;
+   ```
 
-### b. Set environment variable di Vercel
-Project `manganju-glory` → **Settings → Environment Variables**, tambahkan (scope: Production):
+3. **Disable public sign-ups**: Authentication → Providers → Email → turn off
+   "Allow new users to sign up". (Even without this, a stray sign-up cannot
+   access the admin or write data — they won't be in `admin_users` and RLS
+   blocks everything — but disabling it is cleaner.)
 
-| Name | Value |
-|------|-------|
-| `GITHUB_CLIENT_ID` | Client ID dari langkah a |
-| `GITHUB_CLIENT_SECRET` | Client Secret dari langkah a |
+Now log in at `/admin/login`.
 
-Atau lewat CLI:
-```bash
-vercel env add GITHUB_CLIENT_ID production
-vercel env add GITHUB_CLIENT_SECRET production
-```
+## Contact messages (Phase 10A)
 
-### c. Deploy ulang
-```bash
-vercel --prod
-```
+Public contact form submissions are stored in `contact_submissions` (Supabase),
+replacing the old Vercel Serverless + Resend email flow. The admin can manage
+them at `/admin/messages` (list, search, filter by status, open, mark-read,
+archive, delete). RLS: anon insert-only, admin full access.
 
-Selesai. Buka `https://mglportfolio.vercel.app/admin` → **Sign In with GitHub**.
-Hanya akun yang punya akses tulis ke repo `launaga/manganju-glory` yang bisa masuk.
+## Hostinger routing note
 
-### Alternatif tercepat: Personal Access Token (tanpa OAuth App)
-Sveltia juga mendukung login pakai token. Kalau tidak mau repot bikin OAuth App:
-1. Buat token di <https://github.com/settings/tokens> (fine-grained: akses **Contents: Read and write** untuk repo `manganju-glory`).
-2. Buka `/admin` → **Sign In Using Access Token** → tempel token.
-
-Cukup untuk pemakaian solo. OAuth App tetap lebih nyaman untuk jangka panjang.
-
----
-
-## Cara kerja (ringkas)
-
-- `public/admin/index.html` — memuat UI Decap (dari CDN).
-- `public/admin/config.yml` — definisi koleksi & field (ID/EN dipasangkan).
-- `api/auth.js` + `api/callback.js` — handler OAuth GitHub (serverless Vercel).
-- `src/content/projects/*.json` — data proyek; dibaca `src/content/config.ts`
-  dan dirender di `src/pages/portofolio.astro` & `src/pages/en/work.astro`.
-
-## Catatan
-- `/admin` di-`Disallow` di `robots.txt` dan `noindex` — tidak terindeks.
-- Gambar diupload ke `public/img/work/` otomatis lewat form (isi juga **alt text**).
-- Field ID & EN wajib diisi berpasangan agar konten dwibahasa tetap sinkron.
+With `build.format: 'file'`, the build emits `dist/admin.html` (for `/admin`)
+and `dist/admin/login.html` (for `/admin/login`). On Hostinger, an `.htaccess`
+clean-URL rule (Phase 10) maps `/admin` and `/admin/login` to those files.

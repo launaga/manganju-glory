@@ -1,0 +1,14 @@
+---
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import PageHeader from '../../../components/admin/PageHeader.astro';
+---
+<AdminLayout title="Edit Testimoni">
+  <PageHeader title="Edit Testimoni" crumbs={[{label:"Testimoni",href:"/admin/testimonials"},{label:"Edit"}]} />
+  <div id="root"></div>
+  <script>
+    import { initEditor } from '../../../lib/admin/editor';
+    import { testimonialEditorConfig } from '../../../lib/admin/collections';
+    const id = new URLSearchParams(location.search).get('id') ?? undefined;
+    initEditor(document.getElementById('root')!, testimonialEditorConfig, id);
+  </script>
+</AdminLayout>

@@ -1,0 +1,12 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import PageHeader from '../../components/admin/PageHeader.astro';
+---
+<AdminLayout title="Keahlian">
+  <PageHeader title="Keahlian" description="Kelola kategori dan daftar keahlian." />
+  <div id="root"></div>
+  <script>
+    import { initSkills } from '../../lib/admin/skills';
+    initSkills(document.getElementById('root')!);
+  </script>
+</AdminLayout>

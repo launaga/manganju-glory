@@ -1,0 +1,12 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import PageHeader from '../../components/admin/PageHeader.astro';
+---
+<AdminLayout title="Media Library">
+  <PageHeader title="Media Library" description="Unggah, kelola, dan pilih gambar untuk seluruh portofolio." />
+  <div id="root"></div>
+  <script>
+    import { initMediaLibrary } from '../../lib/admin/media-library';
+    initMediaLibrary(document.getElementById('root')!);
+  </script>
+</AdminLayout>

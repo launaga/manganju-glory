@@ -1,0 +1,14 @@
+---
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import PageHeader from '../../../components/admin/PageHeader.astro';
+---
+<AdminLayout title="Proyek Baru">
+  <PageHeader title="Proyek Baru" crumbs={[{label:"Proyek",href:"/admin/projects"},{label:"Baru"}]} />
+  <div id="root"></div>
+  <script>
+    import { initEditor } from '../../../lib/admin/editor';
+    import { projectEditorConfig } from '../../../lib/admin/collections';
+    
+    initEditor(document.getElementById('root')!, projectEditorConfig);
+  </script>
+</AdminLayout>

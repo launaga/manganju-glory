@@ -1,0 +1,99 @@
+---
+// Reusable protected admin shell. Every admin page (except /admin/login) wraps
+// its content in <AdminLayout>. Handles auth guard, sidebar, header, mobile
+// drawer, logout, and the toast container — so pages only render their content.
+import '../styles/admin.css';
+import Sidebar from '../components/admin/Sidebar.astro';
+import Icon from '../components/admin/Icon.astro';
+
+interface Props { title: string; }
+const { title } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/admin';
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title} — MGL Admin</title>
+  </head>
+  <body class="admin-root">
+    <!-- Auth gate: shown until the session + admin authorization are confirmed,
+         so protected content never flashes for an unauthenticated visitor. -->
+    <div class="admin-gate" id="gate">
+      <div><div class="spinner"></div>Memeriksa sesi…</div>
+    </div>
+
+    <div class="admin-app hidden" id="app">
+      <div class="scrim" id="scrim" aria-hidden="true"></div>
+      <Sidebar path={path} />
+
+      <div class="admin-main">
+        <header class="admin-header">
+          <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false">
+            <Icon name="dashboard" size={18} />
+          </button>
+          <span class="h-title">{title}</span>
+          <span class="spacer"></span>
+          <div class="h-user">
+            <span class="h-name" id="userEmail">—</span>
+            <span class="h-avatar" id="userAvatar" aria-hidden="true">·</span>
+          </div>
+        </header>
+
+        <main class="admin-content">
+          <slot />
+        </main>
+      </div>
+    </div>
+
+    <div class="toast-container" aria-live="polite"></div>
+
+    <script>
+      import { requireAdmin, getUser, signOut, LOGIN_PATH } from '../lib/auth';
+      import { confirmDialog } from '../lib/admin/ui';
+
+      const gate = document.getElementById('gate')!;
+      const app = document.getElementById('app')!;
+      const burger = document.getElementById('burger')!;
+      const scrim = document.getElementById('scrim')!;
+      const logoutBtn = document.getElementById('sbLogout')!;
+
+      // Mobile drawer
+      const setNav = (open: boolean) => {
+        app.classList.toggle('nav-open', open);
+        burger.setAttribute('aria-expanded', String(open));
+      };
+      burger.addEventListener('click', () => setNav(!app.classList.contains('nav-open')));
+      scrim.addEventListener('click', () => setNav(false));
+
+      // Logout (shared Phase 4 implementation) with confirmation
+      logoutBtn.addEventListener('click', async () => {
+        const yes = await confirmDialog({
+          title: 'Keluar dari admin?',
+          message: 'Anda perlu masuk kembali untuk mengelola konten.',
+          confirmText: 'Keluar',
+          cancelText: 'Batal',
+        });
+        if (!yes) return;
+        await signOut();
+        window.location.replace(LOGIN_PATH);
+      });
+
+      // Guard: reveal the shell only for an authorized admin.
+      (async () => {
+        const ok = await requireAdmin();
+        if (!ok) return; // requireAdmin already redirected
+        const user = await getUser();
+        const email = user?.email ?? '';
+        document.getElementById('userEmail')!.textContent = email || 'Admin';
+        document.getElementById('userAvatar')!.textContent =
+          (email.trim()[0] || 'A').toUpperCase();
+        gate.classList.add('hidden');
+        app.classList.remove('hidden');
+      })();
+    </script>
+  </body>
+</html>

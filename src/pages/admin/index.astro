@@ -1,0 +1,107 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import PageHeader from '../../components/admin/PageHeader.astro';
+import Icon from '../../components/admin/Icon.astro';
+
+const stats = [
+  { key: 'projects', label: 'Proyek', href: '/admin/projects' },
+  { key: 'experience', label: 'Pengalaman', href: '/admin/experience' },
+  { key: 'blog_posts', label: 'Artikel', href: '/admin/blog' },
+  { key: 'testimonials', label: 'Testimoni', href: '/admin/testimonials' },
+];
+const actions = [
+  { label: 'Tambah Proyek', href: '/admin/projects/new', icon: 'plus' },
+  { label: 'Tulis Artikel', href: '/admin/blog/new', icon: 'plus' },
+  { label: 'Edit Homepage', href: '/admin/homepage', icon: 'edit' },
+  { label: 'Buka Media', href: '/admin/media', icon: 'media' },
+];
+---
+
+<AdminLayout title="Dashboard">
+  <PageHeader title="Dashboard" description="Ringkasan konten situs Anda." />
+
+  <div class="section-title">Ringkasan</div>
+  <div class="stat-grid">
+    {stats.map((s) => (
+      <a class="stat-card" href={s.href}>
+        <div class="label">{s.label}</div>
+        <div class="num" id={`stat-${s.key}`}><span class="skeleton sk-num"></span></div>
+        <span class="go">Lihat →</span>
+      </a>
+    ))}
+  </div>
+
+  <div class="section-title">Aksi Cepat</div>
+  <div class="qa-grid">
+    {actions.map((a) => (
+      <a class="qa-card" href={a.href}>
+        <span class="qa-ico"><Icon name={a.icon} size={16} /></span>
+        {a.label}
+      </a>
+    ))}
+  </div>
+
+  <div class="section-title">Baru Diperbarui</div>
+  <div class="card recent" id="recent" aria-live="polite">
+    <div style="padding:8px">
+      <div class="skeleton sk-line" style="width:60%"></div>
+      <div class="skeleton sk-line" style="width:45%"></div>
+      <div class="skeleton sk-line" style="width:52%"></div>
+    </div>
+  </div>
+
+  <script>
+    import { getDashboardCounts, getRecentlyUpdated, timeAgo } from '../../lib/admin/data';
+    import { toast } from '../../lib/admin/ui';
+
+    const esc = (s: string) =>
+      s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+
+    async function loadCounts() {
+      try {
+        const c = await getDashboardCounts();
+        for (const [k, v] of Object.entries(c)) {
+          const el = document.getElementById(`stat-${k}`);
+          if (el) el.textContent = String(v);
+        }
+      } catch {
+        for (const k of ['projects', 'experience', 'blog_posts', 'testimonials']) {
+          const el = document.getElementById(`stat-${k}`);
+          if (el) el.textContent = '—';
+        }
+        toast('Gagal memuat statistik.', 'error');
+      }
+    }
+
+    async function loadRecent() {
+      const box = document.getElementById('recent')!;
+      try {
+        const items = await getRecentlyUpdated(6);
+        if (items.length === 0) {
+          box.innerHTML =
+            '<div class="state" style="border:none;background:none;padding:32px">' +
+            '<h3>Belum ada aktivitas</h3><p>Konten yang Anda buat atau ubah akan muncul di sini.</p></div>';
+          return;
+        }
+        box.innerHTML = items
+          .map(
+            (i) =>
+              `<a class="recent-item" href="${i.href}">` +
+              `<span class="badge badge-draft" style="background:var(--line-2);color:var(--soft)">${esc(i.type)}</span>` +
+              `<span class="r-title">${esc(i.title)}</span><span class="spacer"></span>` +
+              `<span class="r-meta">${esc(timeAgo(i.updated_at))}</span></a>`
+          )
+          .join('');
+      } catch {
+        box.innerHTML =
+          '<div class="state" style="border:none;background:none;padding:32px">' +
+          '<h3>Gagal memuat</h3><p>Kami tidak dapat memuat aktivitas terbaru.</p>' +
+          '<button class="btn btn-ghost btn-sm" id="recentRetry">Coba lagi</button></div>';
+        document.getElementById('recentRetry')?.addEventListener('click', loadRecent);
+      }
+    }
+
+    loadCounts();
+    loadRecent();
+  </script>
+</AdminLayout>

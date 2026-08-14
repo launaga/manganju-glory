@@ -1,0 +1,63 @@
+---
+import Icon from './Icon.astro';
+
+interface Props { path: string; }
+const { path } = Astro.props;
+
+// Active when the current path equals the item, or is nested beneath it
+// (but "/admin" must not match everything).
+const isActive = (href: string) =>
+  href === '/admin' ? path === '/admin' : path === href || path.startsWith(href + '/');
+
+const groups: { label?: string; items: { href: string; label: string; icon: string }[] }[] = [
+  { items: [{ href: '/admin', label: 'Dashboard', icon: 'dashboard' }] },
+  {
+    label: 'Konten',
+    items: [
+      { href: '/admin/homepage', label: 'Homepage', icon: 'homepage' },
+      { href: '/admin/about', label: 'Tentang', icon: 'about' },
+      { href: '/admin/projects', label: 'Proyek', icon: 'projects' },
+      { href: '/admin/experience', label: 'Pengalaman', icon: 'experience' },
+      { href: '/admin/skills', label: 'Keahlian', icon: 'skills' },
+      { href: '/admin/testimonials', label: 'Testimoni', icon: 'testimonials' },
+      { href: '/admin/blog', label: 'Blog', icon: 'blog' },
+    ],
+  },
+  { label: 'Media', items: [{ href: '/admin/media', label: 'Media Library', icon: 'media' }] },
+  { label: 'Kotak Masuk', items: [{ href: '/admin/messages', label: 'Pesan', icon: 'inbox' }] },
+  {
+    label: 'Pengaturan',
+    items: [
+      { href: '/admin/settings', label: 'Site Settings', icon: 'settings' },
+      { href: '/admin/settings/seo', label: 'SEO', icon: 'seo' },
+    ],
+  },
+];
+---
+<aside class="admin-sidebar" id="adminSidebar">
+  <a class="sb-brand" href="/admin" aria-label="MGL Admin — dashboard">
+    :}MGL<span class="dot">.</span> <span style="font-weight:600;color:var(--soft);font-size:13px">Admin</span>
+  </a>
+  <nav class="sb-nav" aria-label="Admin">
+    {groups.map((g) => (
+      <div>
+        {g.label && <div class="sb-group-label">{g.label}</div>}
+        {g.items.map((it) => (
+          <a
+            href={it.href}
+            class={`nav-item${isActive(it.href) ? ' active' : ''}`}
+            aria-current={isActive(it.href) ? 'page' : undefined}
+          >
+            <Icon name={it.icon} class="nav-ico" size={17} />
+            {it.label}
+          </a>
+        ))}
+      </div>
+    ))}
+    <div class="sb-group-label">Akun</div>
+    <button class="nav-item" id="sbLogout" type="button" style="width:100%;background:none;border:none;font-family:inherit;font-size:inherit;cursor:pointer;text-align:left">
+      <Icon name="logout" class="nav-ico" size={17} />
+      Keluar
+    </button>
+  </nav>
+</aside>

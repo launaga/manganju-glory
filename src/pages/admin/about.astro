@@ -1,0 +1,13 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import PageHeader from '../../components/admin/PageHeader.astro';
+---
+<AdminLayout title="Tentang">
+  <PageHeader title="Tentang" description="Kelola isi halaman Tentang. Semua teks tersedia dalam ID & EN." />
+  <div id="root"></div>
+  <script>
+    import { initSingletonEditor } from '../../lib/admin/singleton';
+    import { aboutFields } from '../../lib/admin/singleton-configs';
+    initSingletonEditor(document.getElementById('root')!, 'about', aboutFields);
+  </script>
+</AdminLayout>
