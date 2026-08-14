@@ -2,7 +2,9 @@
 // content editor — the "one good CMS pattern". Handles field rendering,
 // bilingual ID/EN pairs, validation, dirty tracking (unsaved-changes), slug
 // auto-generation, and image upload fields.
-import { slugify, slugExists, uploadImage } from './db';
+import { slugify, slugExists } from './db';
+import { uploadOne, validateFile, type Folder } from './media';
+import { openMediaPicker } from './media-picker';
 import { createRichText, type RichText } from './richtext';
 import { toast } from './ui';
 
@@ -145,23 +147,34 @@ export function renderForm(
         let current = initial[f.name] ?? '';
         const setPrev = () => { preview.src = current || ''; preview.style.display = current ? 'block' : 'none'; };
         setPrev();
-        const url = makeInput(f.name, current, 'text', 'URL gambar atau unggah');
+        const url = makeInput(f.name, current, 'text', 'URL gambar');
         url.addEventListener('input', () => { current = url.value.trim(); setPrev(); });
-        const file = el('input') as HTMLInputElement; file.type = 'file'; file.accept = 'image/*';
-        file.className = 'file-input';
+        const bar = el('div', 'image-actions');
+        const pick = el('button', 'btn btn-ghost btn-sm') as HTMLButtonElement; pick.type = 'button'; pick.textContent = 'Pilih dari Media';
+        const upLabel = el('label', 'btn btn-ghost btn-sm'); upLabel.textContent = 'Unggah';
+        const file = el('input') as HTMLInputElement; file.type = 'file'; file.accept = 'image/*'; file.hidden = true;
+        const clearBtn = el('button', 'btn btn-ghost btn-sm') as HTMLButtonElement; clearBtn.type = 'button'; clearBtn.textContent = 'Kosongkan';
+        upLabel.appendChild(file);
+        pick.addEventListener('click', async () => {
+          const m = await openMediaPicker({ folder: f.imageFolder as Folder });
+          if (m) { current = m.public_url; url.value = current; setPrev(); markDirty(); }
+        });
         file.addEventListener('change', async () => {
           const f0 = file.files?.[0]; if (!f0) return;
+          const bad = validateFile(f0); if (bad) { toast(bad, 'error'); file.value = ''; return; }
           try {
             box.classList.add('uploading');
-            const u = await uploadImage(f0, f.imageFolder ?? 'general');
-            current = u; url.value = u; setPrev(); markDirty();
+            const m = await uploadOne(f0, (f.imageFolder as Folder) ?? 'general');
+            current = m.public_url; url.value = current; setPrev(); markDirty();
             toast('Gambar terunggah.', 'ok');
-          } catch (e) {
-            toast('Gagal mengunggah gambar.', 'error');
-          } finally { box.classList.remove('uploading'); }
+          } catch (e) { toast('Gagal mengunggah gambar.', 'error'); }
+          finally { box.classList.remove('uploading'); file.value = ''; }
         });
+        clearBtn.addEventListener('click', () => { current = ''; url.value = ''; setPrev(); markDirty(); });
         getters[f.name] = () => current.trim();
-        box.appendChild(preview); box.appendChild(url); box.appendChild(file);
+        box.appendChild(preview); box.appendChild(url);
+        bar.appendChild(pick); bar.appendChild(upLabel); bar.appendChild(clearBtn);
+        box.appendChild(bar);
         wrap.appendChild(box);
       } else if (f.type === 'slug') {
         wrap.appendChild(el('label', '', f.label + req));
