@@ -22,6 +22,8 @@ export default defineConfig({
 
   integrations: [
     sitemap({
+      // Keep the private admin area out of the sitemap (it is also noindex).
+      filter: (page) => !/\/admin(\/|$|\.html)/.test(page),
       i18n: { defaultLocale: 'id', locales: { id: 'id-ID', en: 'en-US' } },
     }),
   ],

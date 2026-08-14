@@ -1,0 +1,9 @@
+---
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import PageHeader from '../../../components/admin/PageHeader.astro';
+import Placeholder from '../../../components/admin/Placeholder.astro';
+---
+<AdminLayout title="Edit Artikel">
+  <PageHeader title="Edit Artikel" description="Ubah artikel." crumbs={[{label:"Blog",href:"/admin/blog"},{label:"Edit"}]} />
+  <Placeholder title="Editor Edit Artikel" icon="blog" />
+</AdminLayout>

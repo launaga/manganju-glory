@@ -21,15 +21,15 @@ import '../../styles/admin.css';
         <form id="loginForm" novalidate>
           <div class="field">
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="username"
-                   required inputmode="email" />
+            <input class="input" id="email" name="email" type="email"
+                   autocomplete="username" required inputmode="email" />
           </div>
           <div class="field">
             <label for="password">Password</label>
-            <input id="password" name="password" type="password"
+            <input class="input" id="password" name="password" type="password"
                    autocomplete="current-password" required />
           </div>
-          <button class="btn-admin" id="submitBtn" type="submit">Masuk</button>
+          <button class="btn btn-primary btn-block" id="submitBtn" type="submit">Masuk</button>
           <p class="msg" id="msg" role="status" aria-live="polite"></p>
         </form>
       </div>

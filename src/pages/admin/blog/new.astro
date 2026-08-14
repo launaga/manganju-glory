@@ -1,0 +1,9 @@
+---
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import PageHeader from '../../../components/admin/PageHeader.astro';
+import Placeholder from '../../../components/admin/Placeholder.astro';
+---
+<AdminLayout title="Artikel Baru">
+  <PageHeader title="Artikel Baru" description="Tulis artikel baru." crumbs={[{label:"Blog",href:"/admin/blog"},{label:"Baru"}]} />
+  <Placeholder title="Editor Artikel Baru" icon="blog" />
+</AdminLayout>
