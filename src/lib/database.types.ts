@@ -23,6 +23,15 @@ export interface Database {
         Update: { user_id?: string; email?: string | null; created_at?: string };
         Relationships: [];
       };
+      contact_submissions: {
+        Row: {
+          id: string; name: string; email: string; subject: string | null;
+          message: string; status: 'new' | 'read' | 'archived'; created_at: string; updated_at: string;
+        };
+        Insert: { name: string; email: string; message: string; subject?: string | null; status?: 'new' | 'read' | 'archived' };
+        Update: Partial<{ name: string; email: string; subject: string | null; message: string; status: 'new' | 'read' | 'archived' }>;
+        Relationships: [];
+      };
       projects: {
         Row: {
           id: string; title: string; slug: string;

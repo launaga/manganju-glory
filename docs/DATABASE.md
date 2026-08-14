@@ -35,6 +35,7 @@ sub-blocks. Collections are normal relational tables with `content_status`
 | `blog_categories` | collection | Blog categories. |
 | `blog_posts` | collection | Articles (rich HTML `content`, status, SEO). |
 | `media` | collection | File **metadata** only; binaries live in Storage. |
+| `contact_submissions` | inbox | Public contact form messages. Anon insert-only; admin full access. |
 
 Every mutable table has `created_at` / `updated_at` (the latter auto-maintained
 by the `set_updated_at()` trigger). PKs are `uuid` except singletons (`smallint`
@@ -48,6 +49,7 @@ by the `set_updated_at()` trigger). PKs are `uuid` except singletons (`smallint`
 | `supabase/migrations/0002_rls_policies.sql` | `enable row level security` on every table + admin/public policies. |
 | `supabase/migrations/0003_storage.sql` | `media` storage bucket + object policies. |
 | `supabase/migrations/0004_harden_functions.sql` | Moves `is_admin()` to a non-API `private` schema and pins `set_updated_at()` search_path — clears all Supabase security-linter warnings. |
+| `supabase/migrations/0005_contact_submissions.sql` | `contact_submissions` table with CHECK constraints, RLS (anon insert-only, admin full), `set_updated_at()` trigger. |
 | `supabase/seed.sql` | **DEV-only** sample data (not production content). |
 
 Apply with the Supabase CLI (`supabase db reset` locally, or `supabase db push`

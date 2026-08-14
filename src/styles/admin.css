@@ -431,3 +431,9 @@ a { color: inherit; }
 }
 
 .ml-progress[hidden] { display: none; }
+
+/* Contact messages (Phase 10A) */
+.msg-full { white-space: pre-wrap; line-height: 1.6; font-size: 14px; color: var(--ink-2);
+  background: var(--panel-2); border: 1px solid var(--line-2); border-radius: var(--r-sm); padding: 14px; max-height: 40vh; overflow-y: auto; }
+.data-table tr.msg-unread td { background: #fbfbe8; }
+.data-table tr.msg-unread td strong { font-weight: 800; }

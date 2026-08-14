@@ -65,6 +65,13 @@ There is **no public registration**. Create the single admin securely:
 
 Now log in at `/admin/login`.
 
+## Contact messages (Phase 10A)
+
+Public contact form submissions are stored in `contact_submissions` (Supabase),
+replacing the old Vercel Serverless + Resend email flow. The admin can manage
+them at `/admin/messages` (list, search, filter by status, open, mark-read,
+archive, delete). RLS: anon insert-only, admin full access.
+
 ## Hostinger routing note
 
 With `build.format: 'file'`, the build emits `dist/admin.html` (for `/admin`)
