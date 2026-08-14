@@ -1,0 +1,13 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import PageHeader from '../../components/admin/PageHeader.astro';
+---
+<AdminLayout title="Pengalaman">
+  <PageHeader title="Pengalaman" description="Kelola riwayat pengalaman. Seret urutan dengan tombol panah." />
+  <div id="root"></div>
+  <script>
+    import { renderList } from '../../lib/admin/list';
+    import { experienceListConfig } from '../../lib/admin/collections';
+    renderList(document.getElementById('root')!, experienceListConfig);
+  </script>
+</AdminLayout>

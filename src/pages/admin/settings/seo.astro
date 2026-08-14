@@ -1,0 +1,9 @@
+---
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import PageHeader from '../../../components/admin/PageHeader.astro';
+import Placeholder from '../../../components/admin/Placeholder.astro';
+---
+<AdminLayout title="SEO">
+  <PageHeader title="SEO" description="Judul, deskripsi, dan gambar OG per halaman." crumbs={[{label:"Pengaturan",href:"/admin/settings"},{label:"SEO"}]} />
+  <Placeholder title="Pengaturan SEO" icon="seo" />
+</AdminLayout>

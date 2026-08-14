@@ -1,0 +1,14 @@
+---
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import PageHeader from '../../../components/admin/PageHeader.astro';
+---
+<AdminLayout title="Pengalaman Baru">
+  <PageHeader title="Pengalaman Baru" crumbs={[{label:"Pengalaman",href:"/admin/experience"},{label:"Baru"}]} />
+  <div id="root"></div>
+  <script>
+    import { initEditor } from '../../../lib/admin/editor';
+    import { experienceEditorConfig } from '../../../lib/admin/collections';
+    
+    initEditor(document.getElementById('root')!, experienceEditorConfig);
+  </script>
+</AdminLayout>

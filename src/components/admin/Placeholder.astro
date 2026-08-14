@@ -1,0 +1,12 @@
+---
+// Stub content for admin routes whose editor arrives in Phase 6. Establishes
+// the navigation/route so the sidebar works end-to-end without building CMS UI.
+import Icon from './Icon.astro';
+interface Props { title: string; icon?: string; note?: string; }
+const { title, icon = 'projects', note } = Astro.props;
+---
+<div class="state">
+  <Icon name={icon} class="state-ico" size={40} />
+  <h3>{title}</h3>
+  <p>{note ?? 'Editor untuk bagian ini akan dibangun pada fase berikutnya (Phase 6 — CMS).'}</p>
+</div>

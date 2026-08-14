@@ -1,0 +1,13 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import PageHeader from '../../components/admin/PageHeader.astro';
+---
+<AdminLayout title="Testimoni">
+  <PageHeader title="Testimoni" description="Kelola testimoni klien." />
+  <div id="root"></div>
+  <script>
+    import { renderList } from '../../lib/admin/list';
+    import { testimonialListConfig } from '../../lib/admin/collections';
+    renderList(document.getElementById('root')!, testimonialListConfig);
+  </script>
+</AdminLayout>

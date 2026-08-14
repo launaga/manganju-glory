@@ -1,0 +1,17 @@
+---
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import PageHeader from '../../../components/admin/PageHeader.astro';
+---
+<AdminLayout title="Edit Artikel">
+  <PageHeader title="Edit Artikel" crumbs={[{label:"Blog",href:"/admin/blog"},{label:"Edit"}]} />
+  <div id="root"></div>
+  <script>
+    import { initEditor } from '../../../lib/admin/editor';
+    import { blogEditorConfig } from '../../../lib/admin/collections';
+    import { list } from '../../../lib/admin/db';
+    const id = new URLSearchParams(location.search).get('id') ?? undefined;
+    const cats = (await list('blog_categories', { order: { column: 'name', ascending: true } }))
+      .map((c) => ({ value: c.id as string, label: c.name as string }));
+    initEditor(document.getElementById('root')!, blogEditorConfig(cats), id);
+  </script>
+</AdminLayout>
