@@ -6,6 +6,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
+    { "source": "/", "destination": "https://haloglory.com/", "permanent": true },
     { "source": "/:path*", "destination": "https://haloglory.com/:path*", "permanent": true }
   ]
 }

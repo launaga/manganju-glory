@@ -1,4 +1,5 @@
 Options -MultiViews
+DirectorySlash Off
 DirectoryIndex index.html
 
 RewriteEngine On
@@ -19,11 +20,11 @@ RewriteRule ^en/design-system/?$ /en [R=301,L]
 RewriteRule ^system/?$ / [R=301,L]
 
 # Serve Astro's file-format output using extensionless URLs.
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
-RewriteCond %{DOCUMENT_ROOT}/$1.html -f
-RewriteRule ^(.+?)/?$ $1.html [L]
 
 AddDefaultCharset UTF-8
 
