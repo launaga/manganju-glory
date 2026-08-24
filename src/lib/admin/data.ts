@@ -1,7 +1,7 @@
 // Read-only dashboard data access. Full CRUD comes in Phase 6. Counts use
 // head:true (no rows transferred). RLS applies — an admin session sees all
 // statuses. Errors are surfaced as thrown values for the UI's error state.
-import { supabase } from '../supabase';
+import { api } from '../api';
 
 export interface DashboardCounts {
   projects: number;
@@ -10,22 +10,8 @@ export interface DashboardCounts {
   testimonials: number;
 }
 
-async function count(table: string): Promise<number> {
-  const { count, error } = await supabase
-    .from(table)
-    .select('*', { count: 'exact', head: true });
-  if (error) throw error;
-  return count ?? 0;
-}
-
 export async function getDashboardCounts(): Promise<DashboardCounts> {
-  const [projects, experience, blog_posts, testimonials] = await Promise.all([
-    count('projects'),
-    count('experience'),
-    count('blog_posts'),
-    count('testimonials'),
-  ]);
-  return { projects, experience, blog_posts, testimonials };
+  return (await api<{ data: DashboardCounts }>('/dashboard/counts')).data;
 }
 
 export interface RecentItem {
@@ -37,26 +23,7 @@ export interface RecentItem {
 
 /** Most recently updated content across the main collections. */
 export async function getRecentlyUpdated(limit = 6): Promise<RecentItem[]> {
-  const q = (table: string, cols: string) =>
-    supabase.from(table).select(cols).order('updated_at', { ascending: false }).limit(limit);
-
-  const [p, b, t, e] = await Promise.all([
-    q('projects', 'title, updated_at'),
-    q('blog_posts', 'title, updated_at'),
-    q('testimonials', 'name, updated_at'),
-    q('experience', 'company, updated_at'),
-  ]);
-  for (const r of [p, b, t, e]) if (r.error) throw r.error;
-
-  const items: RecentItem[] = [
-    ...(p.data ?? []).map((r: any) => ({ type: 'Proyek' as const, title: r.title, updated_at: r.updated_at, href: '/admin/projects' })),
-    ...(b.data ?? []).map((r: any) => ({ type: 'Artikel' as const, title: r.title, updated_at: r.updated_at, href: '/admin/blog' })),
-    ...(t.data ?? []).map((r: any) => ({ type: 'Testimoni' as const, title: r.name, updated_at: r.updated_at, href: '/admin/testimonials' })),
-    ...(e.data ?? []).map((r: any) => ({ type: 'Pengalaman' as const, title: r.company, updated_at: r.updated_at, href: '/admin/experience' })),
-  ];
-  return items
-    .sort((a, b) => +new Date(b.updated_at) - +new Date(a.updated_at))
-    .slice(0, limit);
+  return (await api<{ data: RecentItem[] }>(`/dashboard/recent?limit=${limit}`)).data;
 }
 
 /** "2 jam lalu" style relative time in Bahasa Indonesia. */

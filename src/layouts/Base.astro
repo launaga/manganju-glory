@@ -20,7 +20,7 @@ const { lang, title, description, idPath, enPath, image, extraSchema = [] } =
 const ui = UI[lang];
 const nav = NAV[lang];
 
-const site = Astro.site ?? new URL('https://mglportfolio.vercel.app');
+const site = Astro.site ?? new URL('https://haloglory.com');
 const abs = (p: string) => new URL(p, site).href;
 
 const canonicalPath = lang === 'id' ? idPath : enPath;

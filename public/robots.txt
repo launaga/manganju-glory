@@ -3,4 +3,4 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 
-Sitemap: https://mglportfolio.vercel.app/sitemap-index.xml
+Sitemap: https://haloglory.com/sitemap-index.xml

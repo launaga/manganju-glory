@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "type": "module",
-  "description": "Manganju Glory Laurencius — konsultan website independen. Astro (static) + Supabase CMS. Bilingual ID/EN.",
+  "description": "Manganju Glory Laurencius — portfolio bilingual Astro dengan CMS MariaDB di cPanel.",
   "scripts": {
     "dev": "astro dev",
     "sync": "node scripts/sync-content.mjs",
@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
-    "@supabase/supabase-js": "^2.45.0",
     "astro": "^5.1.1"
   }
 }

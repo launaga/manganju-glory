@@ -1,13 +1,9 @@
-// Media Library data layer. Files live in the Phase 3 `media` Storage bucket
-// (public read, admin-only write); metadata lives in the `media` table. No new
-// bucket, no duplicate table, no base64-in-DB. RLS/Storage policies enforce
-// authorization — never the service-role key.
-import { supabase } from '../supabase';
+import { api } from '../api';
 import { friendlyError } from './db';
 
 export const BUCKET = 'media';
 export const MAX_BYTES = 5 * 1024 * 1024; // 5 MB (matches bucket limit)
-export const ALLOWED_MIME = ['image/webp', 'image/jpeg', 'image/png', 'image/avif', 'image/svg+xml'];
+export const ALLOWED_MIME = ['image/webp', 'image/jpeg', 'image/png', 'image/avif'];
 export const FOLDERS = ['projects', 'blog', 'avatars', 'logos', 'site', 'general'] as const;
 export type Folder = (typeof FOLDERS)[number];
 
@@ -20,17 +16,11 @@ export interface MediaItem {
 export interface ListMediaOpts { search?: string; folder?: string; sort?: 'newest' | 'oldest' | 'name'; }
 
 export async function listMedia(opts: ListMediaOpts = {}): Promise<MediaItem[]> {
-  let q = supabase.from('media').select('*');
-  if (opts.folder && opts.folder !== 'all') q = q.eq('folder', opts.folder);
-  if (opts.search?.trim()) {
-    const t = opts.search.replace(/[%,()]/g, ' ').trim();
-    q = q.or(`file_name.ilike.%${t}%,alt_id.ilike.%${t}%,alt_en.ilike.%${t}%`);
-  }
-  if (opts.sort === 'name') q = q.order('file_name', { ascending: true });
-  else q = q.order('created_at', { ascending: opts.sort === 'oldest' });
-  const { data, error } = await q;
-  if (error) throw error;
-  return (data ?? []) as MediaItem[];
+  const p = new URLSearchParams();
+  if (opts.folder && opts.folder !== 'all') p.set('folder', opts.folder);
+  if (opts.search) p.set('search', opts.search);
+  if (opts.sort) p.set('sort', opts.sort);
+  return (await api<{ data: MediaItem[] }>(`/media?${p}`)).data;
 }
 
 export function validateFile(file: File): string | null {
@@ -57,29 +47,15 @@ export async function uploadOne(file: File, folder: Folder = 'general'): Promise
   if (bad) throw new Error(bad);
   const { width, height } = await imageDimensions(file);
   const clean = file.name.replace(/[^a-zA-Z0-9._-]/g, '-').toLowerCase().slice(0, 100);
-  const path = `${folder}/${Date.now()}-${crypto.randomUUID().slice(0, 8)}-${clean}`;
-
-  const up = await supabase.storage.from(BUCKET).upload(path, file, { cacheControl: '31536000', upsert: false });
-  if (up.error) throw up.error;
-  const publicUrl = supabase.storage.from(BUCKET).getPublicUrl(path).data.publicUrl;
-
-  const { data: u } = await supabase.auth.getUser();
-  const { data, error } = await supabase.from('media').insert({
-    file_name: clean, storage_path: path, public_url: publicUrl,
-    mime_type: file.type, file_size: file.size, width, height, folder, uploaded_by: u.user?.id ?? null,
-  }).select().single();
-
-  if (error) {
-    // rollback the orphaned storage object
-    await supabase.storage.from(BUCKET).remove([path]).catch(() => {});
-    throw error;
-  }
-  return data as MediaItem;
+  const form = new FormData();
+  form.append('file', file); form.append('folder', folder);
+  form.append('width', String(width ?? '')); form.append('height', String(height ?? ''));
+  form.append('clean_name', clean);
+  return (await api<{ data: MediaItem }>('/media', { method: 'POST', body: form })).data;
 }
 
 export async function updateMediaMeta(id: string, patch: { alt_id?: string; alt_en?: string; folder?: string }): Promise<void> {
-  const { error } = await supabase.from('media').update(patch).eq('id', id);
-  if (error) throw error;
+  await api(`/media/${encodeURIComponent(id)}`, { method: 'PATCH', body: JSON.stringify(patch) });
 }
 
 // Columns across the CMS that can reference a media URL. Used to block unsafe
@@ -98,14 +74,7 @@ export interface Reference { label: string; count: number; }
 
 /** Where (if anywhere) this URL is currently used across the CMS. */
 export async function findReferences(url: string): Promise<Reference[]> {
-  const checks = await Promise.all(
-    REFERENCE_COLUMNS.map(async (rc) => {
-      const { count, error } = await supabase.from(rc.table).select('*', { count: 'exact', head: true }).eq(rc.column, url);
-      if (error) return { label: rc.label, count: 0 };
-      return { label: rc.label, count: count ?? 0 };
-    })
-  );
-  return checks.filter((c) => c.count > 0);
+  return (await api<{ data: Reference[] }>(`/media/references?url=${encodeURIComponent(url)}`)).data;
 }
 
 /** Delete media safely: block if referenced; else remove Storage object then
@@ -119,10 +88,7 @@ export async function deleteMedia(item: MediaItem): Promise<void> {
     err.references = refs;
     throw err;
   }
-  const rm = await supabase.storage.from(BUCKET).remove([item.storage_path]);
-  if (rm.error) throw rm.error;
-  const { error } = await supabase.from('media').delete().eq('id', item.id);
-  if (error) throw error;
+  await api(`/media/${encodeURIComponent(item.id)}`, { method: 'DELETE' });
 }
 
 export async function copyToClipboard(text: string): Promise<void> {

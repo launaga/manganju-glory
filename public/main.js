@@ -85,7 +85,7 @@ function closeMobile(){mm.classList.remove('open')}
 document.getElementById('burger').addEventListener('click',()=>mm.classList.add('open'));
 document.getElementById('closeMenu').addEventListener('click',closeMobile);
 
-/* ---------------- contact form → Supabase (contact_submissions) ---------------- */
+/* ---------------- contact form → same-origin CMS API ---------------- */
 const cform=document.getElementById('contactForm');
 if(cform){
   const status=document.getElementById('formStatus');
@@ -147,13 +147,11 @@ if(cform){
     if(totalBytes()>MAX_TOTAL){setStatus('Total lampiran melebihi 3 MB — hapus sebagian file.','err');return;}
     // Honeypot: real users never fill "company"; bots often do → fake success.
     if(company){setStatus('Terima kasih — brief Anda sudah terkirim. Saya akan segera membalas.','ok');cform.reset();picked=[];renderFiles();return;}
-    const sbUrl=cform.dataset.sbUrl,sbKey=cform.dataset.sbKey;
-    if(!sbUrl||!sbKey){setStatus('Formulir belum dikonfigurasi. Silakan hubungi saya langsung via WhatsApp.','err');return;}
     btn.disabled=true;btn.style.opacity='.7';btn.innerHTML='Mengirim…';setStatus('','');
     // Attachments can't be uploaded anonymously; note their names so I can request them.
     const fullMessage=picked.length?message+'\n\n[Lampiran disebut: '+picked.map(f=>f.name).join(', ')+']':message;
     try{
-      const r=await fetch(sbUrl+'/rest/v1/contact_submissions',{method:'POST',headers:{'Content-Type':'application/json','apikey':sbKey,'Authorization':'Bearer '+sbKey,'Prefer':'return=minimal'},body:JSON.stringify({name,email,message:fullMessage})});
+      const r=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'same-origin',body:JSON.stringify({name,email,message:fullMessage,company})});
       if(r.ok){
         setStatus('Terima kasih — brief Anda sudah terkirim. Saya akan segera membalas.','ok');
         cform.reset();picked=[];renderFiles();

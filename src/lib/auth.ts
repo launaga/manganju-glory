@@ -1,21 +1,13 @@
-// Authentication + authorization helpers for the admin area (client-side).
-//
-// Authentication ("who are you?") is handled by Supabase Auth.
-// Authorization ("are you allowed to manage this CMS?") is checked against the
-// admin_users table from Phase 3: its RLS policy only returns rows to a caller
-// for whom private.is_admin() is true, so a successful non-empty read *is* the
-// authorization signal. RLS remains the real enforcement — these helpers only
-// drive UI/routing (redirects, hiding content), never security by themselves.
-import type { User } from '@supabase/supabase-js';
-import { supabase } from './supabase';
+import { api, clearCsrf, refreshSession } from './api';
 
 export const LOGIN_PATH = '/admin/login';
 export const ADMIN_PATH = '/admin';
 
 /** Current signed-in user, or null. Reads local session (no network). */
+export interface User { id: string; email: string; }
+
 export async function getUser(): Promise<User | null> {
-  const { data } = await supabase.auth.getSession();
-  return data.session?.user ?? null;
+  return refreshSession();
 }
 
 /**
@@ -23,9 +15,7 @@ export async function getUser(): Promise<User | null> {
  * policy (select allowed only when private.is_admin()). Non-admins get 0 rows.
  */
 export async function isAdmin(): Promise<boolean> {
-  const { data, error } = await supabase.from('admin_users').select('user_id').limit(1);
-  if (error) return false;
-  return (data?.length ?? 0) > 0;
+  return (await getUser()) !== null;
 }
 
 export interface AuthResult {
@@ -37,24 +27,37 @@ export interface AuthResult {
 /** Sign in, then verify admin authorization. Never reveals which field was wrong. */
 export async function signIn(email: string, password: string): Promise<AuthResult> {
   try {
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) {
-      // Do not distinguish "no such email" from "wrong password" (anti-enumeration).
-      return { ok: false, message: 'Email atau password salah.' };
-    }
-    if (!(await isAdmin())) {
-      // Authenticated but not authorized → drop the session immediately.
-      await supabase.auth.signOut();
-      return { ok: false, message: 'Anda tidak memiliki akses ke area ini.' };
-    }
+    await api('/auth/login', { method: 'POST', body: JSON.stringify({ email, password }) });
     return { ok: true };
-  } catch {
-    return { ok: false, message: 'Terjadi gangguan jaringan. Coba lagi sebentar.' };
+  } catch (error: any) {
+    return { ok: false, message: error?.message ?? 'Terjadi gangguan jaringan. Coba lagi sebentar.' };
   }
 }
 
 export async function signOut(): Promise<void> {
-  await supabase.auth.signOut();
+  try { await api('/auth/logout', { method: 'POST' }); } finally { clearCsrf(); }
+}
+
+export async function requestPassword(email: string): Promise<AuthResult> {
+  try {
+    const result = await api<{ message?: string }>('/auth/request-password', {
+      method: 'POST', body: JSON.stringify({ email }),
+    });
+    return { ok: true, message: result.message };
+  } catch (error: any) {
+    return { ok: false, message: error?.message ?? 'Gagal mengirim tautan. Coba lagi.' };
+  }
+}
+
+export async function resetPassword(token: string, password: string): Promise<AuthResult> {
+  try {
+    const result = await api<{ message?: string }>('/auth/reset-password', {
+      method: 'POST', body: JSON.stringify({ token, password }),
+    });
+    return { ok: true, message: result.message };
+  } catch (error: any) {
+    return { ok: false, message: error?.message ?? 'Tautan tidak valid atau sudah kedaluwarsa.' };
+  }
 }
 
 /**
@@ -63,14 +66,8 @@ export async function signOut(): Promise<void> {
  * Call this before revealing any protected content (prevents flashing).
  */
 export async function requireAdmin(): Promise<boolean> {
-  const user = await getUser();
-  if (!user) {
+  if (!(await getUser())) {
     window.location.replace(LOGIN_PATH);
-    return false;
-  }
-  if (!(await isAdmin())) {
-    await signOut();
-    window.location.replace(`${LOGIN_PATH}?denied=1`);
     return false;
   }
   return true;

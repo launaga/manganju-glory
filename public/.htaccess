@@ -1,0 +1,50 @@
+Options -MultiViews
+DirectoryIndex index.html
+
+RewriteEngine On
+
+# Canonical production origin: HTTPS + apex domain.
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^haloglory\.com$ [NC]
+RewriteRule ^ https://haloglory.com%{REQUEST_URI} [R=301,L]
+
+# Retired and legacy routes.
+RewriteRule ^about/?$ /tentang [R=301,L]
+RewriteRule ^portfolio/?$ /portofolio [R=301,L]
+RewriteRule ^contact/?$ /kontak [R=301,L]
+RewriteRule ^harga/?$ /kontak [R=301,L]
+RewriteRule ^en/pricing/?$ /en/contact [R=301,L]
+RewriteRule ^sistem-desain/?$ / [R=301,L]
+RewriteRule ^en/design-system/?$ /en [R=301,L]
+RewriteRule ^system/?$ / [R=301,L]
+
+# Serve Astro's file-format output using extensionless URLs.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
+
+AddDefaultCharset UTF-8
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+<FilesMatch "^\.(?!well-known)">
+  Require all denied
+</FilesMatch>

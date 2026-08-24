@@ -1,16 +1,14 @@
-// Build-time content sync: pull PUBLISHED content from Supabase and materialise
+// Build-time content sync: pull published content from the private cPanel CMS
 // it into the JSON/content files the public Astro components already read.
 // Runs before `astro build`. This is how the static site becomes CMS-driven
 // while the components — and therefore the design — stay byte-for-byte unchanged.
 //
-// Fallback: if Supabase is unreachable (e.g. no network) or returns nothing, we
+// Fallback: if the CMS is unreachable (e.g. no network) or returns nothing, we
 // LOUDLY warn and leave the committed snapshot in place, so the build never
-// breaks and never ships an empty site. In CI this fetch should succeed; set
-// REQUIRE_SUPABASE=1 to make a fetch failure fail the build instead.
+// breaks and never ships an empty site. Set REQUIRE_CMS=1 to fail closed in CI.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createClient } from '@supabase/supabase-js';
 import { shapeSingleton, shapeSeo, shapeService, shapeStats, shapeProject } from '../src/lib/content/shape.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -35,27 +33,19 @@ const write = (rel, obj) => {
 
 async function main() {
   const env = readEnv();
-  const url = env.PUBLIC_SUPABASE_URL, key = env.PUBLIC_SUPABASE_ANON_KEY;
-  if (!url || !key) throw new Error('PUBLIC_SUPABASE_URL / PUBLIC_SUPABASE_ANON_KEY not set');
-  const db = createClient(url, key, { auth: { persistSession: false } });
-
-  const need = async (label, p) => {
-    const { data, error } = await p;
-    if (error) throw new Error(`${label}: ${error.message}`);
-    if (data == null) throw new Error(`${label}: no data`);
-    return data;
-  };
-
-  // Fetch everything first (all-or-nothing) — anon key ⇒ published-only via RLS.
-  const [home, about, settings, seoRows, services, statsRows, projects] = await Promise.all([
-    need('homepage', db.from('homepage').select('*').eq('id', 1).single()),
-    need('about', db.from('about').select('*').eq('id', 1).single()),
-    need('site_settings', db.from('site_settings').select('*').eq('id', 1).single()),
-    need('seo', db.from('seo_settings').select('*').not('page_key', 'in', '(pricing,design-system)')),
-    need('services', db.from('services').select('*').eq('status', 'published').order('display_order')),
-    need('stats', db.from('stats').select('*').order('display_order')),
-    need('projects', db.from('projects').select('*').eq('status', 'published').order('display_order')),
-  ]);
+  const url = env.CMS_EXPORT_URL, token = env.CMS_EXPORT_TOKEN;
+  if (!url || !token) throw new Error('CMS_EXPORT_URL / CMS_EXPORT_TOKEN not set');
+  const response = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+  if (!response.ok) throw new Error(`CMS export returned HTTP ${response.status}`);
+  const payload = await response.json();
+  if (!payload?.ok || !payload?.data) throw new Error('CMS export payload invalid');
+  const all = payload.data;
+  const home = all.homepage?.[0], about = all.about?.[0], settings = all.site_settings?.[0];
+  const seoRows = (all.seo_settings ?? []).filter((r) => !['pricing', 'design-system'].includes(r.page_key));
+  const services = (all.services ?? []).filter((r) => r.status === 'published').sort((a,b) => a.display_order-b.display_order);
+  const statsRows = (all.stats ?? []).sort((a,b) => a.display_order-b.display_order);
+  const projects = (all.projects ?? []).filter((r) => r.status === 'published').sort((a,b) => a.display_order-b.display_order);
+  if (!home || !about || !settings) throw new Error('CMS singleton content missing');
   if (!projects.length) throw new Error('0 published projects — refusing to overwrite snapshot');
 
   // Only now (all fetched) do we write, so a mid-fetch failure never half-writes.
@@ -77,8 +67,8 @@ async function main() {
 }
 
 main().catch((err) => {
-  warn(`Supabase content NOT synced — building from the committed snapshot instead.`);
+  warn(`CMS content NOT synced — building from the committed snapshot instead.`);
   warn(`Reason: ${err.message}`);
-  if (process.env.REQUIRE_SUPABASE === '1') { console.error('[sync-content] REQUIRE_SUPABASE=1 → failing build.'); process.exit(1); }
+  if (process.env.REQUIRE_CMS === '1') { console.error('[sync-content] REQUIRE_CMS=1 → failing build.'); process.exit(1); }
   process.exit(0); // build proceeds with the committed content
 });

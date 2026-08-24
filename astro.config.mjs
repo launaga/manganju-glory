@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 // Satu-satunya sumber origin untuk seluruh URL absolut (canonical, OG, sitemap,
 // JSON-LD). Fase 8: tidak boleh ada domain hardcoded di mana pun selain di sini.
 // Saat pindah domain, cukup set PUBLIC_SITE_URL di Vercel — nol perubahan kode.
-const SITE = process.env.PUBLIC_SITE_URL || 'https://mglportfolio.vercel.app';
+const SITE = process.env.PUBLIC_SITE_URL || 'https://haloglory.com';
 
 export default defineConfig({
   site: SITE,
