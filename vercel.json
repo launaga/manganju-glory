@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "astro",
-  "buildCommand": "astro build",
+  "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
@@ -24,6 +24,10 @@
     { "source": "/about", "destination": "/tentang", "permanent": true },
     { "source": "/portfolio", "destination": "/portofolio", "permanent": true },
     { "source": "/contact", "destination": "/kontak", "permanent": true },
-    { "source": "/system", "destination": "/sistem-desain", "permanent": true }
+    { "source": "/harga", "destination": "/kontak", "permanent": true },
+    { "source": "/en/pricing", "destination": "/en/contact", "permanent": true },
+    { "source": "/sistem-desain", "destination": "/", "permanent": true },
+    { "source": "/en/design-system", "destination": "/en", "permanent": true },
+    { "source": "/system", "destination": "/", "permanent": true }
   ]
 }

@@ -168,6 +168,8 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': graph };
             href={item.href}
             class={item.href === current ? 'active' : undefined}
             aria-current={item.href === current ? 'page' : undefined}
+            target={item.external ? '_blank' : undefined}
+            rel={item.external ? 'noopener noreferrer' : undefined}
           >
             <span class="idx">{item.idx}</span>{item.label}
           </a>
@@ -188,7 +190,11 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': graph };
     <div class="mobile-menu" id="mobileMenu">
       <button class="close" id="closeMenu">{ui.menuClose}</button>
       {nav.map((item) => (
-        <a href={item.href}><span class="idx">{item.idx}</span> {item.label}</a>
+        <a
+          href={item.href}
+          target={item.external ? '_blank' : undefined}
+          rel={item.external ? 'noopener noreferrer' : undefined}
+        ><span class="idx">{item.idx}</span> {item.label}</a>
       ))}
       <a
         class="mm-cta"
@@ -210,7 +216,11 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': graph };
         <div class="foot-col">
           <h5>{ui.footerMenu}</h5>
           {nav.map((item) => (
-            <a href={item.href}>{item.label}</a>
+            <a
+              href={item.href}
+              target={item.external ? '_blank' : undefined}
+              rel={item.external ? 'noopener noreferrer' : undefined}
+            >{item.label}</a>
           ))}
         </div>
         <div class="foot-col">

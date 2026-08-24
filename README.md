@@ -25,7 +25,6 @@ src/
 │   ├── projects-en.ts     ← overlay deskripsi proyek versi Inggris
 │   ├── services.ts        ← 5 halaman layanan (ID)
 │   ├── services-en.ts     ← 5 halaman layanan (EN) — bukan terjemahan
-│   ├── pricing.ts         ← paket, FAQ, "yang tidak termasuk"
 │   ├── case-studies.ts    ← 2 studi kasus
 │   └── schema.ts          ← builder JSON-LD
 ├── layouts/Base.astro     ← shell HTML, meta, canonical, hreflang, JSON-LD
@@ -84,9 +83,8 @@ foto hero merenggang jadi 1500px dan menyembunyikan seluruh teks hero.
 
 Lihat `.env.example`.
 
-Di Vercel, apa pun di `/api` otomatis jadi serverless endpoint — tanpa
-konfigurasi. `cleanUrls: true` di `vercel.json` yang membuat `/harga` menyajikan
-`harga.html`; karena itu semua link internal ditulis tanpa `.html`.
+`cleanUrls: true` di `vercel.json` membuat seluruh route statis disajikan tanpa
+ekstensi `.html`; karena itu semua link internal ditulis dengan URL bersih.
 
 ### Resend (form kontak)
 
@@ -103,8 +101,5 @@ domain sendiri belum terverifikasi di Resend, pengirimnya memakai
 Ini sengaja **tidak** diisi karangan:
 
 - `SAME_AS` di `src/data/site.ts` masih kosong → URL LinkedIn/Instagram
-- Skema cicilan di `src/data/pricing.ts` → FAQ-nya belum ditayangkan
-- Rail pembayaran klien internasional di `src/pages/en/pricing.astro`
 - Nama NGO London (+ izinnya) di `src/data/case-studies.ts`
 - `priceRange` di `schema.ts` masih `"$$"` → ganti ke rentang nyata
-- `/en/design-system` belum dibuat (sengaja; `READY` menyembunyikannya)

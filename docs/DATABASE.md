@@ -23,7 +23,7 @@ sub-blocks. Collections are normal relational tables with `content_status`
 | `seo_settings` | per-key | One row per page (`page_key`) + a `global` row with site-wide SEO defaults. |
 | `homepage` | singleton | All homepage sections (hero → CTA). Repeaters in `jsonb`. |
 | `about` | singleton | About page sections; story/principles/chips/boundaries in `jsonb`. |
-| `pricing` | singleton | Pricing page; packages/factors/not_included/faq in `jsonb`. |
+| `pricing` | legacy singleton | Retained in the historical schema; the public Pricing page was retired. |
 | `services` | collection | Service cards (bilingual, status). |
 | `stats` | collection | The 3-number stat block (Home + About). |
 | `projects` | collection | Portfolio projects (status, featured, ordering, SEO). |
@@ -137,7 +137,7 @@ created with RLS enabled on every one; advisor clean.
 - **Blog is single-language** (per the Phase 2/3 spec field list). If bilingual
   blog is wanted later, add `*_id/_en` columns via a new migration.
 - **Singletons are publicly readable**, so in-progress (unpublished) edits to
-  homepage/about/pricing are visible via the API before a rebuild. Low risk for
+  homepage/about are visible via the API before a rebuild. Low risk for
   a portfolio (that content is destined to be public and the live site is static
   until re-published). A `published` snapshot column can be added later if needed.
 - **Admin bootstrap** happens in Phase 4 — no admin exists until then.
@@ -177,7 +177,6 @@ migrated into these tables 1:1:
 | `src/content/services/*.json` (5) | `services` |
 | `src/data/home.json` | `homepage` |
 | `src/data/about.json` | `about` |
-| `src/data/pricing.json` | `pricing` |
 | `src/data/stats.json` | `stats` |
 | `src/data/settings.json` | `site_settings` |
 | `src/data/seo/*.json` | `seo_settings` |

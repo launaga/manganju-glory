@@ -91,14 +91,13 @@ yang sudah ada tidak jadi 404.
 - [ ] Vercel → Settings → Domains → pada `mglportfolio.vercel.app` pilih
       **Redirect to** `manganjuglory.com` dengan status **308** (Vercel memakai
       308; ini permanen dan diperlakukan sama dengan 301 oleh Google)
-- [ ] Pastikan redirect-nya **path-preserving** — `/harga` harus mendarat di
-      `manganjuglory.com/harga`, bukan di homepage. Redirect semua-ke-homepage
-      adalah cara paling umum menghanguskan migrasi.
+- [ ] Pastikan redirect halaman aktif tetap **path-preserving**. Route yang
+      sudah dipensiunkan mengikuti redirect eksplisit di `vercel.json`.
 
 Verifikasi tiap URL lama:
 
 ```bash
-for p in / /tentang /layanan /harga /portofolio /sistem-desain /kontak; do
+for p in / /tentang /layanan /portofolio /kontak; do
   printf '%-18s' "$p"
   curl -s -o /dev/null -w '%{http_code} -> %{redirect_url}\n' "https://mglportfolio.vercel.app$p"
 done
@@ -119,7 +118,7 @@ Urutannya penting — jangan lompat.
 - [ ] Jalankan **Settings → Change of Address** di property **lama**, arahkan ke
       yang baru. Ini yang memberi tahu Google migrasinya disengaja.
 - [ ] URL Inspection → Request Indexing untuk halaman prioritas:
-      `/`, `/layanan`, `/harga`
+      `/`, `/layanan`, `/portofolio`
 
 > ⚠️ **Change of Address kemungkinan besar tidak tersedia** untuk property
 > `*.vercel.app`, karena Google memperlakukan domain di Public Suffix List secara

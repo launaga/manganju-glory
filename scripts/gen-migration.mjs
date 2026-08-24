@@ -40,7 +40,6 @@ function singleton(table, obj) {
 
 singleton('homepage', readJSON('src/data/home.json'));
 singleton('about', readJSON('src/data/about.json'));
-singleton('pricing', readJSON('src/data/pricing.json'));
 
 // site_settings (subset of columns exist; keep matching ones)
 {

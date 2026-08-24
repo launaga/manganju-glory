@@ -47,12 +47,11 @@ async function main() {
   };
 
   // Fetch everything first (all-or-nothing) — anon key ⇒ published-only via RLS.
-  const [home, about, pricing, settings, seoRows, services, statsRows, projects] = await Promise.all([
+  const [home, about, settings, seoRows, services, statsRows, projects] = await Promise.all([
     need('homepage', db.from('homepage').select('*').eq('id', 1).single()),
     need('about', db.from('about').select('*').eq('id', 1).single()),
-    need('pricing', db.from('pricing').select('*').eq('id', 1).single()),
     need('site_settings', db.from('site_settings').select('*').eq('id', 1).single()),
-    need('seo', db.from('seo_settings').select('*')),
+    need('seo', db.from('seo_settings').select('*').not('page_key', 'in', '(pricing,design-system)')),
     need('services', db.from('services').select('*').eq('status', 'published').order('display_order')),
     need('stats', db.from('stats').select('*').order('display_order')),
     need('projects', db.from('projects').select('*').eq('status', 'published').order('display_order')),
@@ -62,7 +61,6 @@ async function main() {
   // Only now (all fetched) do we write, so a mid-fetch failure never half-writes.
   write('src/data/home.json', shapeSingleton('homepage', home));
   write('src/data/about.json', shapeSingleton('about', about));
-  write('src/data/pricing.json', shapeSingleton('pricing', pricing));
   write('src/data/settings.json', shapeSingleton('site_settings', settings));
   write('src/data/stats.json', shapeStats(statsRows));
   for (const s of seoRows) write(`src/data/seo/${s.page_key}.json`, shapeSeo(s));

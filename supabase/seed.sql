@@ -5,8 +5,8 @@
 -- and status filtering during Phase 3 validation. All content is CLEARLY marked
 -- "DEV" / example.com so it can never be mistaken for production copy.
 --
--- This does NOT migrate the real portfolio content (16 projects, real homepage/
--- about/pricing). That is a separate, reviewed step — see docs/DATABASE.md
+-- This does NOT migrate the real portfolio content (16 projects, homepage/about).
+-- That is a separate, reviewed step — see docs/DATABASE.md
 -- "Real content migration". Run this only against a development database.
 --
 -- Admin bootstrap: admin_users needs a real auth.users id, so it is created in
@@ -32,11 +32,6 @@ on conflict (id) do nothing;
 
 insert into about (id, hero_h1_accent_id, hero_h1_accent_en, principles)
 values (1, 'DEV.', 'DEV.', '[{"pn":"/01","h_id":"DEV Prinsip","h_en":"DEV Principle"}]'::jsonb)
-on conflict (id) do nothing;
-
-insert into pricing (id, h1_lead_id, h1_lead_en, packages)
-values (1, 'DEV Harga', 'DEV Pricing',
-        '[{"key":"dev","name_id":"DEV Paket","name_en":"DEV Package"}]'::jsonb)
 on conflict (id) do nothing;
 
 -- Stats ----------------------------------------------------------------------

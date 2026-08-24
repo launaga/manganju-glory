@@ -19,27 +19,26 @@ export interface NavItem {
   idx: string;
   href: string;
   label: string;
+  external?: boolean;
 }
 
-// Menu 7 item, identik strukturnya di kedua bahasa (EN kini juga punya Design System).
+// Menu identik strukturnya di kedua bahasa. Templates menuju produk eksternal.
 export const NAV: Record<Lang, NavItem[]> = {
   id: [
     { idx: '/01', href: '/', label: 'Beranda' },
     { idx: '/02', href: '/tentang', label: 'Tentang' },
     { idx: '/03', href: '/layanan', label: 'Layanan' },
-    { idx: '/04', href: '/harga', label: 'Harga' },
-    { idx: '/05', href: '/portofolio', label: 'Portofolio' },
-    { idx: '/06', href: '/sistem-desain', label: 'Sistem Desain' },
-    { idx: '/07', href: '/kontak', label: 'Kontak' },
+    { idx: '/04', href: '/portofolio', label: 'Portofolio' },
+    { idx: '/05', href: 'https://mglwebkits.com/', label: 'Templates', external: true },
+    { idx: '/06', href: '/kontak', label: 'Kontak' },
   ],
   en: [
     { idx: '/01', href: '/en', label: 'Home' },
     { idx: '/02', href: '/en/about', label: 'About' },
     { idx: '/03', href: '/en/services', label: 'Services' },
-    { idx: '/04', href: '/en/pricing', label: 'Pricing' },
-    { idx: '/05', href: '/en/work', label: 'Work' },
-    { idx: '/06', href: '/en/design-system', label: 'Design System' },
-    { idx: '/07', href: '/en/contact', label: 'Contact' },
+    { idx: '/04', href: '/en/work', label: 'Work' },
+    { idx: '/05', href: 'https://mglwebkits.com/', label: 'Templates', external: true },
+    { idx: '/06', href: '/en/contact', label: 'Contact' },
   ],
 };
 

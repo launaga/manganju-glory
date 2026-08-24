@@ -10,7 +10,7 @@ import path from 'node:path';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const keymap = JSON.parse(fs.readFileSync(path.join(here, '_keymap.json'), 'utf8'));
 
-/** Singleton row (home/about/pricing/site_settings) → original JSON object. */
+/** Singleton row (home/about/site_settings) → original JSON object. */
 export function shapeSingleton(table, row) {
   const km = keymap[table] || {};
   const out = {};
