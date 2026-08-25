@@ -1,4 +1,6 @@
 {
+  "imageWidth": 537,
+  "imageHeight": 922,
   "order": 13,
   "featured": false,
   "name": "Spotless Mobile App",
@@ -8,8 +10,6 @@
     "Vercel"
   ],
   "image": "/img/work/spotless-mobile-app.webp",
-  "imageWidth": 537,
-  "imageHeight": 922,
   "alt_id": "Tangkapan layar proyek Spotless Mobile App",
   "alt_en": "Spotless Mobile App project screenshot",
   "desc_id": "Aplikasi mobile cuci mobil premium yang dibayangkan ulang dari Karcher. React 19 + TypeScript, terasa native — 30+ layar: onboarding, pencarian merchant dengan peta, booking dengan add-on, dompet token, QR, dan 10 metode pembayaran.",

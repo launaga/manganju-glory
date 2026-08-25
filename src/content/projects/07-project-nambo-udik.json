@@ -1,4 +1,6 @@
 {
+  "imageWidth": 937,
+  "imageHeight": 822,
   "order": 7,
   "featured": true,
   "name": "Project Nambo Udik",
@@ -7,8 +9,6 @@
     "Wix Studio"
   ],
   "image": "/img/work/project-nambo-udik.webp",
-  "imageWidth": 937,
-  "imageHeight": 822,
   "alt_id": "Tangkapan layar proyek Project Nambo Udik",
   "alt_en": "Project Nambo Udik project screenshot",
   "desc_id": "Proyek komunitas yang meningkatkan literasi dan kesehatan anak-anak di pedesaan Indonesia. Saya bangun situs Wix Studio yang mendokumentasikan “Revolusi Membaca” dan Sports Day mereka — transparansi yang membangun kepercayaan donor.",

@@ -112,7 +112,10 @@ function tableOrFail(string $table): string {
 
 function saveRecord(PDO $pdo, string $table, string $id, array $data, bool $upsert): array {
     unset($data['created_at'], $data['updated_at']);
-    $json = json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    // Keep non-ASCII characters escaped in storage. This makes the JSON
+    // portable even when a hosting/database layer negotiates a narrower
+    // connection charset (which previously turned symbols such as ↗ into ?).
+    $json = json_encode($data, JSON_UNESCAPED_SLASHES);
     if ($upsert) {
         $q = $pdo->prepare('INSERT INTO cms_records (table_name,id,data_json) VALUES (?,?,?) ON DUPLICATE KEY UPDATE data_json=VALUES(data_json),updated_at=NOW()');
         $q->execute([$table, $id, $json]);

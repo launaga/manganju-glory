@@ -1,4 +1,6 @@
 {
+  "imageWidth": 1200,
+  "imageHeight": 575,
   "order": 16,
   "featured": false,
   "name": "Rasalokal",
@@ -8,8 +10,6 @@
     "Lovable"
   ],
   "image": "/img/work/rasalokal.webp",
-  "imageWidth": 1200,
-  "imageHeight": 575,
   "alt_id": "Tangkapan layar proyek Rasalokal",
   "alt_en": "Rasalokal project screenshot",
   "desc_id": "Platform yang menghubungkan produsen camilan UMKM dengan distribusi modern dan marketplace. Masalahnya klasik di kategori ini: cerita “dari dapur rumah” gampang terdengar sentimental sampai produknya sendiri tidak terlihat serius. Saya pisahkan dua audiens yang selama ini bertabrakan — konsumen ritel dan pembeli B2B — sejak dari navigasi.",

@@ -1,106 +1,217 @@
 {
   "hero_eyebrow_id": "// Konsultan Website Independen",
   "hero_eyebrow_en": "// Independent Website Consultant",
-  "hero_h1a_id": "Saya membuat website", "hero_h1a_en": "I build websites",
-  "hero_h1b_id": "yang membuat bisnis", "hero_h1b_en": "that make businesses",
-  "hero_h1c_id": "lebih mudah dipahami.", "hero_h1c_en": "easier to understand.",
-  "hero_sub_id": "Konsultan · Desainer · Developer", "hero_sub_en": "Consultant · Designer · Developer",
+  "hero_h1a_id": "Saya membuat website",
+  "hero_h1a_en": "I build websites",
+  "hero_h1b_id": "yang membuat bisnis",
+  "hero_h1b_en": "that make businesses",
+  "hero_h1c_id": "lebih mudah dipahami.",
+  "hero_h1c_en": "easier to understand.",
+  "hero_sub_id": "Konsultan · Desainer · Developer",
+  "hero_sub_en": "Consultant · Designer · Developer",
   "hero_leadBefore_id": "Kebanyakan website justru mengecilkan bisnis. Pengunjung ditenggelamkan daftar fitur, pesan utamanya tertutup tren, dan pemiliknya bingung kenapa tidak ada yang konversi. Itu yang saya perbaiki — mengubah keahlian Anda menjadi ",
   "hero_leadBefore_en": "Most websites make a business look smaller than it is. Visitors drown in feature lists, the actual message hides behind whatever is fashionable, and the owner cannot work out why nothing converts. That is what I fix — turning your expertise into ",
-  "hero_leadMark_id": "kejelasan instan", "hero_leadMark_en": "instant clarity",
+  "hero_leadMark_id": "kejelasan instan",
+  "hero_leadMark_en": "instant clarity",
   "hero_leadAfter_id": ", supaya orang yang tepat menangkap nilai Anda dalam 30 detik.",
   "hero_leadAfter_en": ", so the right people grasp your value in thirty seconds.",
-  "hero_cta_id": "Konsultasi Gratis", "hero_cta_en": "Free Consultation",
+  "hero_cta_id": "Konsultasi Gratis",
+  "hero_cta_en": "Free Consultation",
   "hero_photoAlt_id": "Foto Manganju Glory Laurencius, konsultan dan desainer website",
   "hero_photoAlt_en": "Manganju Glory Laurencius, website consultant and designer",
-
-  "marqueeTools_id": ["Pengembangan WordPress", "Desain Figma", "Wix Studio Expert"],
-  "marqueeTools_en": ["WordPress Development", "Figma Design", "Wix Studio Expert"],
-
-  "angle_eyebrow_id": "// 02 — Sudut Pandang Berbeda", "angle_eyebrow_en": "// 02 — A Different Angle",
-  "angle_bigBefore_id": "Kebanyakan proyek website dimulai dari ", "angle_bigBefore_en": "Most website projects start in ",
-  "angle_bigAccent_id": "tempat yang salah.", "angle_bigAccent_en": "the wrong place.",
+  "marqueeTools_id": [
+    "Pengembangan WordPress",
+    "Desain Figma",
+    "Wix Studio Expert"
+  ],
+  "marqueeTools_en": [
+    "WordPress Development",
+    "Figma Design",
+    "Wix Studio Expert"
+  ],
+  "angle_eyebrow_id": "// 02 — Sudut Pandang Berbeda",
+  "angle_eyebrow_en": "// 02 — A Different Angle",
+  "angle_bigBefore_id": "Kebanyakan proyek website dimulai dari ",
+  "angle_bigBefore_en": "Most website projects start in ",
+  "angle_bigAccent_id": "tempat yang salah.",
+  "angle_bigAccent_en": "the wrong place.",
   "angle_p1_id": "Saya ingat banyak bisnis menghubungi saya untuk redesign. Tapi setelah 20 menit bicara, biasanya kami menemukan masalah yang sebenarnya: mereka belum tahu cara menjelaskan apa yang mereka kerjakan.",
   "angle_p1_en": "Plenty of businesses come to me asking for a redesign. Twenty minutes into the conversation, we usually find the actual problem: they have not yet worked out how to explain what they do.",
   "angle_p2_id": "Website menjadi jauh lebih kuat begitu fondasi itu dipahami. Di situlah setiap proyek saya dimulai. Bukan dari palet warna. Tapi dari kejelasan.",
   "angle_p2_en": "A website gets dramatically stronger once that foundation is understood. That is where every project of mine begins. Not with a colour palette. With clarity.",
   "angle_closeBefore_id": "Website yang baik tidak dibangun dari halaman. Website yang baik dibangun dari ",
   "angle_closeBefore_en": "Good websites are not built out of pages. They are built out of ",
-  "angle_closeMark_id": "kejelasan.", "angle_closeMark_en": "clarity.",
-
-  "exp_eyebrow_id": "// 03 — Keahlian · Yang Saya Bawa", "exp_eyebrow_en": "// 03 — Expertise · What I Bring",
+  "angle_closeMark_id": "kejelasan.",
+  "angle_closeMark_en": "clarity.",
+  "exp_eyebrow_id": "// 03 — Keahlian · Yang Saya Bawa",
+  "exp_eyebrow_en": "// 03 — Expertise · What I Bring",
   "exp_title_id": "Strategi, desain, dan pengembangan yang bekerja bersama.",
   "exp_title_en": "Strategy, design, and development working together.",
   "exp_cols": [
-    { "n_id": "/STRATEGI", "n_en": "/STRATEGY", "h_id": "Strategi", "h_en": "Strategy",
+    {
+      "n_id": "/STRATEGI",
+      "n_en": "/STRATEGY",
+      "h_id": "Strategi",
+      "h_en": "Strategy",
       "p_id": "Memahami tujuan, audiens, struktur, dan peluang sebelum mengambil satu pun keputusan desain.",
       "p_en": "Understanding goals, audience, structure, and opportunities before making a single design decision.",
-      "tags_id": ["Workshop Discovery", "Perencanaan Website", "Arsitektur Informasi", "Pemetaan User Journey", "Strategi Konten"],
-      "tags_en": ["Discovery Workshop", "Website Planning", "Information Architecture", "User Journey Mapping", "Content Strategy"] },
-    { "n_id": "/DESAIN", "n_en": "/DESIGN", "h_id": "Desain", "h_en": "Design",
+      "tags_id": [
+        "Workshop Discovery",
+        "Perencanaan Website",
+        "Arsitektur Informasi",
+        "Pemetaan User Journey",
+        "Strategi Konten"
+      ],
+      "tags_en": [
+        "Discovery Workshop",
+        "Website Planning",
+        "Information Architecture",
+        "User Journey Mapping",
+        "Content Strategy"
+      ]
+    },
+    {
+      "n_id": "/DESAIN",
+      "n_en": "/DESIGN",
+      "h_id": "Desain",
+      "h_en": "Design",
       "p_id": "Menciptakan pengalaman yang berkomunikasi dengan jelas dan menumbuhkan keyakinan, bukan sekadar terlihat mengesankan.",
       "p_en": "Creating experiences that communicate clearly and build confidence, not just look impressive.",
-      "tags_id": ["Wireframing", "Desain Antarmuka", "Desain Responsif", "Design System", "Layout Berorientasi Konversi"],
-      "tags_en": ["Wireframing", "Interface Design", "Responsive Design", "Design System", "Conversion-Oriented Layout"] },
-    { "n_id": "/PENGEMBANGAN", "n_en": "/DEVELOPMENT", "h_id": "Pengembangan", "h_en": "Development",
+      "tags_id": [
+        "Wireframing",
+        "Desain Antarmuka",
+        "Desain Responsif",
+        "Design System",
+        "Layout Berorientasi Konversi"
+      ],
+      "tags_en": [
+        "Wireframing",
+        "Interface Design",
+        "Responsive Design",
+        "Design System",
+        "Conversion-Oriented Layout"
+      ]
+    },
+    {
+      "n_id": "/PENGEMBANGAN",
+      "n_en": "/DEVELOPMENT",
+      "h_id": "Pengembangan",
+      "h_en": "Development",
       "p_id": "Membangun website skalabel yang mudah dikelola, cepat dimuat, dan siap bertumbuh.",
       "p_en": "Building scalable websites that are easy to manage, load fast, and ready to grow.",
-      "tags_id": ["WordPress", "Wix", "Elementor", "Integrasi Kustom", "Optimasi Performa"],
-      "tags_en": ["WordPress", "Wix", "Elementor", "Custom Integrations", "Performance Optimisation"] }
+      "tags_id": [
+        "WordPress",
+        "Wix",
+        "Elementor",
+        "Integrasi Kustom",
+        "Optimasi Performa"
+      ],
+      "tags_en": [
+        "WordPress",
+        "Wix",
+        "Elementor",
+        "Custom Integrations",
+        "Performance Optimisation"
+      ]
+    }
   ],
-
-  "about_eyebrow_id": "// 04 — Tentang", "about_eyebrow_en": "// 04 — About",
+  "about_eyebrow_id": "// 04 — Tentang",
+  "about_eyebrow_en": "// 04 — About",
   "about_h2Before_id": "Saya tidak sekadar membangun website. Saya membantu orang mengambil ",
   "about_h2Before_en": "I don't just build websites. I help people make ",
-  "about_h2Accent_id": "keputusan digital yang lebih baik.", "about_h2Accent_en": "better digital decisions.",
+  "about_h2Accent_id": "keputusan digital yang lebih baik.",
+  "about_h2Accent_en": "better digital decisions.",
   "about_lead_id": "Selama bertahun-tahun saya bekerja dengan bisnis, organisasi, dan profesional dari berbagai industri. Proyeknya berbeda-beda. Tantangannya sering sama: mengubah keahlian, ide, dan ambisi menjadi sesuatu yang langsung dipahami orang.",
   "about_lead_en": "Over the years I've worked with businesses, organisations, and professionals across many industries. The projects differ. The challenge is often the same: turning expertise, ideas, and ambition into something people understand instantly.",
-  "about_btn_id": "Selengkapnya tentang saya", "about_btn_en": "More about me",
-
-  "svc_eyebrow_id": "// 05 — Layanan", "svc_eyebrow_en": "// 05 — Services",
+  "about_btn_id": "Selengkapnya tentang saya",
+  "about_btn_en": "More about me",
+  "svc_eyebrow_id": "// 05 — Layanan",
+  "svc_eyebrow_en": "// 05 — Services",
   "svc_title_id": "Dukungan yang dirancang untuk setiap tahap pertumbuhan.",
   "svc_title_en": "Support designed for every stage of growth.",
-  "svc_bestLabel_id": "Paling cocok untuk", "svc_bestLabel_en": "Best for",
+  "svc_bestLabel_id": "Paling cocok untuk",
+  "svc_bestLabel_en": "Best for",
   "svc_rows": [
-    { "ico": "*", "h_id": "Pengembangan WordPress", "h_en": "WordPress Development",
+    {
+      "ico": "*",
+      "h_id": "Pengembangan WordPress",
+      "h_en": "WordPress Development",
       "p_id": "Website fleksibel yang dirancang untuk kepemilikan penuh, skalabilitas, dan pertumbuhan jangka panjang.",
       "p_en": "Flexible websites designed for full ownership, scalability, and long-term growth.",
       "best_id": "Bisnis yang ingin mengelola kontennya sendiri tanpa harus menghubungi developer untuk setiap perubahan.",
-      "best_en": "Businesses that want to manage their own content without contacting a developer for every change." },
-    { "ico": "**", "h_id": "Desain & Pengembangan Wix", "h_en": "Wix Design & Development",
+      "best_en": "Businesses that want to manage their own content without contacting a developer for every change."
+    },
+    {
+      "ico": "**",
+      "h_id": "Desain & Pengembangan Wix",
+      "h_en": "Wix Design & Development",
       "p_id": "Dari discovery dan perencanaan hingga desain, pengembangan, dan peluncuran.",
       "p_en": "From discovery and planning through to design, development, and launch.",
       "best_id": "Bisnis yang sedang membangun website baru, atau mengganti yang sudah tidak lagi sesuai.",
-      "best_en": "Businesses building a new website, or replacing one that no longer fits." },
-    { "ico": "***", "h_id": "Pendampingan Jangka Panjang", "h_en": "Long-Term Partnership",
+      "best_en": "Businesses building a new website, or replacing one that no longer fits."
+    },
+    {
+      "ico": "***",
+      "h_id": "Pendampingan Jangka Panjang",
+      "h_en": "Long-Term Partnership",
       "p_id": "Panduan strategis dan dukungan berkelanjutan untuk bisnis yang sedang mengambil keputusan digital penting.",
       "p_en": "Strategic guidance and ongoing support for businesses making important digital decisions.",
       "best_id": "Founder dan tim yang butuh perspektif senior tanpa merekrut digital director penuh waktu.",
-      "best_en": "Founders and teams who need a senior perspective without hiring a full-time digital director." }
+      "best_en": "Founders and teams who need a senior perspective without hiring a full-time digital director."
+    }
   ],
-
-  "proc_eyebrow_id": "// 06 — Proses", "proc_eyebrow_en": "// 06 — Process",
-  "proc_title_id": "Proses sederhana. Ekspektasi yang jelas.", "proc_title_en": "A simple process. Clear expectations.",
+  "proc_eyebrow_id": "// 06 — Proses",
+  "proc_eyebrow_en": "// 06 — Process",
+  "proc_title_id": "Proses sederhana. Ekspektasi yang jelas.",
+  "proc_title_en": "A simple process. Clear expectations.",
   "proc_lead_id": "Setiap proyek melalui tahapan yang sama. Anda akan selalu tahu kita sedang di mana, apa langkah berikutnya, dan apa yang perlu Anda siapkan di tiap tahap.",
   "proc_lead_en": "Every project goes through the same stages. You'll always know where we are, what's next, and what you need to prepare at each step.",
   "proc_steps": [
-    { "h_id": "Discovery & Diagnosis", "h_en": "Discovery & Diagnosis",
+    {
+      "h_id": "Discovery & Diagnosis",
+      "h_en": "Discovery & Diagnosis",
       "p_id": "Memahami bisnis, tantangan, dan peluangnya. Yang Anda dapat: ruang lingkup proyek yang jelas, linimasa, dan penilaian jujur tentang apa yang realistis.",
-      "p_en": "Understanding the business, its challenges, and its opportunities. What you get: a clear project scope, timeline, and an honest assessment of what's realistic." },
-    { "h_id": "Desain & Pengembangan", "h_en": "Design & Development",
+      "p_en": "Understanding the business, its challenges, and its opportunities. What you get: a clear project scope, timeline, and an honest assessment of what's realistic."
+    },
+    {
+      "h_id": "Desain & Pengembangan",
+      "h_en": "Design & Development",
       "p_id": "Merancang dan membangun solusinya. Yang Anda dapat: update rutin, ruang untuk masukan, dan tanpa kejutan saat peluncuran.",
-      "p_en": "Designing and building the solution. What you get: regular updates, room for feedback, and no surprises at launch." },
-    { "h_id": "Peluncuran & Pertumbuhan", "h_en": "Launch & Growth",
+      "p_en": "Designing and building the solution. What you get: regular updates, room for feedback, and no surprises at launch."
+    },
+    {
+      "h_id": "Peluncuran & Pertumbuhan",
+      "h_en": "Launch & Growth",
       "p_id": "Mendukung keberhasilan jangka panjang setelah peluncuran. Yang Anda dapat: situs yang bekerja di hari pertama, dan rencana untuk hari keseratus.",
-      "p_en": "Supporting long-term success after launch. What you get: a site that works on day one, and a plan for day one hundred." },
-    { "h_id": "Transparansi Linimasa", "h_en": "Timeline Transparency",
+      "p_en": "Supporting long-term success after launch. What you get: a site that works on day one, and a plan for day one hundred."
+    },
+    {
+      "h_id": "Transparansi Linimasa",
+      "h_en": "Timeline Transparency",
       "p_id": "Proyek umumnya berjalan 4–12 minggu tergantung kompleksitas. Tanpa misteri, tanpa target yang bergeser.",
-      "p_en": "Projects typically run 4–12 weeks depending on complexity. No mystery, no shifting targets." }
+      "p_en": "Projects typically run 4–12 weeks depending on complexity. No mystery, no shifting targets."
+    }
   ],
-
-  "marqueeAccent_id": ["Strategi", "Desain", "Pengembangan", "Konsultasi", "Problem Solving", "User Experience", "Produk Digital"],
-  "marqueeAccent_en": ["Strategy", "Design", "Development", "Consulting", "Problem Solving", "User Experience", "Digital Products"],
-
-  "cta_title_id": "Tertarik bekerja sama?", "cta_title_en": "Interested in working together?",
-  "cta_btn_id": "Konsultasi Gratis", "cta_btn_en": "Free Consultation"
+  "marqueeAccent_id": [
+    "Strategi",
+    "Desain",
+    "Pengembangan",
+    "Konsultasi",
+    "Problem Solving",
+    "User Experience",
+    "Produk Digital"
+  ],
+  "marqueeAccent_en": [
+    "Strategy",
+    "Design",
+    "Development",
+    "Consulting",
+    "Problem Solving",
+    "User Experience",
+    "Digital Products"
+  ],
+  "cta_title_id": "Tertarik bekerja sama?",
+  "cta_title_en": "Interested in working together?",
+  "cta_btn_id": "Konsultasi Gratis",
+  "cta_btn_en": "Free Consultation"
 }

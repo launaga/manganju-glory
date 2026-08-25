@@ -1,4 +1,6 @@
 {
+  "imageWidth": 1200,
+  "imageHeight": 529,
   "order": 14,
   "featured": false,
   "name": "Spotless POS",
@@ -8,8 +10,6 @@
     "Vercel"
   ],
   "image": "/img/work/spotless-pos.webp",
-  "imageWidth": 1200,
-  "imageHeight": 529,
   "alt_id": "Tangkapan layar proyek Spotless POS",
   "alt_en": "Spotless POS project screenshot",
   "desc_id": "Antarmuka kasir point-of-sale berfitur lengkap untuk operasional cuci mobil premium. Tata letak split-screen dengan grid produk 3 kolom (Self Service, Rollover, Automatic, Detailing, Add-on) dan panel tagihan real-time.",

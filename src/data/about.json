@@ -1,63 +1,192 @@
 {
-  "hero_eyebrow_id": "// 01 — Tentang", "hero_eyebrow_en": "// 01 — About",
+  "hero_eyebrow_id": "// 01 — Tentang",
+  "hero_eyebrow_en": "// 01 — About",
   "hero_h1Before_id": "Membangun website adalah pekerjaan saya. Memahami masalah adalah",
   "hero_h1Before_en": "Building websites is my job. Understanding the problem is",
-  "hero_h1Accent_id": "alasannya.", "hero_h1Accent_en": "the reason.",
+  "hero_h1Accent_id": "alasannya.",
+  "hero_h1Accent_en": "the reason.",
   "hero_lead_id": "Website jarang sekadar website. Ia biasanya cerminan dari tujuan bisnis, tantangan komunikasi, dan peluang pertumbuhan. Peran saya adalah menghubungkan potongan-potongan itu — supaya kehadiran digital Anda benar-benar mewakili apa yang sudah Anda bangun.",
   "hero_lead_en": "A website is rarely just a website. It is usually a reflection of business goals, communication challenges, and growth opportunities. My role is to connect those pieces — so your digital presence genuinely represents what you have already built.",
-  "hero_photoAlt_id": "Foto Manganju Glory Laurencius", "hero_photoAlt_en": "Manganju Glory Laurencius",
-
-  "story_eyebrow_id": "// 02 — Cerita di Balik Pekerjaan Ini", "story_eyebrow_en": "// 02 — The Story Behind This Work",
-  "story_title_id": "Cerita di balik pekerjaan ini.", "story_title_en": "The story behind this work.",
-  "story_readCaseLabel_id": "Baca studi kasus lengkapnya ↗", "story_readCaseLabel_en": "Read the full case study ↗",
+  "hero_photoAlt_id": "Foto Manganju Glory Laurencius",
+  "hero_photoAlt_en": "Manganju Glory Laurencius",
+  "story_eyebrow_id": "// 02 — Cerita di Balik Pekerjaan Ini",
+  "story_eyebrow_en": "// 02 — The Story Behind This Work",
+  "story_title_id": "Cerita di balik pekerjaan ini.",
+  "story_title_en": "The story behind this work.",
+  "story_readCaseLabel_id": "Baca studi kasus lengkapnya ↗",
+  "story_readCaseLabel_en": "Read the full case study ↗",
   "story_paragraphs": [
-    { "pull": false, "link": "", "text_id": "Saya mulai dengan membangun website untuk diri sendiri — sekadar dokumentasi sederhana berbasis WordPress untuk hobi saya, fotografi. Lalu Covid datang. Saat itu saya mengambil dua pekerjaan sekaligus: bekerja penuh waktu di perusahaan travel dan logistik, sambil bertahun-tahun mengikuti kursus dan pelatihan desain, sebelum akhirnya mendapat klien pertama.", "text_en": "I started by building a website for myself — a simple WordPress record of my hobby, photography. Then Covid hit. At that point I was holding down two things at once: a full-time job at a travel and logistics company, while spending years on design courses and training, before I finally landed my first client." },
-    { "pull": false, "link": "jakarta-feminist", "text_id": "Klien itu Jakarta Feminist, sebuah NGO lokal di Jakarta. Awalnya saya hanya dikontrak membangun tiga website mereka, tapi berlanjut menjadi pendampingan jangka panjang selama hampir lima tahun. Satu hal yang saya pelajari: klien tahu apa yang mereka mau, tapi tidak mau fitur yang meragukan. Mereka ingin sederhana, ingin berfungsi, dan ingin masukan dari penggunanya. Itu yang saya kerjakan, dan itu fondasi perjalanan desain saya.", "text_en": "That client was Jakarta Feminist, a local NGO in Jakarta. I was contracted to build three of their websites, and it turned into nearly five years of ongoing support. One thing I learned: the client knew what they wanted, and refused any feature they doubted. They wanted it simple, they wanted it to work, and they wanted input from the people using it. That is what I delivered, and it became the foundation of my design journey." },
-    { "pull": true, "link": "", "text_id": "Situsnya terlihat sukses. Tapi tidak bekerja.", "text_en": "The site looked successful. But it did not work." },
-    { "pull": false, "link": "", "text_id": "Saya juga melihat kebanyakan orang fokus pada apa yang terlihat bagus — layout bersih, animasi kekinian, mockup yang pixel-perfect. Klien senang saat presentasi. Tapi tiga bulan setelah peluncuran, saya cek analitik mereka: bounce rate tinggi, konversi rendah, pengunjung kebingungan.", "text_en": "I also noticed most people optimise for what looks good — clean layouts, current animations, pixel-perfect mockups. Clients are delighted at the presentation. Then three months after launch you open the analytics: high bounce rate, low conversion, visitors lost." },
-    { "pull": false, "link": "redesign-website-ngo-london", "text_id": "Titik baliknya terjadi saat proyek untuk sebuah NGO ternama di London. Mereka sudah membakar anggaran di dua agensi. Keduanya menghasilkan situs yang indah. Tidak ada satu pun yang bertanya siapa sebenarnya yang berkunjung, kenapa mereka pergi, atau apa yang bisnis butuhkan dari mereka. Saya bangun ulang dengan cara berbeda — dimulai dari kecemasan pelanggan, bukan kebanggaan pendirinya. Menambah friksi di tempat yang perlu, menghapusnya di tempat yang tidak. Konversi naik dua kali lipat dalam enam minggu.", "text_en": "The turning point came with a project for a well-known NGO in London. They had already burned budget at two agencies. Both produced beautiful sites. Neither had asked who was actually visiting, why they left, or what the organisation needed from them. I rebuilt it differently — starting from the visitor's anxiety rather than the founder's pride. Adding friction where it was needed, removing it where it was not. Conversion doubled within six weeks." },
-    { "pull": false, "link": "", "text_id": "Di situ saya sadar: kebanyakan proyek web gagal sebelum baris kode pertama ditulis. Gagal di brief. Di asumsi. Di jarak antara apa yang bisnis kira dibutuhkan dan apa yang benar-benar dialami pelanggan.", "text_en": "That is when it clicked: most web projects fail before the first line of code is written. They fail in the brief. In the assumptions. In the gap between what a business thinks it needs and what the customer actually experiences." },
-    { "pull": false, "link": "", "text_id": "Hari ini saya bekerja di persimpangan strategi, desain, dan pengembangan — bukan sebagai tiga tahap terpisah, tapi sebagai satu keputusan yang berkelanjutan. Saya mengajukan pertanyaan yang memperlambat proyek, supaya peluncurannya tidak. Setiap situs yang saya bangun dirancang agar orang yang tepat merasa dipahami dalam 30 detik pertama, lalu mengambil langkah berikutnya tanpa berpikir dua kali.", "text_en": "Today I work at the intersection of strategy, design, and development — not as three separate stages, but as one continuous decision. I ask the questions that slow a project down, so the launch does not. Every site I build is designed so the right person feels understood in the first thirty seconds, then takes the next step without thinking twice." }
+    {
+      "text_id": "Saya mulai dengan membangun website untuk diri sendiri — sekadar dokumentasi sederhana berbasis WordPress untuk hobi saya, fotografi. Lalu Covid datang. Saat itu saya mengambil dua pekerjaan sekaligus: bekerja penuh waktu di perusahaan travel dan logistik, sambil bertahun-tahun mengikuti kursus dan pelatihan desain, sebelum akhirnya mendapat klien pertama.",
+      "text_en": "I started by building a website for myself — a simple WordPress record of my hobby, photography. Then Covid hit. At that point I was holding down two things at once: a full-time job at a travel and logistics company, while spending years on design courses and training, before I finally landed my first client.",
+      "link": "",
+      "pull": false
+    },
+    {
+      "text_id": "Klien itu Jakarta Feminist, sebuah NGO lokal di Jakarta. Awalnya saya hanya dikontrak membangun tiga website mereka, tapi berlanjut menjadi pendampingan jangka panjang selama hampir lima tahun. Satu hal yang saya pelajari: klien tahu apa yang mereka mau, tapi tidak mau fitur yang meragukan. Mereka ingin sederhana, ingin berfungsi, dan ingin masukan dari penggunanya. Itu yang saya kerjakan, dan itu fondasi perjalanan desain saya.",
+      "text_en": "That client was Jakarta Feminist, a local NGO in Jakarta. I was contracted to build three of their websites, and it turned into nearly five years of ongoing support. One thing I learned: the client knew what they wanted, and refused any feature they doubted. They wanted it simple, they wanted it to work, and they wanted input from the people using it. That is what I delivered, and it became the foundation of my design journey.",
+      "link": "jakarta-feminist",
+      "pull": false
+    },
+    {
+      "text_id": "Situsnya terlihat sukses. Tapi tidak bekerja.",
+      "text_en": "The site looked successful. But it did not work.",
+      "link": "",
+      "pull": true
+    },
+    {
+      "text_id": "Saya juga melihat kebanyakan orang fokus pada apa yang terlihat bagus — layout bersih, animasi kekinian, mockup yang pixel-perfect. Klien senang saat presentasi. Tapi tiga bulan setelah peluncuran, saya cek analitik mereka: bounce rate tinggi, konversi rendah, pengunjung kebingungan.",
+      "text_en": "I also noticed most people optimise for what looks good — clean layouts, current animations, pixel-perfect mockups. Clients are delighted at the presentation. Then three months after launch you open the analytics: high bounce rate, low conversion, visitors lost.",
+      "link": "",
+      "pull": false
+    },
+    {
+      "text_id": "Titik baliknya terjadi saat proyek untuk sebuah NGO ternama di London. Mereka sudah membakar anggaran di dua agensi. Keduanya menghasilkan situs yang indah. Tidak ada satu pun yang bertanya siapa sebenarnya yang berkunjung, kenapa mereka pergi, atau apa yang bisnis butuhkan dari mereka. Saya bangun ulang dengan cara berbeda — dimulai dari kecemasan pelanggan, bukan kebanggaan pendirinya. Menambah friksi di tempat yang perlu, menghapusnya di tempat yang tidak. Konversi naik dua kali lipat dalam enam minggu.",
+      "text_en": "The turning point came with a project for a well-known NGO in London. They had already burned budget at two agencies. Both produced beautiful sites. Neither had asked who was actually visiting, why they left, or what the organisation needed from them. I rebuilt it differently — starting from the visitor's anxiety rather than the founder's pride. Adding friction where it was needed, removing it where it was not. Conversion doubled within six weeks.",
+      "link": "redesign-website-ngo-london",
+      "pull": false
+    },
+    {
+      "text_id": "Di situ saya sadar: kebanyakan proyek web gagal sebelum baris kode pertama ditulis. Gagal di brief. Di asumsi. Di jarak antara apa yang bisnis kira dibutuhkan dan apa yang benar-benar dialami pelanggan.",
+      "text_en": "That is when it clicked: most web projects fail before the first line of code is written. They fail in the brief. In the assumptions. In the gap between what a business thinks it needs and what the customer actually experiences.",
+      "link": "",
+      "pull": false
+    },
+    {
+      "text_id": "Hari ini saya bekerja di persimpangan strategi, desain, dan pengembangan — bukan sebagai tiga tahap terpisah, tapi sebagai satu keputusan yang berkelanjutan. Saya mengajukan pertanyaan yang memperlambat proyek, supaya peluncurannya tidak. Setiap situs yang saya bangun dirancang agar orang yang tepat merasa dipahami dalam 30 detik pertama, lalu mengambil langkah berikutnya tanpa berpikir dua kali.",
+      "text_en": "Today I work at the intersection of strategy, design, and development — not as three separate stages, but as one continuous decision. I ask the questions that slow a project down, so the launch does not. Every site I build is designed so the right person feels understood in the first thirty seconds, then takes the next step without thinking twice.",
+      "link": "",
+      "pull": false
+    }
   ],
-
-  "marquee_id": ["Kejelasan Sebelum Kerumitan", "Sistem Ketimbang Fitur", "Bisnis Sebelum Teknologi", "Berpikir Jangka Panjang"],
-  "marquee_en": ["Clarity Before Complexity", "Systems Over Features", "Business Before Technology", "Long-Term Thinking"],
-
-  "prin_eyebrow_id": "// 03 — Cara Saya Berpikir", "prin_eyebrow_en": "// 03 — How I Think",
-  "prin_title_id": "Cara saya memandang pekerjaan digital.", "prin_title_en": "How I look at digital work.",
+  "marquee_id": [
+    "Kejelasan Sebelum Kerumitan",
+    "Sistem Ketimbang Fitur",
+    "Bisnis Sebelum Teknologi",
+    "Berpikir Jangka Panjang"
+  ],
+  "marquee_en": [
+    "Clarity Before Complexity",
+    "Systems Over Features",
+    "Business Before Technology",
+    "Long-Term Thinking"
+  ],
+  "prin_eyebrow_id": "// 03 — Cara Saya Berpikir",
+  "prin_eyebrow_en": "// 03 — How I Think",
+  "prin_title_id": "Cara saya memandang pekerjaan digital.",
+  "prin_title_en": "How I look at digital work.",
   "prin_items": [
-    { "pn": "/01", "h_id": "Kejelasan Sebelum Kerumitan", "h_en": "Clarity Before Complexity", "p_id": "Kebanyakan situs adalah kebingungan yang didandani. Saya mulai dari pesannya. Kalau Anda belum bisa menjelaskan nilai Anda dalam satu kalimat, tidak ada palet warna yang bisa menyelamatkan.", "p_en": "Most sites are confusion in nice clothing. I start with the message. If you cannot explain your value in one sentence, no colour palette will save it." },
-    { "pn": "/02", "h_id": "Sistem Ketimbang Fitur", "h_en": "Systems Over Features", "p_id": "Situs yang melakukan 3 hal dengan sempurna mengalahkan situs yang melakukan 12 hal dengan buruk. Setiap fitur adalah beban perawatan. Saya membangun sistem yang menskala, bukan daftar yang mengesankan.", "p_en": "A site that does 3 things perfectly beats one that does 12 things badly. Every feature is a maintenance burden. I build systems that scale, not lists that impress." },
-    { "pn": "/03", "h_id": "Bisnis Sebelum Teknologi", "h_en": "Business Before Technology", "p_id": "Tool terbaik adalah yang masih bisa dikelola tim Anda 2 tahun lagi. Saya tidak mengejar framework. Saya memilih yang melayani bisnis, bukan yang terdengar keren saat pitching.", "p_en": "The best tool is the one your team can still manage 2 years from now. I don't chase frameworks. I pick what serves the business, not what sounds clever in a pitch." },
-    { "pn": "/04", "h_id": "Berpikir Jangka Panjang", "h_en": "Long-Term Thinking", "p_id": "Kebanyakan agensi dinilai di hari peluncuran. Saya dinilai di hari ke-365. Situs yang harus dibangun ulang dalam 18 bulan adalah kegagalan, sebagus apa pun tampilannya di hari pertama.", "p_en": "Most agencies are judged on launch day. I'm judged on day 365. A site that has to be rebuilt within 18 months is a failure, however good it looked on day one." }
+    {
+      "pn": "/01",
+      "h_id": "Kejelasan Sebelum Kerumitan",
+      "h_en": "Clarity Before Complexity",
+      "p_id": "Kebanyakan situs adalah kebingungan yang didandani. Saya mulai dari pesannya. Kalau Anda belum bisa menjelaskan nilai Anda dalam satu kalimat, tidak ada palet warna yang bisa menyelamatkan.",
+      "p_en": "Most sites are confusion in nice clothing. I start with the message. If you cannot explain your value in one sentence, no colour palette will save it."
+    },
+    {
+      "pn": "/02",
+      "h_id": "Sistem Ketimbang Fitur",
+      "h_en": "Systems Over Features",
+      "p_id": "Situs yang melakukan 3 hal dengan sempurna mengalahkan situs yang melakukan 12 hal dengan buruk. Setiap fitur adalah beban perawatan. Saya membangun sistem yang menskala, bukan daftar yang mengesankan.",
+      "p_en": "A site that does 3 things perfectly beats one that does 12 things badly. Every feature is a maintenance burden. I build systems that scale, not lists that impress."
+    },
+    {
+      "pn": "/03",
+      "h_id": "Bisnis Sebelum Teknologi",
+      "h_en": "Business Before Technology",
+      "p_id": "Tool terbaik adalah yang masih bisa dikelola tim Anda 2 tahun lagi. Saya tidak mengejar framework. Saya memilih yang melayani bisnis, bukan yang terdengar keren saat pitching.",
+      "p_en": "The best tool is the one your team can still manage 2 years from now. I don't chase frameworks. I pick what serves the business, not what sounds clever in a pitch."
+    },
+    {
+      "pn": "/04",
+      "h_id": "Berpikir Jangka Panjang",
+      "h_en": "Long-Term Thinking",
+      "p_id": "Kebanyakan agensi dinilai di hari peluncuran. Saya dinilai di hari ke-365. Situs yang harus dibangun ulang dalam 18 bulan adalah kegagalan, sebagus apa pun tampilannya di hari pertama.",
+      "p_en": "Most agencies are judged on launch day. I'm judged on day 365. A site that has to be rebuilt within 18 months is a failure, however good it looked on day one."
+    }
   ],
-
-  "chips_eyebrow_id": "// 04 — Bidang Keahlian", "chips_eyebrow_en": "// 04 — Areas of Expertise",
-  "chips_title_id": "Keahlian spesifik, bukan jargon.", "chips_title_en": "Specific skills, not jargon.",
+  "chips_eyebrow_id": "// 04 — Bidang Keahlian",
+  "chips_eyebrow_en": "// 04 — Areas of Expertise",
+  "chips_title_id": "Keahlian spesifik, bukan jargon.",
+  "chips_title_en": "Specific skills, not jargon.",
   "chips": [
-    { "h_id": "Konsultasi", "h_en": "Consulting", "p_id": "Saran jujur yang kadang membuat saya kehilangan proyek, tapi membangun kepercayaan.", "p_en": "Honest advice that sometimes costs me a project, but builds trust." },
-    { "h_id": "Komunikasi", "h_en": "Communication", "p_id": "Membuat keahlian terlihat oleh orang yang tepat.", "p_en": "Making expertise visible to the right people." },
-    { "h_id": "User Experience", "h_en": "User Experience", "p_id": "Merancang untuk dipahami, bukan sekadar untuk engagement.", "p_en": "Designing to be understood, not just to drive engagement." },
-    { "h_id": "Arsitektur Informasi", "h_en": "Information Architecture", "p_id": "Menata kerumitan sampai terasa sederhana.", "p_en": "Ordering complexity until it feels simple." },
-    { "h_id": "Strategi Website", "h_en": "Website Strategy", "p_id": "Mengubah tujuan bisnis menjadi struktur digital.", "p_en": "Turning business goals into digital structure." },
-    { "h_id": "Pengembangan Web", "h_en": "Web Development", "p_id": "Bangunan kustom yang tidak rusak saat Anda memperbaruinya.", "p_en": "Custom builds that don't break when you update them." }
+    {
+      "h_id": "Konsultasi",
+      "h_en": "Consulting",
+      "p_id": "Saran jujur yang kadang membuat saya kehilangan proyek, tapi membangun kepercayaan.",
+      "p_en": "Honest advice that sometimes costs me a project, but builds trust."
+    },
+    {
+      "h_id": "Komunikasi",
+      "h_en": "Communication",
+      "p_id": "Membuat keahlian terlihat oleh orang yang tepat.",
+      "p_en": "Making expertise visible to the right people."
+    },
+    {
+      "h_id": "User Experience",
+      "h_en": "User Experience",
+      "p_id": "Merancang untuk dipahami, bukan sekadar untuk engagement.",
+      "p_en": "Designing to be understood, not just to drive engagement."
+    },
+    {
+      "h_id": "Arsitektur Informasi",
+      "h_en": "Information Architecture",
+      "p_id": "Menata kerumitan sampai terasa sederhana.",
+      "p_en": "Ordering complexity until it feels simple."
+    },
+    {
+      "h_id": "Strategi Website",
+      "h_en": "Website Strategy",
+      "p_id": "Mengubah tujuan bisnis menjadi struktur digital.",
+      "p_en": "Turning business goals into digital structure."
+    },
+    {
+      "h_id": "Pengembangan Web",
+      "h_en": "Web Development",
+      "p_id": "Bangunan kustom yang tidak rusak saat Anda memperbaruinya.",
+      "p_en": "Custom builds that don't break when you update them."
+    }
   ],
-
-  "bound_eyebrow_id": "// 05 — Yang Tidak Saya Kerjakan", "bound_eyebrow_en": "// 05 — What I Don't Do",
-  "bound_titleA_id": "Yang tidak", "bound_titleA_en": "What I don't",
-  "bound_titleB_id": "saya kerjakan.", "bound_titleB_en": "do.",
+  "bound_eyebrow_id": "// 05 — Yang Tidak Saya Kerjakan",
+  "bound_eyebrow_en": "// 05 — What I Don't Do",
+  "bound_titleA_id": "Yang tidak",
+  "bound_titleA_en": "What I don't",
+  "bound_titleB_id": "saya kerjakan.",
+  "bound_titleB_en": "do.",
   "bound_items": [
-    { "h_id": "Saya tidak mengejar tren.", "h_en": "I don't chase trends.", "p_id": "Kalau tujuan Anda terlihat sama seperti semua orang di 2026, saya bukan orangnya.", "p_en": "If your goal is to look like everyone else in 2026, I'm not your person." },
-    { "h_id": "Saya tidak membangun tanpa tujuan.", "h_en": "I don't build without purpose.", "p_id": "Setiap halaman harus punya alasan untuk ada.", "p_en": "Every page has to earn its reason to exist." },
-    { "h_id": "Saya tidak mengutamakan estetika di atas kejelasan.", "h_en": "I don't put aesthetics above clarity.", "p_id": "Situs indah yang membingungkan pengunjung adalah kegagalan.", "p_en": "A beautiful site that confuses visitors is a failure." },
-    { "h_id": "Saya tidak mengambil proyek yang tidak menghargai strategi.", "h_en": "I don't take projects that don't value strategy.", "p_id": "Kalau Anda mencari vendor yang sekadar mengeksekusi, ada pilihan yang lebih murah.", "p_en": "If you're looking for a vendor who just executes, there are cheaper options." }
+    {
+      "h_id": "Saya tidak mengejar tren.",
+      "h_en": "I don't chase trends.",
+      "p_id": "Kalau tujuan Anda terlihat sama seperti semua orang di 2026, saya bukan orangnya.",
+      "p_en": "If your goal is to look like everyone else in 2026, I'm not your person."
+    },
+    {
+      "h_id": "Saya tidak membangun tanpa tujuan.",
+      "h_en": "I don't build without purpose.",
+      "p_id": "Setiap halaman harus punya alasan untuk ada.",
+      "p_en": "Every page has to earn its reason to exist."
+    },
+    {
+      "h_id": "Saya tidak mengutamakan estetika di atas kejelasan.",
+      "h_en": "I don't put aesthetics above clarity.",
+      "p_id": "Situs indah yang membingungkan pengunjung adalah kegagalan.",
+      "p_en": "A beautiful site that confuses visitors is a failure."
+    },
+    {
+      "h_id": "Saya tidak mengambil proyek yang tidak menghargai strategi.",
+      "h_en": "I don't take projects that don't value strategy.",
+      "p_id": "Kalau Anda mencari vendor yang sekadar mengeksekusi, ada pilihan yang lebih murah.",
+      "p_en": "If you're looking for a vendor who just executes, there are cheaper options."
+    }
   ],
-  "bound_closeBefore_id": "Kalau itu terdengar membatasi, memang. Tapi klien yang bekerja dengan saya justru menghargai bahwa saya berani menolak proyek yang tidak cocok. Artinya, ketika saya bilang ya, saya ",
-  "bound_closeBefore_en": "If that sounds limiting, it is. But the clients who work with me appreciate that I'm willing to turn down projects that don't fit. It means when I say yes, I'm ",
-  "bound_closeMark_id": "sepenuhnya berkomitmen.", "bound_closeMark_en": "fully committed.",
-
-  "cta_title_id": "Mari cari tahu dulu masalah sebenarnya.", "cta_title_en": "Let's find the real problem first.",
-  "cta_btn_id": "Konsultasi Gratis", "cta_btn_en": "Free Consultation",
+  "bound_closeBefore_id": "Kalau itu terdengar membatasi, memang. Tapi klien yang bekerja dengan saya justru menghargai bahwa saya berani menolak proyek yang tidak cocok. Artinya, ketika saya bilang ya, saya",
+  "bound_closeBefore_en": "If that sounds limiting, it is. But the clients who work with me appreciate that I'm willing to turn down projects that don't fit. It means when I say yes, I'm",
+  "bound_closeMark_id": "sepenuhnya berkomitmen.",
+  "bound_closeMark_en": "fully committed.",
+  "cta_title_id": "Mari cari tahu dulu masalah sebenarnya.",
+  "cta_title_en": "Let's find the real problem first.",
+  "cta_btn_id": "Konsultasi Gratis",
+  "cta_btn_en": "Free Consultation",
   "cta_wa_id": "Hi! Saya baru baca halaman Tentang Anda dan ingin diskusi proyek...",
   "cta_wa_en": "Hi! I read your about page and I'd like to discuss a project..."
 }

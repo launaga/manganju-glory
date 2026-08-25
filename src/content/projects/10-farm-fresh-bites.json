@@ -1,4 +1,6 @@
 {
+  "imageWidth": 1145,
+  "imageHeight": 750,
   "order": 10,
   "featured": true,
   "name": "Farm Fresh Bites",
@@ -8,8 +10,6 @@
     "eCommerce"
   ],
   "image": "/img/work/farm-fresh-bites.webp",
-  "imageWidth": 1145,
-  "imageHeight": 750,
   "alt_id": "Tangkapan layar proyek Farm Fresh Bites",
   "alt_en": "Farm Fresh Bites project screenshot",
   "desc_id": "Usaha hyperlocal di Mumbai yang mengantarkan buah eksotis bersumber bertanggung jawab. Tantangannya: menjual produk premium sambil menonjolkan misi sosial yang nyata. Saya bangun etalase Wix Studio yang menyatukan toko, cerita pendiri, dan CSR — pendapatan vendor dan makanan yang didonasikan — sehingga setiap pembelian punya makna.",

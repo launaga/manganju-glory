@@ -1,4 +1,6 @@
 {
+  "imageWidth": 937,
+  "imageHeight": 817,
   "order": 8,
   "featured": true,
   "name": "Support Space",
@@ -7,8 +9,6 @@
     "Wix Studio"
   ],
   "image": "/img/work/support-space.webp",
-  "imageWidth": 937,
-  "imageHeight": 817,
   "alt_id": "Tangkapan layar proyek Support Space",
   "alt_en": "Support Space project screenshot",
   "desc_id": "Platform untuk seorang profesional kesehatan mental. Tantangannya: membangun kepercayaan tanpa kesan klinis yang dingin. Saya rancang pengalaman Wix Studio yang intim, menyeimbangkan kehangatan dan profesionalisme agar orang berani mengambil langkah pertama.",

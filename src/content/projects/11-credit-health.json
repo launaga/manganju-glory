@@ -1,4 +1,6 @@
 {
+  "imageWidth": 1200,
+  "imageHeight": 675,
   "order": 11,
   "featured": false,
   "name": "Credit Health",
@@ -9,8 +11,6 @@
     "GitHub"
   ],
   "image": "/img/work/credit-health.webp",
-  "imageWidth": 1200,
-  "imageHeight": 675,
   "alt_id": "Tangkapan layar proyek Credit Health",
   "alt_en": "Credit Health project screenshot",
   "desc_id": "Dibangun karena hampir semua tool keuangan pribadi yang layak memasang tarif $99–109/tahun dan mengunci fitur dasar di balik paywall. Saya ingin membuktikan dashboard finansial berfitur lengkap bisa dibangun dan dibagikan gratis.",

@@ -1,4 +1,7 @@
 {
+  "imageWidth": 1200,
+  "imageHeight": 579,
+  "caseStudy": "jakarta-feminist",
   "order": 4,
   "featured": true,
   "name": "Jakarta Feminist",
@@ -8,11 +11,8 @@
     "WordPress"
   ],
   "image": "/img/work/jakarta-feminist.webp",
-  "imageWidth": 1200,
-  "imageHeight": 579,
   "alt_id": "Tangkapan layar proyek Jakarta Feminist",
   "alt_en": "Jakarta Feminist project screenshot",
   "desc_id": "Organisasi feminis yang memperkuat advokasi. Saya satukan konten editorial, acara, dan sumber daya menjadi satu pusat mobilisasi — migrasi dari Wix Editor ke WordPress, menopang Women’s March Jakarta, FemFest, dan lainnya.",
-  "desc_en": "A feminist organisation strengthening its advocacy. I consolidated editorial content, events, and resources into a single mobilisation hub — migrating from Wix Editor to WordPress, supporting Women’s March Jakarta, FemFest, and more.",
-  "caseStudy": "jakarta-feminist"
+  "desc_en": "A feminist organisation strengthening its advocacy. I consolidated editorial content, events, and resources into a single mobilisation hub — migrating from Wix Editor to WordPress, supporting Women’s March Jakarta, FemFest, and more."
 }

@@ -259,7 +259,7 @@ a { color: inherit; }
 /* Modal / confirm dialog -------------------------------------------------- */
 .modal-overlay {
   position: fixed; inset: 0; background: rgba(16,18,22,.45);
-  display: grid; place-items: center; z-index: 210; padding: 20px;
+  display: grid; place-items: center; z-index: 220; padding: 20px;
   animation: fade .15s ease-out;
 }
 @keyframes fade { from { opacity: 0; } }

@@ -1,4 +1,6 @@
 {
+  "imageWidth": 947,
+  "imageHeight": 857,
   "order": 3,
   "featured": true,
   "name": "Ipas Indonesia",
@@ -8,8 +10,6 @@
     "WordPress"
   ],
   "image": "/img/work/ipas-indonesia.webp",
-  "imageWidth": 947,
-  "imageHeight": 857,
   "alt_id": "Tangkapan layar proyek Ipas Indonesia",
   "alt_en": "Ipas Indonesia project screenshot",
   "desc_id": "NGO kesehatan reproduksi yang memperluas akses layanan pascakeguguran yang aman. Situs lama mereka menyimpang dari design system internasional yang baru. Saya bangun ulang agar selaras dengan brand global, tanpa mengorbankan preferensi audiens Indonesia.",

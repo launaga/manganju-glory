@@ -1,4 +1,6 @@
 {
+  "imageWidth": 470,
+  "imageHeight": 557,
   "order": 1,
   "featured": true,
   "name": "Eyelevel-id",
@@ -8,8 +10,6 @@
     "WordPress"
   ],
   "image": "/img/work/eyelevel-id.webp",
-  "imageWidth": 470,
-  "imageHeight": 557,
   "alt_id": "Tangkapan layar proyek Eyelevel-id",
   "alt_en": "Eyelevel-id project screenshot",
   "desc_id": "Agensi digital marketing di Jakarta. Tantangannya: membangun kredibilitas tanpa terlihat seperti vendor kebanyakan. Saya terjemahkan design guideline mereka menjadi situs WordPress yang memposisikan mereka sebagai Google Partner strategis.",

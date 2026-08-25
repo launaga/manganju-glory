@@ -5,14 +5,18 @@ const root = path.resolve('.');
 const read = (rel) => JSON.parse(fs.readFileSync(path.join(root, rel), 'utf8'));
 const files = (rel) => fs.readdirSync(path.join(root, rel)).filter((f) => f.endsWith('.json')).sort();
 const snake = (key) => key.replace(/([a-z0-9])([A-Z])/g, '$1_$2').toLowerCase();
-const singleton = (obj) => Object.fromEntries(Object.entries(obj).map(([key, value]) => [snake(key), value]));
+const singletonOverrides = { about: { prin_items: 'principles', bound_items: 'boundaries' } };
+const singleton = (table, obj) => Object.fromEntries(Object.entries(obj).map(([key, value]) => [
+  singletonOverrides[table]?.[key] ?? snake(key),
+  value,
+]));
 const slugify = (value) => String(value).toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
   .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80);
 
 const seed = {
-  homepage: [{ id: '1', ...singleton(read('src/data/home.json')) }],
-  about: [{ id: '1', ...singleton(read('src/data/about.json')) }],
-  site_settings: [{ id: '1', ...singleton(read('src/data/settings.json')) }],
+  homepage: [{ id: '1', ...singleton('homepage', read('src/data/home.json')) }],
+  about: [{ id: '1', ...singleton('about', read('src/data/about.json')) }],
+  site_settings: [{ id: '1', ...singleton('site_settings', read('src/data/settings.json')) }],
   seo_settings: [], services: [], stats: [], projects: [],
   project_images: [], experience: [], skill_categories: [], skills: [],
   testimonials: [], blog_categories: [], blog_posts: [], contact_submissions: [],

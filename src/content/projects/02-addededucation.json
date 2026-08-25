@@ -1,4 +1,6 @@
 {
+  "imageWidth": 632,
+  "imageHeight": 637,
   "order": 2,
   "featured": true,
   "name": "AddedEducation",
@@ -8,8 +10,6 @@
     "WordPress"
   ],
   "image": "/img/work/addededucation.webp",
-  "imageWidth": 632,
-  "imageHeight": 637,
   "alt_id": "Tangkapan layar proyek AddedEducation",
   "alt_en": "AddedEducation project screenshot",
   "desc_id": "Konsultan pendidikan yang situs lamanya mengubur pesan utama di balik daftar fitur dan klise generik, membuat orang tua bingung apa yang membedakan mereka. Saya bangun ulang dengan bahasa orang tua — terasa premium, membuktikan kredibilitas lewat angka konkret sebelum keraguan sempat muncul.",

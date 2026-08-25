@@ -48,9 +48,18 @@ async function main() {
   if (!home || !about || !settings) throw new Error('CMS singleton content missing');
   if (!projects.length) throw new Error('0 published projects — refusing to overwrite snapshot');
 
+  const shapedAbout = shapeSingleton('about', about);
+  const shapedProjects = projects.map(shapeProject);
+  if (!Array.isArray(shapedAbout.prin_items) || !Array.isArray(shapedAbout.bound_items)) {
+    throw new Error('About repeaters missing — refusing to overwrite snapshot');
+  }
+  if (shapedProjects.some((p) => !p.imageWidth || !p.imageHeight)) {
+    throw new Error('Project image dimensions missing — refusing to overwrite snapshot');
+  }
+
   // Only now (all fetched) do we write, so a mid-fetch failure never half-writes.
   write('src/data/home.json', shapeSingleton('homepage', home));
-  write('src/data/about.json', shapeSingleton('about', about));
+  write('src/data/about.json', shapedAbout);
   write('src/data/settings.json', shapeSingleton('site_settings', settings));
   write('src/data/stats.json', shapeStats(statsRows));
   for (const s of seoRows) write(`src/data/seo/${s.page_key}.json`, shapeSeo(s));
@@ -61,7 +70,7 @@ async function main() {
     if (fs.existsSync(abs)) for (const f of fs.readdirSync(abs)) if (f.endsWith('.json')) fs.unlinkSync(path.join(abs, f));
   }
   services.forEach((s) => write(`src/content/services/${String(s.display_order).padStart(2, '0')}-${s.slug_en}.json`, shapeService(s)));
-  projects.forEach((p) => write(`src/content/projects/${String(p.display_order).padStart(2, '0')}-${p.slug}.json`, shapeProject(p)));
+  projects.forEach((p, i) => write(`src/content/projects/${String(p.display_order).padStart(2, '0')}-${p.slug}.json`, shapedProjects[i]));
 
   console.log(`[sync-content] ✓ synced ${projects.length} projects, ${services.length} services, ${seoRows.length} SEO pages, singletons.`);
 }

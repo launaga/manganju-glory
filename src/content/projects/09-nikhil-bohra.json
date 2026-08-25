@@ -1,4 +1,6 @@
 {
+  "imageWidth": 941,
+  "imageHeight": 832,
   "order": 9,
   "featured": true,
   "name": "Nikhil Bohra",
@@ -7,8 +9,6 @@
     "Wix Editor"
   ],
   "image": "/img/work/nikhil-bohra.webp",
-  "imageWidth": 941,
-  "imageHeight": 832,
   "alt_id": "Tangkapan layar proyek Nikhil Bohra",
   "alt_en": "Nikhil Bohra project screenshot",
   "desc_id": "Pusat informasi untuk pembalap Indian-American di Formula Regional European Championship. Saya rangkai perjalanannya dari Italian F4 hingga podium FRECA — narasi karier yang menandakan kesiapan untuk investasi sponsor.",
