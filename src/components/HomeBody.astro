@@ -12,6 +12,9 @@ const homePath = lang === 'id' ? '/' : '/en';
 const aboutHref = lang === 'id' ? '/tentang' : '/en/about';
 const tools = f('marqueeTools');
 const accent = f('marqueeAccent');
+const serviceHrefs = lang === 'id'
+  ? ['/layanan/jasa-pembuatan-website-company-profile', '/layanan/jasa-pembuatan-website-ecommerce', '/layanan/jasa-landing-page']
+  : ['/en/services/company-profile-website', '/en/services/ecommerce-website', '/en/services/landing-page-design'];
 ---
 
 <main id="page-home" class="page">
@@ -32,7 +35,7 @@ const accent = f('marqueeAccent');
         </a></div>
       </div>
       <div class="hero-photo reveal d2">
-        <img src="/img/portrait-mgl.webp" alt={f('hero_photoAlt')} width="1000" height="1500" fetchpriority="high" decoding="async" />
+        <img src="/img/portrait-mgl.webp" srcset="/img/portrait-mgl-480.webp 480w, /img/portrait-mgl-720.webp 720w, /img/portrait-mgl.webp 1000w" sizes="(min-width: 880px) 44vw, 100vw" alt={f('hero_photoAlt')} width="1000" height="1500" fetchpriority="high" decoding="async" />
         <span class="cap">{lang === 'id' ? 'Gbr. 01' : 'Fig. 01'} — M.G. Laurencius</span>
       </div>
     </div>
@@ -124,11 +127,11 @@ const accent = f('marqueeAccent');
     </div>
     <div class="svc">
       {data.svc_rows.map((r: any, i: number) => (
-        <div class={`svc-row reveal ${i === 1 ? 'd1' : i === 2 ? 'd2' : ''}`.trim()}>
+        <a class={`svc-row reveal ${i === 1 ? 'd1' : i === 2 ? 'd2' : ''}`.trim()} href={serviceHrefs[i] ?? (lang === 'id' ? '/layanan' : '/en/services')}>
           <div class="ico">{r.ico}</div>
           <div class="ttl"><h3 class="h3">{r[`h_${L}`]}</h3><p>{r[`p_${L}`]}</p></div>
           <div class="best"><b>{f('svc_bestLabel')}</b>{r[`best_${L}`]}</div>
-        </div>
+        </a>
       ))}
     </div>
   </section>

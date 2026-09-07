@@ -28,14 +28,15 @@ const canonical = abs(canonicalPath);
 const altOtherPath = lang === 'id' ? enPath : idPath;
 const ogImage = abs(image ?? '/img/og-default.jpg');
 const current = canonicalPath;
+const homeUrl = abs('/');
 
 // JSON-LD: graf identitas situs, dilokalkan per bahasa.
 const graph = [
   {
     '@type': 'Person',
-    '@id': abs('/') + '#person',
+    '@id': homeUrl + '#person',
     name: 'Manganju Glory Laurencius',
-    url: canonical,
+    url: homeUrl,
     image: abs('/img/portrait-mgl.webp'),
     jobTitle:
       lang === 'id'
@@ -51,12 +52,12 @@ const graph = [
   },
   {
     '@type': 'ProfessionalService',
-    '@id': abs('/') + '#service',
+    '@id': homeUrl + '#service',
     name:
       lang === 'id'
         ? 'Manganju Glory Laurencius — Konsultan Website'
         : 'Manganju Glory Laurencius — Website Consultant',
-    url: canonical,
+    url: homeUrl,
     image: abs('/logo.png'),
     description:
       lang === 'id'
@@ -66,16 +67,26 @@ const graph = [
     email: EMAIL,
     priceRange: '$$',
     areaServed: { '@type': 'Country', name: 'Indonesia' },
-    founder: { '@id': abs('/') + '#person' },
-    provider: { '@id': abs('/') + '#person' },
+    founder: { '@id': homeUrl + '#person' },
+    provider: { '@id': homeUrl + '#person' },
   },
   {
     '@type': 'WebSite',
-    '@id': abs('/') + '#website',
-    url: canonical,
+    '@id': homeUrl + '#website',
+    url: homeUrl,
     name: 'Manganju Glory Laurencius',
     inLanguage: ui.htmlLang,
-    publisher: { '@id': abs('/') + '#person' },
+    publisher: { '@id': homeUrl + '#person' },
+  },
+  {
+    '@type': 'WebPage',
+    '@id': canonical + '#webpage',
+    url: canonical,
+    name: title,
+    description,
+    inLanguage: ui.htmlLang,
+    isPartOf: { '@id': homeUrl + '#website' },
+    about: { '@id': homeUrl + '#service' },
   },
   ...extraSchema,
 ];
